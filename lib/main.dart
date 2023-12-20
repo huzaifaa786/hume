@@ -17,21 +17,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  GetMaterialApp(
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          textSelectionTheme: const TextSelectionThemeData(
-            cursorColor: white,
-          ),
-          useMaterial3: true,
-          fontFamily: 'Poppins',
+    return GetMaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: white,
         ),
-        debugShowCheckedModeBanner: false,
-        title: "Hume",
-        initialBinding: SplashBinding(),
-        home: SplashView(),
-        getPages: AppPages.pages,
-      );
-    
+        useMaterial3: true,
+        fontFamily: 'Poppins',
+      ),
+      debugShowCheckedModeBanner: false,
+      title: "Hume",
+      initialBinding: SplashBinding(),
+      home: SplashView(),
+      getPages: AppPages.pages,
+    );
   }
 }

@@ -1,11 +1,15 @@
 import 'package:get/get.dart';
 import 'package:hume/routes/app_routes.dart';
+import 'package:hume/views/account/account_binding.dart';
+import 'package:hume/views/account/account_view.dart';
 import 'package:hume/views/auth/auth_binding.dart';
 import 'package:hume/views/auth/auth_controller.dart';
 import 'package:hume/views/auth/auth_options_view.dart';
 import 'package:hume/views/auth/auth_view.dart';
 import 'package:hume/views/categories/categories_binding.dart';
 import 'package:hume/views/categories/categories_view.dart';
+import 'package:hume/views/category_products/product_binding.dart';
+import 'package:hume/views/category_products/product_view.dart';
 import 'package:hume/views/home/home_binding.dart';
 import 'package:hume/views/home/home_view.dart';
 import 'package:hume/views/main_screen/main_screen.dart';
@@ -54,6 +58,18 @@ class AppPages {
       name: AppRoutes.categories,
       page: () => const CategoriesScreen(),
       binding: CategoriesBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.products,
+      page: () => const ProductScreen(),
+      binding: ProductBinding(),
+    ),
+    
+    GetPage(
+      name: AppRoutes.account,
+      page: () => const AccountScreen(),
+      binding: AccountBinding(),
     ),
   ];
 }

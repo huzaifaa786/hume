@@ -9,7 +9,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right : 15.0),
+      padding: const EdgeInsets.only(right : 10,left: 10, top: 15, bottom: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,11 +20,22 @@ class ProductCard extends StatelessWidget {
             ),
             child: Image(
                 image: AssetImage('assets/images/product.jpg'),
+                width: 175,
               ),
           ),
-          Gap(20),
-          Text('Green chair',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w600)),
-          Text('250 AED',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w900,color: mainColor)),
+          Gap(5),
+          Padding(
+            padding: const EdgeInsets.only(left : 8.0),
+            child: Column(children: [
+                        Text('Green chair',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+                Text('250 AED',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w900,
+                        color: mainColor)),
+            ],),
+          ),
         ],
       ),
     );
