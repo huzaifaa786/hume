@@ -19,15 +19,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GetMaterialApp(
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.black,
+          scaffoldBackgroundColor: Colors.white,
           textSelectionTheme: const TextSelectionThemeData(
             cursorColor: white,
           ),
           useMaterial3: true,
-          fontFamily: 'Montserrat',
+          fontFamily: 'Poppins',
         ),
         debugShowCheckedModeBanner: false,
-        title: "Mudarribe",
+        title: "Hume",
         initialBinding: SplashBinding(),
         home: SplashView(),
         getPages: AppPages.pages,

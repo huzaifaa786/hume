@@ -14,6 +14,10 @@ const appbarbckground = Color(4279175686);
 const profilesubheading = Color(0x99FFFFFF);
 const shadowBlack = Color(0x92343434);
 const bgcontainer1 = Color(0x872C2723);
+const mainColor = Color(0xFF451f5d);
+const greyText = Color(0xFF9c9c9c);
+const iconColor = Color(0xFF8635b7);
+const categoryColor = Color(0xFFf4f2b1);
 
 // const dividercolor = Colors.white.withOpacity(0.2);
 const dividercolor = Color(0x33FFFFFF);
