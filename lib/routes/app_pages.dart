@@ -14,6 +14,8 @@ import 'package:hume/views/home/home_binding.dart';
 import 'package:hume/views/home/home_view.dart';
 import 'package:hume/views/main_screen/main_screen.dart';
 import 'package:hume/views/main_screen/main_screen_binding.dart';
+import 'package:hume/views/shops/shops_view/shops_view.dart';
+import 'package:hume/views/shops/shops_view/shops_binding.dart';
 import 'package:hume/views/splash/splash_binding.dart';
 import 'package:hume/views/splash/splash_view.dart';
 import 'package:hume/views/welcome/welcome_view.dart';
@@ -70,6 +72,13 @@ class AppPages {
       name: AppRoutes.account,
       page: () => const AccountScreen(),
       binding: AccountBinding(),
+    ),
+
+    ///Shops List
+    GetPage(
+      name: AppRoutes.shops,
+      page: () => const ShopsView(),
+      binding: ShopsBinding(),
     ),
   ];
 }

@@ -19,6 +19,7 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
     return Scaffold(
       appBar: AppBar(
         forceMaterialTransparency: true,
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween, 
           children: [
@@ -27,7 +28,7 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
             color: mainColor,
             size: 26,
           ),
-          Text(widget.appBarTitle,style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),),
+          Text(widget.appBarTitle,style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,color: appbarText),),
           Icon(
             Icons.arrow_back_ios_new_rounded,
             color: Colors.transparent,

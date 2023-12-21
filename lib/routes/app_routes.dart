@@ -8,4 +8,5 @@ class AppRoutes {
   static const categories = '/categories';
   static const products = '/products';
   static const account = '/account';
+  static const shops = '/shops';
 }
