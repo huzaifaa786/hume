@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hume/components/button.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 
 class WelcomeView extends StatelessWidget {
@@ -40,7 +41,9 @@ class WelcomeView extends StatelessWidget {
                   Gap(40),
                   HumeButton(
                     title: 'Sign up',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.auth_options);
+                    },
                     buttonWidth: 0.85,
                   ),
                   Gap(20),
@@ -49,31 +52,39 @@ class WelcomeView extends StatelessWidget {
                       'Already have an account?  ',
                       style: TextStyle(color: greyText),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          'Sign in',
-                          style: TextStyle(
-                              color: mainColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700),
-                        ),
-                        Icon(Icons.arrow_forward)
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.auth_options);
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            'Sign in',
+                            style: TextStyle(
+                                color: mainColor,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Icon(Icons.arrow_forward)
+                        ],
+                      ),
                     )
                   ]),
                 ],
               ),
             ),
             // Gap(30),
-            Expanded(child: Container(
-               decoration: BoxDecoration(
+            Expanded(
+                child: Container(
+                    decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: AssetImage('assets/images/ladies.jpg',))),
-              width: Get.width,
-              child: Container(
-                  decoration: BoxDecoration(
+                            image: AssetImage(
+                              'assets/images/ladies.jpg',
+                            ))),
+                    width: Get.width,
+                    child: Container(
+                      decoration: BoxDecoration(
                         gradient: LinearGradient(
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
@@ -82,8 +93,7 @@ class WelcomeView extends StatelessWidget {
                               Colors.transparent
                             ]),
                       ),
-              )
-              ))
+                    )))
           ],
         ),
       ),

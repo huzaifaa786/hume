@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hume/components/button.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/cart/cart_controller.dart';
 import 'package:hume/views/layout/layout_screen.dart';
@@ -21,7 +22,7 @@ class CartView extends GetView<CartController> {
       hasBottomNav: true,
       bottomNav: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: HumeButton(title: 'Checkout',hasIcon: true, iconSvgPath: 'assets/images/money.svg', onPressed: (){},),
+        child: HumeButton(title: 'Checkout',hasIcon: true, iconSvgPath: 'assets/images/money.svg', onPressed: (){Get.toNamed(AppRoutes.checkout);},),
       ),
       body: SafeArea(
         child: ListView.builder(

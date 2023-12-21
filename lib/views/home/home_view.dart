@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:hume/components/category_circle.dart';
 import 'package:hume/components/product_card.dart';
 import 'package:hume/components/search_input.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/home/home_controller.dart';
 
@@ -34,14 +35,24 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      SvgPicture.asset(
-                        'assets/images/cart.svg',
-                        height: 25,
+                      GestureDetector(
+                        onTap: (){
+                          Get.toNamed(AppRoutes.cart);
+                        },
+                        child: SvgPicture.asset(
+                          'assets/images/cart.svg',
+                          height: 25,
+                        ),
                       ),
                       Gap(20),
-                      SvgPicture.asset(
-                        'assets/images/notification.svg',
-                        height: 25,
+                      GestureDetector(
+                        onTap: (){
+                        
+                        },
+                        child: SvgPicture.asset(
+                          'assets/images/notification.svg',
+                          height: 25,
+                        ),
                       ),
                     ],
                   ),
@@ -153,9 +164,14 @@ class HomeScreen extends StatelessWidget {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                     ),
-                    Text(
-                      'See all',
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                    GestureDetector(
+                      onTap: (){
+                        Get.toNamed(AppRoutes.products);
+                      },
+                      child: Text(
+                        'See all',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ],
                 ),
