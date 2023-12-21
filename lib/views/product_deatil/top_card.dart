@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hume/utils/colors.dart';
@@ -14,19 +12,19 @@ class ProductProfileCardCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
-      decoration: BoxDecoration(
-        color: containerBg,
-        borderRadius: BorderRadius.circular(43)
-      ),
-      margin: EdgeInsets.only(left: 15, right: 15, top: 10),
-      padding: EdgeInsets.all(8),
+      // decoration: BoxDecoration(
+      //   // color: containerBg,
+      //   borderRadius: BorderRadius.circular(43)
+      // ),
+      margin: EdgeInsets.only(left: 15, right: 15),
+      // padding: EdgeInsets.all(8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
               CircleAvatar(
-                radius: 30.0,
+                radius: 25.0,
                 backgroundImage:
                     NetworkImage('https://via.placeholder.com/150'),
                 backgroundColor: Colors.transparent,
@@ -58,7 +56,7 @@ class ProductProfileCardCard extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'data',
+                      'Clothes brand',
                       style: TextStyle(
                           fontSize: Get.width * 0.03,
                           fontFamily: "Poppins",
@@ -74,7 +72,7 @@ class ProductProfileCardCard extends StatelessWidget {
             width: 100,
             height: 35,
             decoration: ShapeDecoration(
-              color: white,
+              color: containerBg,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(43),
               ),

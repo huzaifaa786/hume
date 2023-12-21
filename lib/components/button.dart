@@ -42,10 +42,13 @@ class HumeButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if(hasIcon)
+              if (hasIcon)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: SvgPicture.asset(iconSvgPath),
+                  child: SvgPicture.asset(
+                    iconSvgPath,
+                    color: white,
+                  ),
                 ),
               Text(
                 title,
