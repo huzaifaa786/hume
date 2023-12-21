@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hume/components/outline_button.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 
 class AuthOptions extends StatelessWidget {
@@ -25,23 +26,31 @@ class AuthOptions extends StatelessWidget {
                   SvgPicture.asset('assets/images/logo.svg',
                       height: 30, width: 50),
                   Gap(30),
-                  OutlineButton(title: 'continue with email', onPressed: (){},icon: Icons.mail,),
+                  OutlineButton(title: 'continue with email', onPressed: (){
+                      Get.toNamed(AppRoutes.auth);
+                  },icon: Icons.mail,),
                     Gap(15),
                   OutlineButton(
                     title: 'continue with apple',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.auth);
+                    },
                     icon: Icons.apple,
                   ),
                    Gap(15),
                   OutlineButton(
                     title: 'continue with google',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.auth);
+                    },
                     icon: Icons.apple,
                   ),
                   Gap(15),
                   OutlineButton(
                     title: 'continue with OTP',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.auth);
+                    },
                     icon: Icons.key_sharp,
                   )
                 ],

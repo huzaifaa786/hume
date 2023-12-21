@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:hume/utils/colors.dart';
 
 class GuestTopbar extends StatelessWidget {
@@ -13,7 +14,11 @@ class GuestTopbar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(Icons.arrow_back_ios_new_rounded, color: mainColor, size: 30,),
+          GestureDetector(
+            onTap: (){
+              Get.back();
+            },
+            child: Icon(Icons.arrow_back_ios_new_rounded, color: mainColor, size: 30,)),
           SvgPicture.asset('assets/images/dots.svg')
         ]),
     );
