@@ -18,6 +18,8 @@ import 'package:hume/views/home/home_binding.dart';
 import 'package:hume/views/home/home_view.dart';
 import 'package:hume/views/main_screen/main_screen.dart';
 import 'package:hume/views/main_screen/main_screen_binding.dart';
+import 'package:hume/views/product_deatil/product_deatil_binding.dart';
+import 'package:hume/views/product_deatil/product_detail_view.dart';
 import 'package:hume/views/shops/shop_profile/shop_profile_binding.dart';
 import 'package:hume/views/shops/shop_profile/shop_profile_view.dart';
 import 'package:hume/views/shops/shops_view/shops_view.dart';
@@ -54,14 +56,14 @@ class AppPages {
       name: AppRoutes.home,
       page: () => const HomeScreen(),
       binding: HomeBinding(),
-    ),   
-    
+    ),
+
     GetPage(
       name: AppRoutes.main,
       page: () => const MainScreen(),
       binding: MainScreenBinding(),
     ),
-    
+
     GetPage(
       name: AppRoutes.categories,
       page: () => const CategoriesScreen(),
@@ -73,7 +75,7 @@ class AppPages {
       page: () => const ProductScreen(),
       binding: ProductBinding(),
     ),
-    
+
     GetPage(
       name: AppRoutes.account,
       page: () => const AccountScreen(),
@@ -86,23 +88,29 @@ class AppPages {
       page: () => const ShopsView(),
       binding: ShopsBinding(),
     ),
-    
+
     GetPage(
       name: AppRoutes.shop_profile,
       page: () => const ShopProfileView(),
       binding: ShopProfileBinding(),
     ),
-    
+
     GetPage(
       name: AppRoutes.cart,
       page: () => const CartView(),
       binding: CartBinding(),
     ),
-    
+
     GetPage(
       name: AppRoutes.checkout,
       page: () => const CheckoutView(),
       binding: CheckoutBinding(),
     ),
+
+    ///Product Detail
+    GetPage(
+        name: AppRoutes.productDeatil,
+        page: () => const ProductDetailView(),
+        binding: ProductDetailBinding()),
   ];
 }

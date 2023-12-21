@@ -12,4 +12,6 @@ class AppRoutes {
   static const shop_profile = '/shop-profile';
   static const cart = '/cart';
   static const checkout = '/checkout';
+  static const productDeatil = '/productDeatil';
+
 }
