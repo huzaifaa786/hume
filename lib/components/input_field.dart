@@ -57,10 +57,10 @@ class InputField extends StatelessWidget {
         children: [
           if(hasTitle)
           Padding(
-            padding: const EdgeInsets.only(left : 10.0, bottom: 5),
+            padding: const EdgeInsets.only(left : 15.0, bottom: 5),
             child: Text(
                 title,
-                style: TextStyle(color: greyText),
+                style: TextStyle(color: Colors.black.withOpacity(0.6)),
               ),
           ),
           TextFormField(

@@ -6,10 +6,14 @@ import 'package:hume/views/auth/auth_binding.dart';
 import 'package:hume/views/auth/auth_controller.dart';
 import 'package:hume/views/auth/auth_options_view.dart';
 import 'package:hume/views/auth/auth_view.dart';
+import 'package:hume/views/cart/cart_binding.dart';
+import 'package:hume/views/cart/cart_view.dart';
 import 'package:hume/views/categories/categories_binding.dart';
 import 'package:hume/views/categories/categories_view.dart';
 import 'package:hume/views/category_products/product_binding.dart';
 import 'package:hume/views/category_products/product_view.dart';
+import 'package:hume/views/checkout/checkout_binding.dart';
+import 'package:hume/views/checkout/checkout_view.dart';
 import 'package:hume/views/home/home_binding.dart';
 import 'package:hume/views/home/home_view.dart';
 import 'package:hume/views/main_screen/main_screen.dart';
@@ -87,6 +91,18 @@ class AppPages {
       name: AppRoutes.shop_profile,
       page: () => const ShopProfileView(),
       binding: ShopProfileBinding(),
+    ),
+    
+    GetPage(
+      name: AppRoutes.cart,
+      page: () => const CartView(),
+      binding: CartBinding(),
+    ),
+    
+    GetPage(
+      name: AppRoutes.checkout,
+      page: () => const CheckoutView(),
+      binding: CheckoutBinding(),
     ),
   ];
 }

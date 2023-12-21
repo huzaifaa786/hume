@@ -41,6 +41,7 @@ dependencies:
   carousel_slider: ^4.2.1
   cached_network_image: ^3.3.0
   carousel_indicator: ^1.0.6
+  input_quantity: ^2.2.0
   get: ^4.6.6
   gap: ^3.0.1
 
