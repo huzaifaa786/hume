@@ -6,8 +6,10 @@ import 'package:hume/utils/colors.dart';
 
 class LayoutScaffold extends StatefulWidget {
   final Widget body;
+  final Widget? bottomNav;
   final String appBarTitle;
-  LayoutScaffold({required this.body, required this.appBarTitle});
+   bool hasBottomNav;
+  LayoutScaffold({required this.body, required this.appBarTitle, this.hasBottomNav = false, this.bottomNav});
 
   @override
   State<LayoutScaffold> createState() => _LayoutScaffoldState();
@@ -36,6 +38,7 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
           ),
         ]),
       ),
+      bottomNavigationBar: widget.hasBottomNav ? widget.bottomNav : Container(),
       body: widget.body,
     );
   }
