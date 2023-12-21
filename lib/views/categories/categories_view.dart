@@ -6,7 +6,6 @@ import 'package:hume/views/layout/layout_screen.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return LayoutScaffold(

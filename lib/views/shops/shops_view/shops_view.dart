@@ -2,9 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:hume/components/button.dart';
-import 'package:hume/components/button_fwd_arrow.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/layout/layout_screen.dart';
 import 'package:hume/views/shops/shops_view/shops_controller.dart';
@@ -50,7 +47,35 @@ class ShopsView extends GetView<ShopsController> {
                   onTap: () {
                     // Add functionality here if needed
                   },
-                  // trailing:
+      //             trailing: Container(
+      //   width: Get.width * buttonWidth,
+      //   height: buttonHeight,
+      //   decoration: ShapeDecoration(
+      //     color: color,
+      //     shape: RoundedRectangleBorder(
+      //       borderRadius: BorderRadius.circular(43),
+      //     ),
+      //   ),
+      //   child: Center(
+      //     child: Row(
+      //       mainAxisAlignment: MainAxisAlignment.center,
+      //       children: [
+      //         Text(
+      //           title,
+      //           style: TextStyle(
+      //             color: white,
+      //             fontSize: fontSize,
+      //             fontWeight: FontWeight.w500,
+      //           ),
+      //         ),
+      //           Padding(
+      //             padding: const EdgeInsets.symmetric(horizontal: 10),
+      //             child: SvgPicture.asset(iconSvgPath),
+      //           ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
                 ));
           },
         ));
