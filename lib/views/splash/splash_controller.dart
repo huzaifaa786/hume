@@ -5,7 +5,7 @@ class SplashController extends GetxController {
   static SplashController instance = Get.find();
 
   void initscreen() async {
-    await Future.delayed(const Duration(seconds: 2), () {
+    await Future.delayed(const Duration(seconds: 3), () {
       checkFirstSeen();
       update();
     });

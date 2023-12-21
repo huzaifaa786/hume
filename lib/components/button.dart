@@ -27,33 +27,36 @@ class HumeButton extends StatelessWidget {
   final iconSvgPath;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width * buttonWidth,
-      height: buttonHeight,
-      decoration: ShapeDecoration(
-        color: color,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(43),
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: Get.width * buttonWidth,
+        height: buttonHeight,
+        decoration: ShapeDecoration(
+          color: color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(43),
+          ),
         ),
-      ),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if(hasIcon)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: SvgPicture.asset(iconSvgPath),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if(hasIcon)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: SvgPicture.asset(iconSvgPath),
+                ),
+              Text(
+                title,
+                style: TextStyle(
+                  color: white,
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            Text(
-              title,
-              style: TextStyle(
-                color: white,
-                fontSize: fontSize,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -3,8 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hume/utils/colors.dart';
+import 'package:hume/views/account/account_view.dart';
+import 'package:hume/views/category_products/product_view.dart';
 import 'dart:ui' as ui;
 import 'package:hume/views/home/home_view.dart';
+import 'package:hume/views/shops/shops_view/shops_view.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key, this.selectedIndex}) : super(key: key);
@@ -20,9 +23,9 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
   Widget build(BuildContext context) {
     var _fragments = [
       const HomeScreen(),
-      const HomeScreen(),
-      const HomeScreen(),
-      const HomeScreen(),
+      const ProductScreen(),
+      const ShopsView(),
+      const AccountScreen(),
     ];
     return Directionality(
       textDirection: ui.TextDirection.ltr,

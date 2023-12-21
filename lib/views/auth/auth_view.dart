@@ -7,6 +7,7 @@ import 'package:hume/components/button.dart';
 import 'package:hume/components/guest_topbar.dart';
 import 'package:hume/components/input_field.dart';
 import 'package:hume/components/input_field_pass.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/auth/auth_controller.dart';
 import 'package:toggle_switch/toggle_switch.dart';
@@ -94,7 +95,9 @@ class AuthScreen extends StatelessWidget {
                             Gap(20),
                             HumeButton(
                               title: 'Done',
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.toNamed(AppRoutes.main);
+                              },
                               buttonWidth: 0.85,
                             ),
                           ],
@@ -126,7 +129,9 @@ class AuthScreen extends StatelessWidget {
                             ),
                             HumeButton(
                               title: 'Done',
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.toNamed(AppRoutes.main);
+                              },
                               buttonWidth: 0.85,
                             ),
                           ],
