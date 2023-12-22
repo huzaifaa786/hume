@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/layout/layout_screen.dart';
 import 'package:hume/views/shops/shops_view/card.dart';
@@ -24,7 +25,14 @@ class ShopsView extends GetView<ShopsController> {
                 physics: BouncingScrollPhysics(),
                 itemCount: 6, // Creating 6 identical cards
                 itemBuilder: (context, index) {
-                  return SalesListCard();
+                  return SalesListCard(
+                    img: 'https://via.placeholder.com/150',
+                    name: 'Trendy Fashion',
+                    category: 'Clothes brand',
+                    ontap: () {
+                      Get.toNamed(AppRoutes.shop_profile);
+                    },
+                  );
                 },
               ),
               // Image.asset('assets/images/h.png')
@@ -63,17 +71,17 @@ class ShopsView extends GetView<ShopsController> {
                   ContactButton(
                     img: 'assets/images/email.svg',
                     text: 'Email',
-                    ontap: (){},
+                    ontap: () {},
                   ),
                   ContactButton(
                     img: 'assets/images/phone.svg',
                     text: 'Phone',
-                    ontap: (){},
+                    ontap: () {},
                   ),
                   ContactButton(
                     img: 'assets/images/whatsapp.svg',
                     text: 'Whatsapp',
-                    ontap: (){},
+                    ontap: () {},
                   )
                 ],
               ),

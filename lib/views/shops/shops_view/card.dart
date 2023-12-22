@@ -1,24 +1,27 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 
 class SalesListCard extends StatelessWidget {
-  const SalesListCard({super.key});
-
+  const SalesListCard(
+      {super.key,
+      required this.img,
+      required this.name,
+      required this.category,
+      required this.ontap});
+  final img;
+  final name;
+  final category;
+  final ontap;
   @override
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
       decoration: BoxDecoration(
-        color: containerBg,
-        borderRadius: BorderRadius.circular(43)
-      ),
+          color: containerBg, borderRadius: BorderRadius.circular(43)),
       margin: EdgeInsets.only(left: 15, right: 15, top: 10),
       padding: EdgeInsets.all(8),
       child: Row(
@@ -28,8 +31,7 @@ class SalesListCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 30.0,
-                backgroundImage:
-                    NetworkImage('https://via.placeholder.com/150'),
+                backgroundImage: NetworkImage(img),
                 backgroundColor: Colors.transparent,
               ),
               Padding(
@@ -44,7 +46,7 @@ class SalesListCard extends StatelessWidget {
                               maxWidth: Get.width * 0.4,
                               minWidth: Get.width * 0.1),
                           child: Text(
-                            'Trendy Fashion',
+                            name,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -59,7 +61,7 @@ class SalesListCard extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'data',
+                      category,
                       style: TextStyle(
                           fontSize: Get.width * 0.03,
                           fontFamily: "Poppins",
@@ -72,9 +74,7 @@ class SalesListCard extends StatelessWidget {
             ],
           ),
           GestureDetector(
-            onTap: (){
-              Get.toNamed(AppRoutes.shop_profile);
-            },
+            onTap: ontap,
             child: Container(
               width: 100,
               height: 35,
