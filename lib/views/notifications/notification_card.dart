@@ -3,22 +3,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:hume/utils/colors.dart';
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard(
-      {super.key,required this.date,required this.orderstatus,required this.icon,required this.orderId});
+      {super.key,
+      required this.date,
+      required this.orderstatus,
+      required this.orderId});
 
   final date;
-
   final orderstatus;
-
-  final icon;
   final orderId;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+      ),
       child: Container(
         padding: EdgeInsets.only(left: 12, right: 12, top: 15, bottom: 24),
         decoration: BoxDecoration(
@@ -33,14 +37,30 @@ class NotificationCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(
-                      orderstatus,
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFFFFB800).withOpacity(0.7)),
+                    Container(
+                      constraints: BoxConstraints(maxWidth: Get.width * 0.6),
+                      child: Text(
+                        orderstatus == 1
+                            ? 'Accepted order!'
+                            : orderstatus == 2
+                                ? 'Rejected order! '
+                                : 'Your order is delivred !',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: orderstatus == 1
+                                ? acceptedColor
+                                : orderstatus == 2
+                                    ? rejectedColor
+                                    : deliverColor),
+                      ),
                     ),
-                    icon,
+                    orderstatus == 1
+                        ? SvgPicture.asset('assets/images/checked_yellow.svg')
+                        : orderstatus == 2
+                            ? SvgPicture.asset('assets/images/rejected.svg')
+                            : SvgPicture.asset('assets/images/delivered.svg'),
                   ],
                 ),
                 Text(

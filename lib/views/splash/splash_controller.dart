@@ -15,7 +15,7 @@ class SplashController extends GetxController {
       // final User? user = FirebaseAuth.instance.currentUser;
 
       // if (user != null) {
-        Get.offNamed(AppRoutes.welcome);
+        Get.offNamed(AppRoutes.notifications);
       // } else {
         // Get.offNamed(AppRoutes.signin);
       // }
