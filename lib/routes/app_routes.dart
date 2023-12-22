@@ -15,4 +15,5 @@ class AppRoutes {
   static const productDeatil = '/productDeatil';
   static const notifications = '/notifications';
 
+  static const orders = '/orders';
 }
