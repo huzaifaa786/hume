@@ -19,14 +19,19 @@ class ShopProfileView extends GetView<ShopProfileController> {
           forceMaterialTransparency: true,
           automaticallyImplyLeading: false,
           title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-            Icon(
-              Icons.arrow_back_ios_new_rounded,
-              color: mainColor,
-              size: 26,
+            GestureDetector(
+              onTap: (){
+                Get.back();
+              },
+              child: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: mainColor,
+                size: 26,
+              ),
             ),
             Row(children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(15.0),
                 child: CircleAvatar(
                   radius: 25.0,
                   backgroundImage:

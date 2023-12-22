@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 
 class SalesListCard extends StatelessWidget {
@@ -70,34 +71,39 @@ class SalesListCard extends StatelessWidget {
               )
             ],
           ),
-          Container(
-            width: 100,
-            height: 35,
-            decoration: ShapeDecoration(
-              color: white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(43),
+          GestureDetector(
+            onTap: (){
+              Get.toNamed(AppRoutes.shop_profile);
+            },
+            child: Container(
+              width: 100,
+              height: 35,
+              decoration: ShapeDecoration(
+                color: white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(43),
+                ),
               ),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'view shop',
-                    style: TextStyle(
-                      color: appbarText,
-                      fontSize: Get.width * 0.03,
-                      fontWeight: FontWeight.w700,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'view shop',
+                      style: TextStyle(
+                        color: appbarText,
+                        fontSize: Get.width * 0.03,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Icon(Icons.arrow_forward_ios_rounded,
-                        size: Get.width * 0.035, color: appbarText),
-                    // child: SvgPicture.asset('assets/images/approved.svg'),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Icon(Icons.arrow_forward_ios_rounded,
+                          size: Get.width * 0.035, color: appbarText),
+                      // child: SvgPicture.asset('assets/images/approved.svg'),
+                    ),
+                  ],
+                ),
               ),
             ),
           )
