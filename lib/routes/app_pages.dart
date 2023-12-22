@@ -18,6 +18,8 @@ import 'package:hume/views/home/home_binding.dart';
 import 'package:hume/views/home/home_view.dart';
 import 'package:hume/views/main_screen/main_screen.dart';
 import 'package:hume/views/main_screen/main_screen_binding.dart';
+import 'package:hume/views/notifications/notification_binding.dart';
+import 'package:hume/views/notifications/notification_view.dart';
 import 'package:hume/views/orders/order_binding.dart';
 import 'package:hume/views/orders/orders_view.dart';
 import 'package:hume/views/product_deatil/product_deatil_binding.dart';
@@ -111,9 +113,18 @@ class AppPages {
 
     ///Product Detail
     GetPage(
-        name: AppRoutes.productDeatil,
-        page: () => const ProductDetailView(),
-        binding: ProductDetailBinding()),
+      name: AppRoutes.productDeatil,
+      page: () => const ProductDetailView(),
+      binding: ProductDetailBinding(),
+    ),
+
+    ///Notifications
+    GetPage(
+      name: AppRoutes.notifications,
+      page: () => const NotificationsView(),
+      binding: NotificationBinding(),
+    ),
+       
 
     /// My Orders
     GetPage(
