@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     children: [
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Get.toNamed(AppRoutes.cart);
                         },
                         child: SvgPicture.asset(
@@ -46,9 +46,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Gap(20),
                       GestureDetector(
-                        onTap: (){
-                        
-                        },
+                        onTap: () {},
                         child: SvgPicture.asset(
                           'assets/images/notification.svg',
                           height: 25,
@@ -165,7 +163,7 @@ class HomeScreen extends StatelessWidget {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Get.toNamed(AppRoutes.products);
                       },
                       child: Text(
