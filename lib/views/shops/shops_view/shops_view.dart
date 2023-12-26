@@ -18,6 +18,7 @@ class ShopsView extends GetView<ShopsController> {
     return LayoutScaffold(
         appBarTitle: 'Hume Shops',
         body: SingleChildScrollView(
+          controller:controller.scrollController,
           child: Column(
             children: [
               ListView.builder(
