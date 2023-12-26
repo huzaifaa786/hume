@@ -25,7 +25,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
       const HomeScreen(),
       const ProductScreen(),
       const ShopsView(),
-      const AccountScreen(),
+      AccountScreen(),
     ];
     return Directionality(
       textDirection: ui.TextDirection.ltr,

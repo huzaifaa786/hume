@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:hume/routes/app_routes.dart';
 
@@ -12,12 +13,12 @@ class SplashController extends GetxController {
   }
 
   Future checkFirstSeen() async {
-      // final User? user = FirebaseAuth.instance.currentUser;
+    final User? user = FirebaseAuth.instance.currentUser;
 
-      // if (user != null) {
-        Get.offNamed(AppRoutes.notifications);
-      // } else {
-        // Get.offNamed(AppRoutes.signin);
-      // }
+    if (user != null) {
+      Get.offNamed(AppRoutes.auth_options);
+    } else {
+      Get.offNamed(AppRoutes.auth_options);
+    }
   }
 }
