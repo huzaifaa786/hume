@@ -116,9 +116,14 @@ class HomeScreen extends StatelessWidget {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                     ),
-                    Text(
-                      'See all',
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                    InkWell(
+                      onTap: (){
+                        Get.toNamed(AppRoutes.categories);
+                      },
+                      child: Text(
+                        'See all',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ],
                 ),
@@ -137,7 +142,7 @@ class HomeScreen extends StatelessWidget {
                             title: 'Furniture'),
                         CategoryCircle(
                             imagePath: 'assets/images/cloths.svg',
-                            title: 'Cloths'),
+                            title: 'Clothes'),
                         CategoryCircle(
                             imagePath: 'assets/images/perfumes.svg',
                             title: 'Perfumes'),

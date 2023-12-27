@@ -34,11 +34,22 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
         automaticallyImplyLeading: false,
         title:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: mainColor,
-            size: 26,
-          ),
+          widget.hasBottomNav == false
+              ? InkWell(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: mainColor,
+                    size: 26,
+                  ),
+                )
+              : Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: Colors.transparent,
+                  size: 26,
+                ),
           Text(
             widget.appBarTitle,
             style: TextStyle(
