@@ -1,15 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:hume/api/auth_api.dart';
 import 'package:hume/components/button.dart';
 import 'package:hume/components/input_field.dart';
 import 'package:hume/utils/colors.dart';
-import 'package:hume/utils/controller_initlization.dart';
 import 'package:hume/views/account/account_controller.dart';
 import 'package:hume/views/layout/layout_screen.dart';
 
@@ -20,6 +18,11 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<AccountController>(
       autoRemove: false,
+      initState: (state) async {
+        Future.delayed(Duration(milliseconds: 100), () {
+          state.controller!.fetchUser(FirebaseAuth.instance.currentUser!.uid);
+        });
+      },
       builder: (controller) => LayoutScaffold(
         appBarTitle: 'My account',
         ontap: () {
@@ -42,7 +45,7 @@ class AccountScreen extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: Get.width * 0.4,
                             child: Row(
                               children: [
@@ -51,25 +54,36 @@ class AccountScreen extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      width: Get.width * 0.25,
-                                      child: Text(
-                                        'User name',
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w800),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: Get.width * 0.25,
-                                      child: Text(
-                                        '@username',
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: 13, color: greyText),
-                                      ),
-                                    ),
+                                    controller.user.value != null
+                                        ? SizedBox(
+                                            width: Get.width * 0.25,
+                                            child: Text(
+                                              '${controller.user.value!.name}',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w800),
+                                            ),
+                                          )
+                                        : SizedBox(
+                                            width: Get.width * 0.25,
+                                            child: Text(
+                                              '',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w800),
+                                            ),
+                                          ),
+                                    // Container(
+                                    //   width: Get.width * 0.25,
+                                    //   child: Text(
+                                    //     '@username',
+                                    //     overflow: TextOverflow.ellipsis,
+                                    //     style: TextStyle(
+                                    //         fontSize: 13, color: greyText),
+                                    //   ),
+                                    // ),
                                   ],
                                 )
                               ],
@@ -89,7 +103,11 @@ class AccountScreen extends StatelessWidget {
                         ],
                       ),
                       Gap(15),
-                      SvgPicture.asset('assets/images/amico.svg')
+                      SvgPicture.asset(
+                        'assets/images/amico.svg',
+                        fit: BoxFit.scaleDown,
+                        width: Get.width * 0.3,
+                      )
                     ]),
                   ),
                   Gap(10),
@@ -97,27 +115,32 @@ class AccountScreen extends StatelessWidget {
                   Gap(10),
                   InputField(
                     hint: 'Enter username',
+                    controller: controller.name,
                     hasTitle: true,
                     title: 'username',
                   ),
                   Gap(10),
                   InputField(
+                    controller: controller.email,
                     hint: 'Enter phone number',
+                    readOnly: true,
                     hasTitle: true,
                     title: 'Phone number',
                   ),
                   Gap(10),
                   InputField(
+                    controller: controller.phone,
+                    readOnly: true,
                     hint: 'Enter email',
                     hasTitle: true,
                     title: 'Email',
                   ),
                   Gap(10),
-                  InputField(
-                    hint: 'Enter password',
-                    hasTitle: true,
-                    title: 'Password',
-                  ),
+                  // InputField(
+                  //   hint: 'Enter password',
+                  //   hasTitle: true,
+                  //   title: 'Password',
+                  // ),
                 ],
               ),
             ),

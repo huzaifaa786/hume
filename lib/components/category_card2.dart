@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hume/utils/colors.dart';
 
-class CategoryCard extends StatelessWidget {
-  const CategoryCard(
+class CategoryCard2 extends StatelessWidget {
+  const CategoryCard2(
       {super.key,
       this.name,
       this.img,
       this.ontap,
       this.height,
-      this.width = 0.4});
+      this.width = 0.9});
   final ontap;
   final img;
   final name;
@@ -21,13 +21,24 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: ontap,
-      child: Stack(
-        children: [
-          Container(
-            padding: const EdgeInsets.only(left: 12, right: 12),
-            height: Get.height * 0.22,
-            color: categoryColor.withOpacity(0.5),
-            child: Align(
+      child: Container(
+        padding: const EdgeInsets.only(left: 12),
+        height: Get.height * 0.22,
+        width: Get.width,
+        color: categoryColor.withOpacity(0.5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              name,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                // height: 38 / 20,
+              ),
+              textAlign: TextAlign.left,
+            ),
+            Align(
                 alignment: Alignment.bottomRight,
                 child: Image(
                   image: AssetImage(img),
@@ -35,20 +46,8 @@ class CategoryCard extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * height,
                   fit: BoxFit.fitHeight,
                 )),
-          ),
-          Positioned(
-              left: 12,
-              top: 8,
-              child: Text(
-                name,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  // height: 38 / 20,
-                ),
-                textAlign: TextAlign.left,
-              ))
-        ],
+          ],
+        ),
       ),
     );
   }
