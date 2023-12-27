@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hume/components/product_card.dart';
+import 'package:hume/models/shop.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/shops/shop_profile/shop_profile_controller.dart';
 
@@ -14,13 +15,14 @@ class ShopProfileView extends GetView<ShopProfileController> {
 
   @override
   Widget build(BuildContext context) {
+    Shop shop = Get.arguments;
     return Scaffold(
         appBar: AppBar(
           forceMaterialTransparency: true,
           automaticallyImplyLeading: false,
           title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Get.back();
               },
               child: Icon(
@@ -43,7 +45,7 @@ class ShopProfileView extends GetView<ShopProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Trendy Fashion',
+                    shop.name!,
                     style: const TextStyle(
                         fontFamily: "Poppins",
                         fontSize: 14,

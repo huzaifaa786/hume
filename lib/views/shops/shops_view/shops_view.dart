@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hume/models/shop.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/layout/layout_screen.dart';
@@ -18,23 +19,27 @@ class ShopsView extends GetView<ShopsController> {
     return LayoutScaffold(
         appBarTitle: 'Hume Shops',
         body: SingleChildScrollView(
-          controller:controller.scrollController,
+          controller: controller.scrollController,
           child: Column(
             children: [
-              ListView.builder(
-                shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
-                itemCount: 6, // Creating 6 identical cards
-                itemBuilder: (context, index) {
-                  return SalesListCard(
-                    img: 'https://via.placeholder.com/150',
-                    name: 'Trendy Fashion',
-                    category: 'Clothes brand',
-                    ontap: () {
-                      Get.toNamed(AppRoutes.shop_profile);
-                    },
-                  );
-                },
+              Obx(
+                () => ListView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  itemCount:
+                      controller.shops.length, // Creating 6 identical cards
+                  itemBuilder: (context, index) {
+                    Shop shop = controller.shops[index];
+                    return SalesListCard(
+                      img: 'https://via.placeholder.com/150',
+                      name: shop.name,
+                      category: 'Clothes brand',
+                      ontap: () {
+                        Get.toNamed(AppRoutes.shop_profile, arguments: shop);
+                      },
+                    );
+                  },
+                ),
               ),
               // Image.asset('assets/images/h.png')
               SizedBox(height: 30),

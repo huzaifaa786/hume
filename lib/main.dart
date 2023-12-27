@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: white,
         ),
-        useMaterial3: true,
+        useMaterial3: true, 
         fontFamily: 'Poppins',
       ),
       debugShowCheckedModeBanner: false,
