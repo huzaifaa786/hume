@@ -9,7 +9,7 @@ class ShopsController extends GetxController {
   final scrollController = ScrollController();
   final ShopApi shopApi = ShopApi();
   DocumentSnapshot? lastDocument;
-   RxList<Shop> shops = <Shop>[].obs;
+  RxList<Shop> shops = <Shop>[].obs;
 
   @override
   void onInit() {
@@ -35,7 +35,6 @@ class ShopsController extends GetxController {
     if (newItems.isNotEmpty) {
       lastDocument = newItems.last['doc'] as DocumentSnapshot?;
     }
-
 
     shops.addAll(newItems.map((e) => Shop.fromMap(e)).toList().obs);
 

@@ -43,7 +43,7 @@ class SalesListCard extends StatelessWidget {
                       children: [
                         Container(
                           constraints: BoxConstraints(
-                              maxWidth: Get.width * 0.4,
+                              maxWidth: Get.width * 0.38,
                               minWidth: Get.width * 0.1),
                           child: Text(
                             name,

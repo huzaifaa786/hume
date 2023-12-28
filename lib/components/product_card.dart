@@ -4,8 +4,9 @@ import 'package:gap/gap.dart';
 import 'package:hume/utils/colors.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
-
+  const ProductCard({super.key,this.name,this.price});
+final name;
+final price;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,10 +27,12 @@ class ProductCard extends StatelessWidget {
           Gap(5),
           Padding(
             padding: const EdgeInsets.only(left : 8.0),
-            child: Column(children: [
-                        Text('Green chair',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                        Text(name,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
-                Text('250 AED',
+                Text('$price AED',
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w900,

@@ -10,15 +10,14 @@ import 'package:hume/utils/colors.dart';
 
 class CategoryCircle extends StatelessWidget {
   const CategoryCircle(
-      {super.key, required this.imagePath, required this.title});
+      {super.key, required this.imagePath, required this.title,this.ontap});
   final String imagePath;
   final String title;
+  final ontap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-         Get.toNamed(AppRoutes.products);
-      },
+      onTap: ontap,
       child: Column(
         children: [
           Container(

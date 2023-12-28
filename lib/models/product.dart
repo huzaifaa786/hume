@@ -3,29 +3,33 @@
 class Product {
   late String id;
   String? name;
+  double? price;
 
   Product({
     required this.id,
     this.name,
+    this.price,
   });
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
+    name = json['productName'];
+    price = json['productPrice'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['name'] = this.name;
-
+    data['productName'] = this.name;
+    data['productPrice'] = this.price;
     return data;
   }
 
   factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
       id: map['id'],
-      name: map['name'],
+      name: map['productName'],
+      price: map['productPrice'],
     );
   }
 }
