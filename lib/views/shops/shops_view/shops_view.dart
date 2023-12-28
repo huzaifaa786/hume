@@ -31,11 +31,13 @@ class ShopsView extends GetView<ShopsController> {
                   itemBuilder: (context, index) {
                     Shop shop = controller.shops[index];
                     return SalesListCard(
-                      img: 'https://via.placeholder.com/150',
+                      img: shop.logoImageUrl,
                       name: shop.name,
-                      category: 'Clothes brand',
+                      category: shop.category,
                       ontap: () {
-                        Get.toNamed(AppRoutes.shop_profile, arguments: shop);
+                        Get.toNamed(AppRoutes.shop_profile,parameters: {
+                          'shop_id': shop.id, 
+                        });
                       },
                     );
                   },

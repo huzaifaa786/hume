@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
+import 'package:hume/models/product.dart';
+import 'package:hume/models/shop.dart';
 
 class ShopApi {
   static const int chunkSize = 10;
@@ -27,4 +30,17 @@ class ShopApi {
 
     return items;
   }
+
+  Future<Shop?> getShopData(shopId) async {
+        print(shopId);
+
+    final shopSnapshot = await FirebaseFirestore.instance
+        .collection(shopCollection)
+        .doc(shopId)
+        .get();
+  
+    return Shop.fromMap(shopSnapshot.data() as Map<String, dynamic>);
+  }
+
+  // Future<List<Product>> fetchProducts(shopId) async {}
 }

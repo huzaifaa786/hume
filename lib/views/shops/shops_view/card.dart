@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -31,7 +32,7 @@ class SalesListCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 30.0,
-                backgroundImage: NetworkImage(img),
+                backgroundImage: CachedNetworkImageProvider(img),
                 backgroundColor: Colors.transparent,
               ),
               Padding(
