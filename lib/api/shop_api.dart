@@ -32,15 +32,29 @@ class ShopApi {
   }
 
   Future<Shop?> getShopData(shopId) async {
-        print(shopId);
+    print(shopId);
 
     final shopSnapshot = await FirebaseFirestore.instance
         .collection(shopCollection)
         .doc(shopId)
         .get();
-  
+
     return Shop.fromMap(shopSnapshot.data() as Map<String, dynamic>);
   }
 
-  // Future<List<Product>> fetchProducts(shopId) async {}
+  Future<List<Product>> fetchProductsByShopwithLimit6(
+      String shopId) async {
+    final QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('products')
+        .where('shopId', isEqualTo: shopId)
+        .limit(6)
+        .get();
+
+    final List<Product> fetchedProducts = [];
+    for (final doc in snapshot.docs) {
+      final product = Product.fromJson(doc.data() as Map<String, dynamic>);
+      fetchedProducts.add(product);
+    }
+    return fetchedProducts;
+  }
 }
