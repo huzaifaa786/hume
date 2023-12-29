@@ -3,7 +3,7 @@
 class Product {
   late String id;
   String? name;
-  double? price;
+  String? price;
 
   Product({
     required this.id,

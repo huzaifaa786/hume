@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hume/api/product_api.dart';
+import 'package:hume/helper/loading.dart';
 import 'package:hume/models/product.dart';
 
 class ProductController extends GetxController {
@@ -26,6 +27,7 @@ class ProductController extends GetxController {
 
     if (currentScroll >= scrollThreshold) {
       if (lastDocument != null) {
+        print('object');
         fetchProducts();
         lastDocument = null;
       }
@@ -33,6 +35,7 @@ class ProductController extends GetxController {
   }
 
   Future<void> fetchProducts() async {
+    LoadingHelper.show();
     List<Map<String, dynamic>> newItems = await productApi.fetchproducts(
         lastDocument, Get.parameters['category'] ?? '');
 
@@ -41,6 +44,7 @@ class ProductController extends GetxController {
     }
 
     products.addAll(newItems.map((e) => Product.fromMap(e)).toList().obs);
+    LoadingHelper.dismiss();
     update();
   }
 }

@@ -20,7 +20,10 @@ class AccountScreen extends StatelessWidget {
       autoRemove: false,
       initState: (state) async {
         Future.delayed(Duration(milliseconds: 100), () {
-          state.controller!.fetchUser(FirebaseAuth.instance.currentUser!.uid);
+          state.controller!.user.value == null
+              ? state.controller!
+                  .fetchUser(FirebaseAuth.instance.currentUser!.uid)
+              : null;
         });
       },
       builder: (controller) => LayoutScaffold(
