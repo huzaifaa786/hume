@@ -8,6 +8,7 @@ class Product {
   List? sizes;
   String? shopId;
   String? description;
+  String? category;
 
   Product(
       {required this.id,
@@ -16,7 +17,8 @@ class Product {
       this.images,
       this.sizes,
       this.shopId,
-      this.description});
+      this.description,
+      this.category});
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -26,6 +28,7 @@ class Product {
     sizes = json['selectedSizes'];
     shopId = json['shopId'];
     description = json['productDescription'];
+    category = json['category'];
   }
 
   Map<String, dynamic> toJson() {
@@ -37,17 +40,20 @@ class Product {
     data['selectedSizes'] = this.sizes;
     data['shopId'] = this.shopId;
     data['productDescription'] = this.description;
+    data['category'] = this.category;
     return data;
   }
 
   factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
-        id: map['id'],
-        name: map['productName'],
-        price: map['productPrice'],
-        images: map['productImageUrls'],
-        sizes: map['selectedSizes'] ?? [],
-        shopId: map['shopId'],
-        description: map['productDescription']);
+      id: map['id'],
+      name: map['productName'],
+      price: map['productPrice'],
+      images: map['productImageUrls'],
+      sizes: map['selectedSizes'] ?? [],
+      shopId: map['shopId'],
+      description: map['productDescription'],
+      category: map['category'],
+    );
   }
 }

@@ -145,5 +145,11 @@ class AppPages {
         name: AppRoutes.orders,
         page: () => const OrdersView(),
         binding: OrdersBinding()),
+
+    /// Serach Product
+     GetPage(
+        name: AppRoutes.orders,
+        page: () => const OrdersView(),
+        binding: OrdersBinding()),
   ];
 }
