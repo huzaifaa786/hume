@@ -12,8 +12,8 @@ import 'package:hume/views/cart/cart_binding.dart';
 import 'package:hume/views/cart/cart_view.dart';
 import 'package:hume/views/categories/categories_binding.dart';
 import 'package:hume/views/categories/categories_view.dart';
-import 'package:hume/views/category_products/product_binding.dart';
-import 'package:hume/views/category_products/product_view.dart';
+import 'package:hume/views/category_products/cactegory_product_binding.dart';
+import 'package:hume/views/category_products/cactegory_product_view.dart';
 import 'package:hume/views/checkout/checkout_binding.dart';
 import 'package:hume/views/checkout/checkout_view.dart';
 import 'package:hume/views/home/home_binding.dart';
@@ -60,7 +60,7 @@ class AppPages {
     ),
 
     GetPage(
-      name: AppRoutes.forget_password ,
+      name: AppRoutes.forget_password,
       page: () => const ForgetPassword(),
       binding: AuthBinding(),
     ),
@@ -92,7 +92,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.products,
       page: () => const ProductScreen(),
-      binding: ProductBinding(),
+      binding: CategoryProductBinding(),
     ),
 
     GetPage(

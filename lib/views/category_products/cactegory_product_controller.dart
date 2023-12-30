@@ -5,8 +5,8 @@ import 'package:hume/api/product_api.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/models/product.dart';
 
-class ProductController extends GetxController {
-  static ProductController instance = Get.find();
+class CategoryProductController extends GetxController {
+  static CategoryProductController instance = Get.find();
   final scrollController = ScrollController();
   final ProductApi productApi = ProductApi();
   DocumentSnapshot? lastDocument;

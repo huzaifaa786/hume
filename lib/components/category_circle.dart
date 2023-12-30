@@ -1,11 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
-import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 
 class CategoryCircle extends StatelessWidget {

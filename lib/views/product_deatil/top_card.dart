@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,8 +6,12 @@ import 'package:get/get.dart';
 import 'package:hume/utils/colors.dart';
 
 class ProductProfileCardCard extends StatelessWidget {
-  const ProductProfileCardCard({super.key});
-
+  const ProductProfileCardCard(
+      {super.key, this.ontap, this.img, this.name, this.category});
+  final name;
+  final category;
+  final img;
+  final ontap;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,8 +29,7 @@ class ProductProfileCardCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 25.0,
-                backgroundImage:
-                    NetworkImage('https://via.placeholder.com/150'),
+                backgroundImage: NetworkImage(img),
                 backgroundColor: Colors.transparent,
               ),
               Padding(
@@ -41,7 +44,7 @@ class ProductProfileCardCard extends StatelessWidget {
                               maxWidth: Get.width * 0.4,
                               minWidth: Get.width * 0.1),
                           child: Text(
-                            'Trendy Fashion',
+                            name,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -56,7 +59,7 @@ class ProductProfileCardCard extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'Clothes brand',
+                      category,
                       style: TextStyle(
                           fontSize: Get.width * 0.03,
                           fontFamily: "Poppins",
@@ -68,34 +71,37 @@ class ProductProfileCardCard extends StatelessWidget {
               )
             ],
           ),
-          Container(
-            width: 100,
-            height: 35,
-            decoration: ShapeDecoration(
-              color: containerBg,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(43),
+          GestureDetector(
+            onTap: ontap,
+            child: Container(
+              width: 100,
+              height: 35,
+              decoration: ShapeDecoration(
+                color: containerBg,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(43),
+                ),
               ),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'view shop',
-                    style: TextStyle(
-                      color: appbarText,
-                      fontSize: Get.width * 0.03,
-                      fontWeight: FontWeight.w700,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'view shop',
+                      style: TextStyle(
+                        color: appbarText,
+                        fontSize: Get.width * 0.03,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Icon(Icons.arrow_forward_ios_rounded,
-                        size: Get.width * 0.035, color: appbarText),
-                    // child: SvgPicture.asset('assets/images/approved.svg'),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Icon(Icons.arrow_forward_ios_rounded,
+                          size: Get.width * 0.035, color: appbarText),
+                      // child: SvgPicture.asset('assets/images/approved.svg'),
+                    ),
+                  ],
+                ),
               ),
             ),
           )
