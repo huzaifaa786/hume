@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,6 +9,7 @@ import 'package:hume/views/account/account_view.dart';
 import 'package:hume/views/category_products/cactegory_product_view.dart';
 import 'dart:ui' as ui;
 import 'package:hume/views/home/home_view.dart';
+import 'package:hume/views/search_product.dart/serach_product_view.dart';
 import 'package:hume/views/shops/shops_view/shops_view.dart';
 
 class MainScreen extends StatefulWidget {
@@ -23,7 +26,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
   Widget build(BuildContext context) {
     var _fragments = [
       const HomeScreen(),
-      const ProductScreen(),
+      const SearchProductView(),
       const ShopsView(),
       AccountScreen(),
     ];
