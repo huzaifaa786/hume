@@ -20,7 +20,7 @@ class ShopProfileController extends GetxController {
   Future<void> fetchShopAndProducts(shopId) async {
     LoadingHelper.show();
     shop = await shopApi.getShopData(shopId);
-    products = await shopApi.fetchProductsByShopwithLimit6("1");
+    products = await shopApi.fetchProductsByShopwithLimit6(shopId);
     update();
     LoadingHelper.dismiss();
   }
