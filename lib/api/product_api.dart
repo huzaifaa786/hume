@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hume/models/combined_data.dart';
 import 'package:hume/models/product.dart';
+import 'package:hume/models/shop.dart';
 
 class ProductApi {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -49,5 +51,31 @@ class ProductApi {
       fetchedProducts.add(product);
     }
     return fetchedProducts;
+  }
+
+  ///Product Detail
+  ///
+  Future<ProductShopCombined?> fetchProductById(String productId) async {
+    final productDocSnapshot =
+        await _firestore.collection('products').doc(productId).get();
+
+    if (productDocSnapshot.exists) {
+      final productData = productDocSnapshot.data();
+      final shopId = productData!['shopId'];
+
+      final shopDocSnapshot = await FirebaseFirestore.instance
+          .collection('shops')
+          .doc(shopId)
+          .get();
+
+      if (shopDocSnapshot.exists) {
+        final shopData = shopDocSnapshot.data();
+        final product = Product.fromJson(productData);
+        final shop = Shop.fromJson(shopData!);
+        return ProductShopCombined(product: product, shop: shop);
+      }
+    }
+
+    return null;
   }
 }
