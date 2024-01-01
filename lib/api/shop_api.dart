@@ -6,6 +6,7 @@ import 'package:hume/models/shop.dart';
 class ShopApi {
   static const int chunkSize = 10;
   static const String shopCollection = 'shops';
+  static const String productCollection = 'products';
 
   Future<List<Map<String, dynamic>>> fetchShops(
       DocumentSnapshot? lastDocument) async {
@@ -42,8 +43,7 @@ class ShopApi {
     return Shop.fromMap(shopSnapshot.data() as Map<String, dynamic>);
   }
 
-  Future<List<Product>> fetchProductsByShopwithLimit6(
-      String shopId) async {
+  Future<List<Product>> fetchProductsByShopwithLimit6(String shopId) async {
     final QuerySnapshot snapshot = await FirebaseFirestore.instance
         .collection('products')
         .where('shopId', isEqualTo: shopId)
@@ -56,5 +56,30 @@ class ShopApi {
       fetchedProducts.add(product);
     }
     return fetchedProducts;
+  }
+
+  Future<List<Map<String, dynamic>>> fetchproductsByShopId(
+      DocumentSnapshot? lastDocument, String shopId) async {
+    Query query = FirebaseFirestore.instance
+        .collection(productCollection)
+        .where('shopId', isEqualTo: shopId)
+        .orderBy(FieldPath.documentId, descending: true)
+        .limit(chunkSize);
+
+    if (lastDocument != null) {
+      query = query.startAfterDocument(lastDocument);
+    }
+
+    QuerySnapshot querySnapshot = await query.get();
+
+    List<Map<String, dynamic>> items = [];
+
+    for (QueryDocumentSnapshot doc in querySnapshot.docs) {
+      Map<String, dynamic> itemData = doc.data() as Map<String, dynamic>;
+      itemData['doc'] = doc;
+      items.add(itemData);
+    }
+
+    return items;
   }
 }

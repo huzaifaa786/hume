@@ -22,7 +22,6 @@ class CategoryCard2 extends StatelessWidget {
     return InkWell(
       onTap: ontap,
       child: Container(
-        padding: const EdgeInsets.only(left: 12),
         height: Get.height * 0.22,
         width: Get.width,
         color: categoryColor.withOpacity(0.5),
@@ -44,7 +43,7 @@ class CategoryCard2 extends StatelessWidget {
                   image: AssetImage(img),
                   width: MediaQuery.of(context).size.width * 0.4,
                   height: MediaQuery.of(context).size.height * height,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.cover,
                 )),
           ],
         ),

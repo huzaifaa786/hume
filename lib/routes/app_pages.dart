@@ -13,8 +13,8 @@ import 'package:hume/views/cart/cart_binding.dart';
 import 'package:hume/views/cart/cart_view.dart';
 import 'package:hume/views/categories/categories_binding.dart';
 import 'package:hume/views/categories/categories_view.dart';
-import 'package:hume/views/category_products/product_binding.dart';
-import 'package:hume/views/category_products/product_view.dart';
+import 'package:hume/views/category_products/cactegory_product_binding.dart';
+import 'package:hume/views/category_products/cactegory_product_view.dart';
 import 'package:hume/views/checkout/checkout_binding.dart';
 import 'package:hume/views/checkout/checkout_view.dart';
 import 'package:hume/views/home/home_binding.dart';
@@ -27,6 +27,10 @@ import 'package:hume/views/orders/order_binding.dart';
 import 'package:hume/views/orders/orders_view.dart';
 import 'package:hume/views/product_deatil/product_deatil_binding.dart';
 import 'package:hume/views/product_deatil/product_detail_view.dart';
+import 'package:hume/views/search_product.dart/search_product_binding.dart';
+import 'package:hume/views/search_product.dart/serach_product_view.dart';
+import 'package:hume/views/shop_products/shop_products_binding.dart';
+import 'package:hume/views/shop_products/shop_products_view.dart';
 import 'package:hume/views/shops/shop_profile/shop_profile_binding.dart';
 import 'package:hume/views/shops/shop_profile/shop_profile_view.dart';
 import 'package:hume/views/shops/shops_view/shops_view.dart';
@@ -61,7 +65,7 @@ class AppPages {
     ),
 
     GetPage(
-      name: AppRoutes.forget_password ,
+      name: AppRoutes.forget_password,
       page: () => const ForgetPassword(),
       binding: AuthBinding(),
     ),
@@ -85,6 +89,12 @@ class AppPages {
     ),
 
     GetPage(
+      name: AppRoutes.shop_products,
+      page: () => const ShopProductsScreen(),
+      binding: ShopProductsBinding(),
+    ),
+
+    GetPage(
       name: AppRoutes.main,
       page: () => const MainScreen(),
       binding: MainScreenBinding(),
@@ -99,7 +109,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.products,
       page: () => const ProductScreen(),
-      binding: ProductBinding(),
+      binding: CategoryProductBinding(),
     ),
 
     GetPage(
@@ -152,5 +162,11 @@ class AppPages {
         name: AppRoutes.orders,
         page: () => const OrdersView(),
         binding: OrdersBinding()),
+
+    /// Serach Product
+    GetPage(
+      name: AppRoutes.search,
+      page: () => const SearchProductView(),
+    ),
   ];
 }

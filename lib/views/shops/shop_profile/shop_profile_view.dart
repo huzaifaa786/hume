@@ -7,6 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hume/components/loading_widget.dart';
 import 'package:hume/components/product_card.dart';
+import 'package:hume/routes/app_routes.dart';
 
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/shops/shop_profile/shop_profile_controller.dart';
@@ -47,13 +48,20 @@ class ShopProfileView extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          controller.shop!.name!,
-                          style: const TextStyle(
-                              fontFamily: "Poppins",
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              color: appbarText),
+                        Row(
+                          children: [
+                            Text(
+                              controller.shop!.name!,
+                              style: const TextStyle(
+                                  fontFamily: "Poppins",
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: appbarText),
+                            ),Padding(
+                              padding: const EdgeInsets.only(left:3.0),
+                              child: SvgPicture.asset('assets/images/approved.svg'),
+                            )
+                          ],
                         ),
                         Text(
                           controller.shop!.category!,
@@ -65,6 +73,7 @@ class ShopProfileView extends StatelessWidget {
                         ),
                       ],
                     ),
+                    
                   ]),
                 ]),
               ),
@@ -107,9 +116,20 @@ class ShopProfileView extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w800),
                             ),
-                            Text(
-                              'See all',
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                            InkWell(
+                              onTap: () {
+                              Get.toNamed(AppRoutes.shop_products,parameters: {
+                                "shop_id":controller.shop!.id,
+                                "shop_name":controller.shop!.name!,
+                              });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'See all',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -117,16 +137,22 @@ class ShopProfileView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0, top: 20),
                         child: SizedBox(
-                          height: Get.height * 0.5,
+                          height: 290,
                           width: Get.width,
                           child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
+                              scrollDirection: Axis.horizontal,
                               itemCount: controller.products.length,
                               itemBuilder: (context, index) {
                                 return ProductCard(
-                                  name: controller.products[index].name,
-                                  price: controller.products[index].price,
-                                );
+                                    name: controller.products[index].name,
+                                    price: controller.products[index].price,
+                                    img: controller.products[index].images![0],
+                                    ontap: () {
+                                      Get.toNamed(AppRoutes.productDeatil,
+                                          parameters: {
+                                            'id': controller.products[index].id
+                                          });
+                                    });
                               }),
                         ),
                       ),

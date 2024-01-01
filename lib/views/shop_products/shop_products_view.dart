@@ -4,26 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hume/components/product_card.dart';
-import 'package:hume/views/category_products/product_controller.dart';
 import 'package:hume/views/layout/layout_screen.dart';
+import 'package:hume/views/shop_products/shop_products_controller.dart';
 
-class ProductScreen extends StatelessWidget {
-  const ProductScreen({super.key});
+class ShopProductsScreen extends StatelessWidget {
+  const ShopProductsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ProductController>(
+    return GetBuilder<ShopProductsController>(
       autoRemove: false,
-      // initState: (state) async {
-      //   Future.delayed(const Duration(milliseconds: 1), () {
-      //   });
-      // },
       builder: (controller) => LayoutScaffold(
-        appBarTitle: Get.parameters['category'] ?? 'New Arrivals',
+        appBarTitle: Get.parameters['shop_name'] ?? '',
         body: SafeArea(
           child: controller.products.isEmpty
               ? Center(
-                  child: Text('No products found for this category.'),
+                  child: Text('No products found for this shop.'),
                 )
               : GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -23,6 +23,7 @@ class HomeScreen extends StatelessWidget {
       autoRemove: false,
       initState: (state) async {
         Future.delayed(Duration(milliseconds: 100), () {
+          state.controller!.fetchBannerImages();
           state.controller!.fetchClothesProducts('Clothes');
           state.controller!.fetchBagsandshoesProducts('Bags and shoes');
           state.controller!.fetchFurnitureProducts('Furniture');
@@ -72,6 +73,11 @@ class HomeScreen extends StatelessWidget {
               Gap(30),
               SearchInputField(
                 hint: 'search',
+                readOnly: true,
+                onpressed: () {
+                  Get.toNamed(AppRoutes.search,
+                      parameters: {'hasBottomNav': 'false'});
+                },
               ),
               Gap(20),
               SizedBox(
@@ -99,6 +105,12 @@ class HomeScreen extends StatelessWidget {
                           child: CachedNetworkImage(
                             imageUrl: i,
                             fit: BoxFit.cover,
+                            progressIndicatorBuilder:
+                                (context, url, downloadProgress) => Center(
+                                    child: CircularProgressIndicator(
+                                        value: downloadProgress.progress)),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
                           ),
                         );
                       },
@@ -108,7 +120,7 @@ class HomeScreen extends StatelessWidget {
               ),
               Gap(8),
               CarouselIndicator(
-                count: 4,
+                count: 3,
                 index: controller.currentIndex,
                 activeColor: mainColor,
                 color: Colors.grey,
@@ -235,6 +247,11 @@ class HomeScreen extends StatelessWidget {
                             return ProductCard(
                               name: product.name,
                               price: product.price,
+                              img: product.images![0],
+                              ontap: () {
+                                Get.toNamed(AppRoutes.productDeatil,
+                                    parameters: {'id': product.id});
+                              },
                             );
                           },
                         ),
@@ -289,6 +306,11 @@ class HomeScreen extends StatelessWidget {
                             return ProductCard(
                               name: product.name,
                               price: product.price,
+                              img: product.images![0],
+                              ontap: () {
+                                Get.toNamed(AppRoutes.productDeatil,
+                                    parameters: {'id': product.id});
+                              },
                             );
                           },
                         ),
@@ -342,6 +364,11 @@ class HomeScreen extends StatelessWidget {
                             return ProductCard(
                               name: product.name,
                               price: product.price,
+                              img: product.images![0],
+                              ontap: () {
+                                Get.toNamed(AppRoutes.productDeatil,
+                                    parameters: {'id': product.id});
+                              },
                             );
                           },
                         ),
@@ -395,6 +422,11 @@ class HomeScreen extends StatelessWidget {
                             return ProductCard(
                               name: product.name,
                               price: product.price,
+                              img: product.images![0],
+                              ontap: () {
+                                Get.toNamed(AppRoutes.productDeatil,
+                                    parameters: {'id': product.id});
+                              },
                             );
                           },
                         ),
@@ -449,6 +481,11 @@ class HomeScreen extends StatelessWidget {
                             return ProductCard(
                               name: product.name,
                               price: product.price,
+                              img: product.images![0],
+                              ontap: () {
+                                Get.toNamed(AppRoutes.productDeatil,
+                                    parameters: {'id': product.id});
+                              },
                             );
                           },
                         ),

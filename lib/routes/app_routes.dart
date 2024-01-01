@@ -13,6 +13,7 @@ class AppRoutes {
   static const account = '/account';
   static const shops = '/shops';
   static const shop_profile = '/shop-profile';
+  static const shop_products = '/shop-products';
   static const cart = '/cart';
   static const checkout = '/checkout';
   static const productDeatil = '/productDeatil';
@@ -20,5 +21,6 @@ class AppRoutes {
   static const forget_password = '/forget-password';
   static const change_password = '/change-password';
 
+  static const search = '/search';
   static const orders = '/orders';
 }
