@@ -12,6 +12,7 @@ import 'package:hume/components/product_card.dart';
 import 'package:hume/components/search_input.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
+import 'package:hume/utils/controller_initlization.dart';
 import 'package:hume/views/home/home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -56,7 +57,9 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Gap(20),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          paymentService.makePayment(200);
+                        },
                         child: SvgPicture.asset(
                           'assets/images/notification.svg',
                           height: 25,

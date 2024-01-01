@@ -2,11 +2,11 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hume/components/button.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/layout/layout_screen.dart';
 import 'package:hume/views/product_deatil/product_detail_controller.dart';
@@ -27,7 +27,11 @@ class ProductDetailView extends StatelessWidget {
                 child: Column(
                   children: [
                     ProductProfileCardCard(
-                      ontap: () {},
+                      ontap: () {
+                        Get.toNamed(AppRoutes.shop_profile, parameters: {
+                          'shop_id': controller.combinedProductData!.shop.id,
+                        });
+                      },
                       img: controller.combinedProductData!.shop.logoImageUrl,
                       name: controller.combinedProductData!.shop.name,
                       category: controller.combinedProductData!.shop.category,

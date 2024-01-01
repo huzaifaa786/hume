@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/routes/app_pages.dart';
@@ -11,14 +13,26 @@ import 'package:hume/views/splash/splash_binding.dart';
 import 'package:hume/views/splash/splash_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'services/payment_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LoadingHelper.init();
-    Get.put(SearchProductController());
+  Get.put(SearchProductController());
+  Get.put(PaymentService());
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+    Stripe.publishableKey =
+      "pk_test_51JvIZ1Ey3DjpASZjPAzcOwqhblOq2hbchp6i56BsjapvhWcooQXqh33XwCrKiULfAe7NKFwKUhn2nqURE7VZcXXf00wMDzp4YN";
+
+  // Stripe.merchantIdentifier = 'merchant.com.ezmove';
+  Stripe.urlScheme = 'flutterstripe';
+  await Stripe.instance.applySettings();
+
+  //Load our .env file that contains our Stripe Secret key
+  await dotenv.load(fileName: "assets/.env");
   runApp(const MyApp());
 }
 
