@@ -43,4 +43,12 @@ class AccountController extends GetxController {
     update();
     LoadingHelper.dismiss();
   }
+
+  Future<void> updateUsername() async {
+    LoadingHelper.show();
+    await _accountApi.updateUsername(name.text);
+    LoadingHelper.dismiss();
+    fetchUser(FirebaseAuth.instance.currentUser!.uid);
+    UiUtilites.successSnackbar('', 'username updated successfully');
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hume/models/app_user.dart';
 
 class AccountApi {
@@ -12,5 +13,11 @@ class AccountApi {
       return AppUser.fromJson(userData);
     }
     return null;
+  }
+
+  Future<void> updateUsername(String username) async {
+    await userCollection
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update({'name': username});
   }
 }

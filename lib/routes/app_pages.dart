@@ -6,6 +6,7 @@ import 'package:hume/views/auth/auth_binding.dart';
 import 'package:hume/views/auth/auth_controller.dart';
 import 'package:hume/views/auth/auth_options_view.dart';
 import 'package:hume/views/auth/auth_view.dart';
+import 'package:hume/views/auth/change_password.dart';
 import 'package:hume/views/auth/forget_password.dart';
 import 'package:hume/views/auth/otp_signin.dart';
 import 'package:hume/views/cart/cart_binding.dart';
@@ -62,6 +63,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.forget_password ,
       page: () => const ForgetPassword(),
+      binding: AuthBinding(),
+    ),
+
+     GetPage(
+      name: AppRoutes.change_password ,
+      page: () => const ChangePassword(),
       binding: AuthBinding(),
     ),
 
