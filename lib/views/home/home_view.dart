@@ -12,7 +12,9 @@ import 'package:hume/components/product_card.dart';
 import 'package:hume/components/search_input.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
+import 'package:hume/views/cart/cart_controller.dart';
 import 'package:hume/views/home/home_controller.dart';
+import 'package:badges/badges.dart' as badges;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -48,9 +50,12 @@ class HomeScreen extends StatelessWidget {
                         onTap: () {
                           Get.toNamed(AppRoutes.cart);
                         },
-                        child: SvgPicture.asset(
-                          'assets/images/cart.svg',
-                          height: 25,
+                        child: badges.Badge(
+                          badgeContent: Text('${Get.find<CartController>().cartItems.length}',style: TextStyle(color: white),),
+                          child: SvgPicture.asset(
+                            'assets/images/cart.svg',
+                            height: 25,
+                          ),
                         ),
                       ),
                       Gap(20),

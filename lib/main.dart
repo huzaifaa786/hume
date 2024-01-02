@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/routes/app_pages.dart';
 import 'package:hume/utils/colors.dart';
+import 'package:hume/views/cart/cart_controller.dart';
 import 'package:hume/views/splash/splash_binding.dart';
 import 'package:hume/views/splash/splash_view.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,6 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+    Get.put<CartController>(CartController());
   runApp(const MyApp());
 }
 
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: white,
         ),
-        useMaterial3: true, 
+        useMaterial3: true,
         fontFamily: 'Poppins',
       ),
       debugShowCheckedModeBanner: false,

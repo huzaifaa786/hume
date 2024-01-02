@@ -7,6 +7,9 @@ class ProductDetailController extends GetxController {
   static ProductDetailController instance = Get.find();
   ProductApi productApi = ProductApi();
   ProductShopCombined? combinedProductData;
+  String? selectedSize;
+  int qty = 1;
+  int total = 0;
   @override
   void onInit() {
     fetchProductById();
@@ -18,7 +21,17 @@ class ProductDetailController extends GetxController {
     final fetchedProduct =
         await productApi.fetchProductById(Get.parameters['id']!);
     combinedProductData = fetchedProduct;
+    selectedSize = combinedProductData!.product.sizes!.isNotEmpty
+        ? combinedProductData!.product.sizes!.first
+        : null;
+
+    total = int.parse(combinedProductData!.product.price!);
     LoadingHelper.dismiss();
     update();
+  }
+
+  void addToCart() {
+  
+    
   }
 }
