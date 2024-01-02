@@ -1,23 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:hume/helper/loading.dart';
 import 'package:hume/models/product.dart';
 
 class SearchProductController extends GetxController {
+  static SearchProductController instance = Get.find();
   List<Product>? products = [];
   final searchQuery = ''.obs;
   List<Product>? filteredProducts = [];
 
-  @override
-  void onInit() {
-    super.onInit();
-    fetchProducts();
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   fetchProducts();
+  // }
 
   void fetchProducts() async {
+    LoadingHelper.show();
     final snapshot =
         await FirebaseFirestore.instance.collection('products').get();
     products =
         snapshot.docs.map((doc) => Product.fromJson(doc.data())).toList();
+    LoadingHelper.dismiss();
     filterProducts();
     update();
   }
@@ -30,6 +34,7 @@ class SearchProductController extends GetxController {
   void filterProducts() {
     if (searchQuery.isEmpty) {
       filteredProducts = products;
+      update();
     } else {
       filteredProducts = products!
           .where((product) =>
@@ -38,6 +43,7 @@ class SearchProductController extends GetxController {
                   .toLowerCase()
                   .contains(searchQuery.value.toLowerCase()))
           .toList();
+      update();
     }
   }
 }

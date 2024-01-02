@@ -6,6 +6,7 @@ import 'package:hume/views/auth/auth_binding.dart';
 import 'package:hume/views/auth/auth_controller.dart';
 import 'package:hume/views/auth/auth_options_view.dart';
 import 'package:hume/views/auth/auth_view.dart';
+import 'package:hume/views/auth/change_password.dart';
 import 'package:hume/views/auth/forget_password.dart';
 import 'package:hume/views/auth/otp_signin.dart';
 import 'package:hume/views/cart/cart_binding.dart';
@@ -26,6 +27,8 @@ import 'package:hume/views/orders/order_binding.dart';
 import 'package:hume/views/orders/orders_view.dart';
 import 'package:hume/views/product_deatil/product_deatil_binding.dart';
 import 'package:hume/views/product_deatil/product_detail_view.dart';
+import 'package:hume/views/search_product.dart/search_product_binding.dart';
+import 'package:hume/views/search_product.dart/serach_product_view.dart';
 import 'package:hume/views/shop_products/shop_products_binding.dart';
 import 'package:hume/views/shop_products/shop_products_view.dart';
 import 'package:hume/views/shops/shop_profile/shop_profile_binding.dart';
@@ -64,6 +67,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.forget_password,
       page: () => const ForgetPassword(),
+      binding: AuthBinding(),
+    ),
+
+     GetPage(
+      name: AppRoutes.change_password ,
+      page: () => const ChangePassword(),
       binding: AuthBinding(),
     ),
 
@@ -155,9 +164,9 @@ class AppPages {
         binding: OrdersBinding()),
 
     /// Serach Product
-     GetPage(
-        name: AppRoutes.orders,
-        page: () => const OrdersView(),
-        binding: OrdersBinding()),
+    GetPage(
+      name: AppRoutes.search,
+      page: () => const SearchProductView(),
+    ),
   ];
 }

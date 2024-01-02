@@ -7,6 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hume/components/button.dart';
 import 'package:hume/components/input_field.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/account/account_controller.dart';
 import 'package:hume/views/layout/layout_screen.dart';
@@ -139,6 +140,35 @@ class AccountScreen extends StatelessWidget {
                     title: 'Email',
                   ),
                   Gap(10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(AppRoutes.change_password);
+                        },
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.only(right: 20.0, bottom: 15),
+                          child: Text('Change password',
+                              style: TextStyle(
+                                  color: mainColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700)),
+                        ),
+                      )
+                    ],
+                  ),
+                  HumeButton(
+                    title: 'Update',
+                    buttonWidth: 1.0,
+                    buttonHeight: 45.0,
+                    color: litePurple,
+                    fontSize: 14.0,
+                    onPressed: () {
+                      controller.updateUsername();
+                    },
+                  ),
                   // InputField(
                   //   hint: 'Enter password',
                   //   hasTitle: true,

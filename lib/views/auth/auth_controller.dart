@@ -1,8 +1,11 @@
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hume/api/auth_api.dart';
 import 'package:hume/exceptions/auth_api_exception.dart';
+import 'package:hume/helper/loading.dart';
 import 'package:hume/models/app_user.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/services/user_service.dart';
@@ -14,10 +17,15 @@ class AuthController extends GetxController {
   int tabIndex = 0;
   bool passObscure = true;
   bool confirmPassObscure = true;
+  bool obscureOldPassword = true;
+  bool obscureNewPassword = true;
+  bool obscureConfirmPassword = true;
 
   RxBool areFieldsFilled = false.obs;
   RxBool areLoginFieldsFilled = false.obs;
   RxBool areForgetFieldsFilled = false.obs;
+  RxBool changePasswordFields = false.obs;
+
   final _authApi = AuthApi();
   final _userService = UserService();
 
@@ -35,6 +43,11 @@ class AuthController extends GetxController {
 //----------forget password email------------
   TextEditingController forgetPasswordMail = TextEditingController();
 
+//--------------change password----------------
+  TextEditingController oldPassword = TextEditingController();
+  TextEditingController newPassword = TextEditingController();
+  TextEditingController confirmCPassword = TextEditingController();
+
   void setIndex(index) {
     tabIndex = index;
     update();
@@ -50,6 +63,22 @@ class AuthController extends GetxController {
     update();
   }
 
+  void toggleOldPassword() {
+    obscureOldPassword = !obscureOldPassword;
+    update();
+  }
+
+  void toggleNewPassword() {
+    obscureNewPassword = !obscureNewPassword;
+    update();
+  }
+
+  void toggleConfirmPassword() {
+    obscureConfirmPassword = !obscureConfirmPassword;
+    update();
+  }
+
+//----------------check sign up fields----------------
   void checkFields() {
     if (name.text.isNotEmpty &&
         email.text.isNotEmpty &&
@@ -63,6 +92,7 @@ class AuthController extends GetxController {
     }
   }
 
+//-----------check login fields--------------------
   void checkLoginFields() {
     if (loginEmail.text.isNotEmpty && loginPassword.text.isNotEmpty) {
       areLoginFieldsFilled.value = true;
@@ -73,12 +103,26 @@ class AuthController extends GetxController {
     }
   }
 
+//--------------check forget password fields-----------
   void checkForgetFields() {
     if (forgetPasswordMail.text.isNotEmpty) {
       areForgetFieldsFilled.value = true;
       update();
     } else {
       areForgetFieldsFilled.value = false;
+      update();
+    }
+  }
+
+//--------------check change password fields-----------
+  void checkCPFields() {
+    if (oldPassword.text.isNotEmpty &&
+        newPassword.text.isNotEmpty &&
+        confirmCPassword.text.isNotEmpty) {
+      changePasswordFields.value = true;
+      update();
+    } else {
+      changePasswordFields.value = false;
       update();
     }
   }
@@ -106,6 +150,15 @@ class AuthController extends GetxController {
     });
     forgetPasswordMail.addListener(() {
       checkForgetFields();
+    });
+    newPassword.addListener(() {
+      checkCPFields();
+    });
+    oldPassword.addListener(() {
+      checkCPFields();
+    });
+    confirmCPassword.addListener(() {
+      checkCPFields();
     });
   }
 
@@ -191,5 +244,28 @@ class AuthController extends GetxController {
     } on AuthApiException catch (e) {
       UiUtilites.errorSnackbar('Forget password Failed', e.toString());
     }
+  }
+
+//-------------change password-------------------
+  Future changePassword() async {
+    LoadingHelper.show();
+    if (newPassword.text != confirmCPassword.text) {
+      UiUtilites.successSnackbar('Passwords are not similar', 'Password');
+    } else {
+      final response =
+          await _authApi.verifyOldPassword(oldPassword.text, newPassword.text);
+      // print(response);
+      if (response == 0) {
+      } else if (response == 2) {
+        UiUtilites.errorSnackbar('Provide correct old password', 'Password');
+      } else if (response == 3) {
+        oldPassword.clear();
+        newPassword.clear();
+        confirmCPassword.clear();
+
+        UiUtilites.successSnackbar('Password has been updated', 'Password');
+      }
+    }
+    LoadingHelper.dismiss();
   }
 }

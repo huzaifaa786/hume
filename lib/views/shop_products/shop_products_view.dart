@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hume/components/product_card.dart';
+import 'package:hume/routes/app_routes.dart';
 import 'package:hume/views/layout/layout_screen.dart';
 import 'package:hume/views/shop_products/shop_products_controller.dart';
 
@@ -26,7 +27,7 @@ class ShopProductsScreen extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
-                    mainAxisExtent: 280,
+                    mainAxisExtent: 290,
                   ),
                   controller: controller.scrollController,
                   shrinkWrap: true,
@@ -37,6 +38,11 @@ class ShopProductsScreen extends StatelessWidget {
                     return ProductCard(
                       name: product.name,
                       price: product.price,
+                      img: product.images![0],
+                      ontap: () {
+                        Get.toNamed(AppRoutes.productDeatil,
+                            parameters: {'id': product.id});
+                      },
                     );
                   },
                 ),

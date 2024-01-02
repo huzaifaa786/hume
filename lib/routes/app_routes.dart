@@ -19,6 +19,8 @@ class AppRoutes {
   static const productDeatil = '/productDeatil';
   static const notifications = '/notifications';
   static const forget_password = '/forget-password';
+  static const change_password = '/change-password';
+
   static const search = '/search';
   static const orders = '/orders';
 }

@@ -17,6 +17,7 @@ class ProductScreen extends StatelessWidget {
       autoRemove: false,
       builder: (controller) => LayoutScaffold(
         appBarTitle: Get.parameters['category'] ?? 'New Arrivals',
+        hasBottomNav: false,
         body: SafeArea(
           child: controller.products.isEmpty
               ? Center(
