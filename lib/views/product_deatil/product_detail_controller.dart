@@ -1,11 +1,14 @@
 import 'package:get/get.dart';
 import 'package:hume/api/product_api.dart';
+import 'package:hume/helper/cart_helper.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/models/combined_data.dart';
+import 'package:hume/utils/ui_utils.dart';
 
 class ProductDetailController extends GetxController {
   static ProductDetailController instance = Get.find();
   ProductApi productApi = ProductApi();
+  CartHelper cartHelper = CartHelper();
   ProductShopCombined? combinedProductData;
   String? selectedSize;
   int qty = 1;
@@ -30,8 +33,16 @@ class ProductDetailController extends GetxController {
     update();
   }
 
-  void addToCart() {
-  
-    
+  void addToCart() async {
+    cartHelper.addProduct(
+        combinedProductData!.product.id,
+        selectedSize != null ? selectedSize : null,
+        qty,
+        int.parse(combinedProductData!.product.price!));
+    UiUtilites.successSnackbar(
+        combinedProductData!.product.name! + " added to cart successfully",
+        'Added to cart');
   }
+
+  
 }

@@ -12,7 +12,8 @@ class CartHelper {
     String? size,
     int quantity,
     int price,
-  ) {
+  ) async {
+    await loadCartFromFirestore();
     var index;
     if (size != null) {
       index = cartItems.indexWhere(
@@ -30,9 +31,9 @@ class CartHelper {
     updateCartInFirestore();
   }
 
-  void loadCartFromFirestore() {
+  Future<List<CartItem>> loadCartFromFirestore() async {
     String userId = auth.currentUser!.uid;
-    firestore.collection('carts').doc(userId).get().then((doc) {
+    await firestore.collection('carts').doc(userId).get().then((doc) {
       if (doc.exists) {
         var cartData = List.from(doc.data()!['cartItems']);
         cartItems = cartData
@@ -45,16 +46,25 @@ class CartHelper {
             .toList();
       }
     });
+    return cartItems;
   }
 
-  void updateQuantity(String productId, String? size, int quantity) {
-    // Update product quantity logic
-    var index = cartItems
-        .indexWhere((item) => item.productId == productId && item.size == size);
+  Future<List<CartItem>> updateQuantity(
+      String productId, String? size, int quantity) async {
+    await loadCartFromFirestore();
+    var index;
+    if (size != null) {
+      index = cartItems.indexWhere(
+          (item) => item.productId == productId && item.size == size);
+    } else {
+      index = cartItems.indexWhere((item) => item.productId == productId);
+    }
     if (index != -1) {
       cartItems[index].quantity = quantity;
       updateCartInFirestore();
     }
+
+    return cartItems;
   }
 
   void incrementQuantity(String productId, String? size) {
@@ -76,11 +86,18 @@ class CartHelper {
     }
   }
 
-  void removeProduct(String productId, String? size) {
-    // Remove product from cart logic
-    cartItems.removeWhere(
-        (item) => item.productId == productId && item.size == size);
+  Future<List<CartItem>> removeProduct(String productId, String? size) async {
+    await loadCartFromFirestore();
+    var index;
+    if (size != null) {
+      cartItems.removeWhere(
+          (item) => item.productId == productId && item.size == size);
+    } else {
+      cartItems.removeWhere((item) => item.productId == productId);
+    }
     updateCartInFirestore();
+
+    return cartItems;
   }
 
   void clearCart() {
@@ -104,7 +121,10 @@ class CartHelper {
 
   int get totalItemsCount {
     // Calculate total items in cart
-    // return cartItems.fold(0, (sum, item) => sum + item.quantity);
-    return 1;
+    return cartItems.fold(0, (sum, item) => sum + item.quantity);
+  }
+
+  int get totalAmount {
+    return cartItems.fold(0, (sum, item) => sum + item.total);
   }
 }

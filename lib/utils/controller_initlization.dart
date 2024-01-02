@@ -8,6 +8,6 @@ import 'package:hume/views/splash/splash_controller.dart';
 SplashController splashController = SplashController.instance;
 AuthController authController = AuthController.instance;
 HomeController homeController = HomeController.instance;
-CartController cartController = CartController.instance;
+
 SearchProductController searchProductController = SearchProductController.instance;
 PaymentService paymentService = PaymentService.instance;

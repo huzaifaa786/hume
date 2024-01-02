@@ -6,6 +6,9 @@ class CartController extends GetxController {
   static CartController instance = Get.find();
   final cartHelper = CartHelper();
   List<CartItem> cartItems = [];
+   int get totalAmount {
+    return cartItems.fold(0, (sum, item) => sum + item.total);
+  }
 
   @override
   void onInit() {
@@ -13,8 +16,19 @@ class CartController extends GetxController {
     super.onInit();
   }
 
-  void loadCartFromFirestore() {
-    cartHelper.loadCartFromFirestore();
-    cartItems = cartHelper.cartItems;
+  Future<void> loadCartFromFirestore() async {
+    cartItems = await cartHelper.loadCartFromFirestore();
+    update();
+  }
+
+  Future<void> updateCart(String productId, String? size, int quantity) async {
+    cartItems = await cartHelper.updateQuantity(productId, size, quantity);
+    update();
+  }
+
+  Future<void> removeProduct(String productId, String? size) async {
+    cartItems = await cartHelper.removeProduct(productId, size);
+    Get.back();
+    update();
   }
 }

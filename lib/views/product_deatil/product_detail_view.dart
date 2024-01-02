@@ -139,7 +139,9 @@ class ProductDetailView extends StatelessWidget {
                               ),
                               HumeButton(
                                 title: 'Add to cart',
-                                onPressed: () {},
+                                onPressed: () {
+                                  controller.addToCart();
+                                },
                                 buttonHeight: 45.0,
                                 hasIcon: true,
                                 fontSize: 12.0,
