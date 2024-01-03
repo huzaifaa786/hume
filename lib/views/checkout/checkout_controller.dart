@@ -56,6 +56,7 @@ class CheckoutController extends GetxController {
             total: totalAmount.toString(),
             userId: user.value!.id,
             status: "0",
+            shopId: cartItems.first.shopId,
             paymentIntent:paymentService.paymentIntent.toString());
 
         await _orderApi.storeOrder(order);

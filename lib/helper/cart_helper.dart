@@ -1,19 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hume/models/cart_item.dart';
+import 'package:hume/utils/ui_utils.dart';
 
 class CartHelper {
   List<CartItem> cartItems = [];
   final auth = FirebaseAuth.instance;
   final firestore = FirebaseFirestore.instance;
 
-  void addProduct(
+   addProduct(
     String productId,
+    String shopId,
     String? size,
     int quantity,
     int price,
   ) async {
     await loadCartFromFirestore();
+    print(shopId);
+    if (cartItems.isNotEmpty &&
+        cartItems.where((item) => item.shopId == shopId).isEmpty) {
+      print('dddddddddddddddddddddddd');
+      UiUtilites.errorSnackbar(
+          'One shop allowed', 'only one shop items can be added to the cart');
+      return false;
+    }
+
     var index;
     if (size != null) {
       index = cartItems.indexWhere(
@@ -26,9 +37,14 @@ class CartHelper {
       cartItems[index].quantity += quantity;
     } else {
       cartItems.add(CartItem(
-          productId: productId, size: size, quantity: quantity, price: price));
+          productId: productId,
+          size: size,
+          quantity: quantity,
+          price: price,
+          shopId: shopId));
     }
     updateCartInFirestore();
+    return true;
   }
 
   Future<List<CartItem>> loadCartFromFirestore() async {
@@ -42,6 +58,7 @@ class CartHelper {
                   size: item['size'] ?? '',
                   quantity: item['quantity'],
                   price: item['price'],
+                  shopId: item['shopId'],
                 ))
             .toList();
       }
@@ -115,6 +132,7 @@ class CartHelper {
               'size': item.size ?? '',
               'quantity': item.quantity,
               'price': item.price,
+              'shopId': item.shopId,
             })
         .toList();
     firestore.collection('carts').doc(userId).set({'cartItems': cartData});

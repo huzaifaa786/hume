@@ -9,6 +9,7 @@ class UserOrder {
   String? userId;
   String? status;
   String? paymentIntent;
+  String? shopId;
 
   UserOrder({
     required this.id,
@@ -19,6 +20,7 @@ class UserOrder {
     this.userId,
     this.status,
     this.paymentIntent,
+    this.shopId,
   });
 
   UserOrder.fromJson(Map<String, dynamic> json) {
@@ -30,6 +32,7 @@ class UserOrder {
     userId = json['userId'];
     status = json['status'];
     paymentIntent = json['paymentIntent'];
+    shopId = json['shopId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -42,6 +45,7 @@ class UserOrder {
     data['userId'] = this.userId;
     data['status'] = this.status;
     data['paymentIntent'] = this.paymentIntent;
+    data['shopId'] = this.shopId;
 
     return data;
   }
@@ -56,6 +60,7 @@ class UserOrder {
       userId: map['userId'],
       status: map['status'],
       paymentIntent: map['paymentIntent'],
+      shopId: map['shopId'],
     );
   }
 }

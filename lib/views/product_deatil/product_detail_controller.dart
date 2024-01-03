@@ -34,11 +34,13 @@ class ProductDetailController extends GetxController {
   }
 
   void addToCart() async {
-    cartHelper.addProduct(
+   bool isAdded = await cartHelper.addProduct(
         combinedProductData!.product.id,
+        combinedProductData!.shop.id,
         selectedSize != null ? selectedSize : null,
         qty,
         int.parse(combinedProductData!.product.price!));
+    if (isAdded) 
     UiUtilites.successSnackbar(
         combinedProductData!.product.name! + " added to cart successfully",
         'Added to cart');
