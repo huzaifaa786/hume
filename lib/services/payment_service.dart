@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
 
 class PaymentService extends GetxController {
   static PaymentService get instance => Get.find();
@@ -20,9 +20,9 @@ class PaymentService extends GetxController {
   Future<bool> makePayment(int amount) async {
     try {
       paymentIntent = null;
-      //Step 1: Generate Payment Intent
       paymentIntent = await createPaymentIntent(amount.toString(), 'aed');
       paymentID = paymentIntent['id'];
+      log(paymentIntent.toString());
       //Step 2: Payment Sheet Initialization
       await Stripe.instance
           .initPaymentSheet(
@@ -37,6 +37,7 @@ class PaymentService extends GetxController {
                 merchantDisplayName: 'Ezmove'),
           )
           .then((value) {});
+
       //Step 3: Display Payment Sheet
       final success = await displayPaymentSheet();
       if (success) {
@@ -82,7 +83,6 @@ class PaymentService extends GetxController {
     final completer = Completer<bool>();
     try {
       await Stripe.instance.presentPaymentSheet().then((value) {
-        paymentIntent = null;
         completer.complete(true);
       }).onError((error, stackTrace) {
         print('Error: $error');

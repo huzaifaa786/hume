@@ -100,7 +100,8 @@ class CartHelper {
     return cartItems;
   }
 
-  void clearCart() {
+  void clearCart() async {
+    await loadCartFromFirestore();
     cartItems.clear();
     updateCartInFirestore();
     // Clear cart logic
