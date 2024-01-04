@@ -92,7 +92,7 @@ class ProductDetailView extends StatelessWidget {
                               Column(
                                 children: [
                                   Text(
-                                    "1",
+                                    controller.qty.toString(),
                                     style: const TextStyle(
                                       fontFamily: "Poppins",
                                       fontSize: 18,
@@ -116,7 +116,7 @@ class ProductDetailView extends StatelessWidget {
                               Column(
                                 children: [
                                   Text(
-                                    "250 AED",
+                                    controller.total.toString() + " AED",
                                     style: const TextStyle(
                                       fontFamily: "Poppins",
                                       fontSize: 18,
@@ -139,7 +139,9 @@ class ProductDetailView extends StatelessWidget {
                               ),
                               HumeButton(
                                 title: 'Add to cart',
-                                onPressed: () {},
+                                onPressed: () {
+                                  controller.addToCart();
+                                },
                                 buttonHeight: 45.0,
                                 hasIcon: true,
                                 fontSize: 12.0,
@@ -147,54 +149,70 @@ class ProductDetailView extends StatelessWidget {
                             ],
                           ),
                           Gap(8),
-                          Text(
-                            "Size",
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Gap(8),
-                          Row(
-                            children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                margin: EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                    color: containerBg,
-                                    borderRadius: BorderRadius.circular(45)),
-                                child: Center(child: Text('XL')),
-                              ),
-                              Container(
-                                height: 30,
-                                width: 30,
-                                margin: EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                    color: containerBg,
-                                    borderRadius: BorderRadius.circular(45)),
-                                child: Center(child: Text('L')),
-                              ),
-                              Container(
-                                height: 30,
-                                width: 30,
-                                margin: EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                    color: containerBg,
-                                    borderRadius: BorderRadius.circular(45)),
-                                child: Center(child: Text('M')),
-                              ),
-                              Container(
-                                height: 30,
-                                width: 30,
-                                margin: EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                    color: containerBg,
-                                    borderRadius: BorderRadius.circular(45)),
-                                child: Center(child: Text('S')),
-                              ),
-                            ],
-                          ),
+                          controller.selectedSize != ''
+                              ? Column(
+                                  children: [
+                                    Text(
+                                      "Size",
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Gap(8),
+                                    SizedBox(
+                                      height: Get.height * 0.045,
+                                      width: Get.width,
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: controller
+                                            .combinedProductData!
+                                            .product
+                                            .sizes!
+                                            .length,
+                                        itemBuilder: (context, index) {
+                                          String size = controller
+                                              .combinedProductData!
+                                              .product
+                                              .sizes![index];
+                                          bool isSelected =
+                                              size == controller.selectedSize;
+
+                                          return GestureDetector(
+                                            onTap: () {
+                                              controller.selectedSize = size;
+                                              controller.update();
+                                            },
+                                            child: Container(
+                                              height: 30,
+                                              width: 30,
+                                              margin: EdgeInsets.all(4),
+                                              decoration: BoxDecoration(
+                                                color: isSelected
+                                                    ? mainColor
+                                                    : containerBg,
+                                                borderRadius:
+                                                    BorderRadius.circular(45),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  size,
+                                                  style: TextStyle(
+                                                    color: isSelected
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : Text(''),
                           Gap(8),
                           Text(
                             "Quantity",
@@ -212,7 +230,21 @@ class ProductDetailView extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     color: Colors.grey.withOpacity(0.25),
                                     borderRadius: BorderRadius.circular(20)),
-                                child: InputQty(
+                                child: InputQty.int(
+                                    initVal: 1,
+                                    minVal: 1,
+                                    qtyFormProps:
+                                        QtyFormProps(enableTyping: false),
+                                    onQtyChanged: (value) {
+                                      controller.qty = value;
+                                      controller.total = controller.qty *
+                                          int.parse(controller
+                                              .combinedProductData!
+                                              .product
+                                              .price!);
+                                      controller.update();
+                                    },
+                                    decimalPlaces: 0,
                                     decoration: QtyDecorationProps(
                                         minusBtn: SvgPicture.asset(
                                             'assets/images/minus.svg'),
@@ -224,7 +256,8 @@ class ProductDetailView extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
-                                child: Text('250 AED',
+                                child: Text(
+                                    controller.total.toString() + " AED",
                                     style: TextStyle(
                                         fontSize: Get.width * 0.038,
                                         fontWeight: FontWeight.w600,

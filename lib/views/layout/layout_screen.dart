@@ -71,7 +71,7 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
                 ),
         ]),
       ),
-      bottomNavigationBar: widget.hasBottomNav ? widget.bottomNav : SizedBox(),
+      bottomNavigationBar: widget.hasBottomNav || widget.bottomNav != null  ? widget.bottomNav : SizedBox(),
       body: widget.body,
     );
   }

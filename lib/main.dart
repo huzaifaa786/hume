@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/routes/app_pages.dart';
 import 'package:hume/utils/colors.dart';
+import 'package:hume/views/cart/cart_controller.dart';
 import 'package:hume/views/search_product.dart/search_product_controller.dart';
 import 'package:hume/views/splash/splash_binding.dart';
 import 'package:hume/views/splash/splash_view.dart';
@@ -24,6 +25,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+ 
     Stripe.publishableKey =
       "pk_test_51JvIZ1Ey3DjpASZjPAzcOwqhblOq2hbchp6i56BsjapvhWcooQXqh33XwCrKiULfAe7NKFwKUhn2nqURE7VZcXXf00wMDzp4YN";
 
