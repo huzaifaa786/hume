@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:hume/api/product_api.dart';
@@ -28,10 +30,7 @@ class HomeController extends GetxController {
 
   void fetchBannerImages() {
     try {
-      // Create a reference to the Firestore collection
       final collectionRef = FirebaseFirestore.instance.collection('banners');
-
-      // Fetch the documents from Firestore
       collectionRef.limit(1).get().then((snapshot) {
         if (snapshot.docs.isNotEmpty) {
           final document = snapshot.docs.first;
