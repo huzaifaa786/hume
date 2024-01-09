@@ -16,10 +16,9 @@ class OrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
       width: Get.width,
       padding: EdgeInsets.all(12),
-      margin: EdgeInsets.only(left: 8, right: 8,top: 12),
+      margin: EdgeInsets.only(left: 8, right: 8, top: 12),
       decoration: BoxDecoration(
         color: white,
         borderRadius: BorderRadius.circular(7),
@@ -37,19 +36,23 @@ class OrderCard extends StatelessWidget {
               SizedBox(
                 width: Get.width * 0.5,
                 child: Text(
-                  status == 1
-                      ? "Accepted order"
-                      : status == 2
-                          ? 'Rejecteed order'
-                          : 'Delivred order',
+                  status == '0'
+                      ? 'In progress'
+                      : status == '1'
+                          ? 'Accepted order'
+                          : status == '2'
+                              ? 'Rejected order'
+                              : 'Delivered order',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
-                    color: status == 1
-                        ? acceptedColor
-                        : status == 2
-                            ? rejectedColor
-                            : deliverColor,
+                    color: status == '0'
+                        ? Colors.amber
+                        : status == '1'
+                            ? acceptedColor
+                            : status == '2'
+                                ? rejectedColor
+                                : deliverColor,
                   ),
                 ),
               ),

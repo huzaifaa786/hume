@@ -83,38 +83,10 @@ class AuthScreen extends StatelessWidget {
                                 color: mainColor,
                               ),
                               Gap(15),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.9,
-                                height: 90,
-                                child: IntlPhoneField(
-                                  decoration: InputDecoration(
-                                    fillColor: containerBg,
-                                    filled: true,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.transparent),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.transparent),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                  ),
-                                  languageCode: "en",
-                                  onChanged: (phone) {
-                                    if (countries
-                                            .firstWhere((element) =>
-                                                element.code ==
-                                                phone.countryISOCode)
-                                            .maxLength ==
-                                        phone.number.length) {
-                                      controller.phone = phone.completeNumber;
-                                    } else {
-                                      controller.phone = '';
-                                    }
-                                  },
-                                ),
+                              InputField(
+                                hint: 'Phone number',
+                                controller: controller.SignUpPhone,
+                                color: mainColor,
                               ),
                               Gap(15),
                               InputField(
