@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hume/exceptions/auth_api_exception.dart';
 
@@ -19,7 +21,6 @@ class AuthApi {
         email: email,
         password: password,
       );
-
 
       final User? user = authResult.user;
 
@@ -54,6 +55,11 @@ class AuthApi {
       final User? user = userCredential.user;
 
       if (user != null) {
+        // String? token = await FirebaseMessaging.instance.getToken();
+        // await FirebaseFirestore.instance
+        //     .collection('users')
+        //     .doc(user.uid)
+        //     .update({'token': token});
         return user;
       } else {
         throw AuthApiException(

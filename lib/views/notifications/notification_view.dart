@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:hume/routes/app_routes.dart';
+import 'package:hume/utils/date_time_convertion.dart';
 import 'package:hume/views/layout/layout_screen.dart';
 import 'package:hume/views/notifications/notification_card.dart';
 import 'package:hume/views/notifications/notification_controller.dart';
@@ -12,29 +14,28 @@ class NotificationsView extends GetView<NotificationController> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutScaffold(
+    return GetBuilder<NotificationController>(
+      builder: (controller) => LayoutScaffold(
         appBarTitle: 'Notifications',
-        body: Column(
-          children: [
-            Gap(30),
-            NotificationCard(
-              orderId: 'order No 1',
-              date: '22/11/2023',
-              orderstatus: 1,
-            ),
-            Gap(12),
-            NotificationCard(
-              orderId: 'order No 1',
-              date: '22/11/2023',
-              orderstatus: 2,
-            ),
-            Gap(12),
-            NotificationCard(
-              orderId: 'order No 1',
-              date: '22/11/2023',
-              orderstatus: 3,
-            ),
-          ],
-        ));
+        body: ListView.builder(
+            shrinkWrap: true,
+            physics: BouncingScrollPhysics(),
+            itemCount: controller.extendedNotifications.length,
+            itemBuilder: (context, index) {
+              final notification = controller.extendedNotifications[index];
+              var date = convertTimestampToDate(notification.order.id);
+              return NotificationCard(
+                ontap: () {
+                  // Get.toNamed(AppRoutes.orders,
+                  //     parameters: {'orderId': notification.order.id});
+                },
+                orderId: 'order No ${notification.order.id}',
+                date: date,
+                shopName: notification.shop.name,
+                content: notification.notification.content,
+              );
+            }),
+      ),
+    );
   }
 }

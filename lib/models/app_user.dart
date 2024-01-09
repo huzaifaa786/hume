@@ -5,19 +5,22 @@ class AppUser {
   String? name;
   String? email;
   String? phone;
-  AppUser(
-      {
-      required this.id,
-      this.name,
-      this.email,
-      this.phone,
-     });
+  String? token;
+
+  AppUser({
+    required this.id,
+    this.name,
+    this.email,
+    this.phone,
+    this.token,
+  });
 
   AppUser.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     email = json['email'];
     phone = json['phone'];
+    token = json['token'];
   }
 
   Map<String, dynamic> toJson() {
@@ -26,6 +29,7 @@ class AppUser {
     data['name'] = this.name;
     data['email'] = this.email;
     data['phone'] = this.phone;
+    data['token'] = this.token;
     return data;
   }
 
@@ -35,6 +39,7 @@ class AppUser {
       name: map['name'],
       email: map['email'],
       phone: map['phone'],
+      token: map['token'],
     );
   }
 }

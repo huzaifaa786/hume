@@ -7,6 +7,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/routes/app_pages.dart';
+import 'package:hume/services/notification_service.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/cart/cart_controller.dart';
 import 'package:hume/views/search_product.dart/search_product_controller.dart';
@@ -21,7 +22,7 @@ void main() async {
   await LoadingHelper.init();
   Get.put(SearchProductController());
   Get.put(PaymentService());
-
+  Get.put(NotificationService());
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

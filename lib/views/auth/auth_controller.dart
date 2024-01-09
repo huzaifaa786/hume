@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hume/api/auth_api.dart';
@@ -171,9 +172,14 @@ class AuthController extends GetxController {
       );
 
       if (user.uid.isNotEmpty) {
+        var token = await FirebaseMessaging.instance.getToken();
         await _userService.syncOrCreateUser(
           user: AppUser(
-              id: user.uid, email: user.email, name: name.text, phone: phone),
+              id: user.uid,
+              email: user.email,
+              name: name.text,
+              phone: phone,
+              token: token),
         );
         UiUtilites.successSnackbar(
             'Register User', 'User registered successfully');
@@ -196,9 +202,13 @@ class AuthController extends GetxController {
         AppUser? appUser = await _userService.getAuthUser();
 
         if (appUser != null) {
+          var token = await FirebaseMessaging.instance.getToken();
           await _userService.syncOrCreateUser(
             user: AppUser(
-                id: user.uid, email: user.email, name: user.displayName),
+                id: user.uid,
+                email: user.email,
+                name: user.displayName,
+                token: token),
           );
 
           Get.offNamed(AppRoutes.main);
@@ -218,9 +228,14 @@ class AuthController extends GetxController {
       final User user = await _authApi.signInWithGoogle();
 
       if (user.uid.isNotEmpty) {
+        var token = await FirebaseMessaging.instance.getToken();
+
         await _userService.syncOrCreateUser(
-          user:
-              AppUser(id: user.uid, email: user.email, name: user.displayName),
+          user: AppUser(
+              id: user.uid,
+              email: user.email,
+              name: user.displayName,
+              token: token),
         );
 
         Get.offNamed(AppRoutes.main);

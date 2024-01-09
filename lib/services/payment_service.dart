@@ -34,7 +34,7 @@ class PaymentService extends GetxController {
                 //   merchantCountryCode: 'AE',
                 //   testEnv: false,
                 // ),
-                merchantDisplayName: 'Ezmove'),
+                merchantDisplayName: 'Hume'),
           )
           .then((value) {});
 
@@ -103,5 +103,38 @@ class PaymentService extends GetxController {
     final double amountInAEDDouble = double.tryParse(amountInAED) ?? 0.0;
     final int amountInCents = (amountInAEDDouble * 100).round();
     return amountInCents.toString();
+  }
+
+  Future<bool> refundPayment(String paymentIntentString) async {
+    try {
+      // Parse the payment intent string into a JSON object
+      final paymentIntent = json.decode(paymentIntentString);
+
+      // Extract the payment intent ID
+      final paymentIntentId = paymentIntent['id'];
+
+      // Make a POST request to create a refund
+      final response = await http.post(
+        Uri.parse('https://api.stripe.com/v1/refunds'),
+        headers: {
+          'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: {
+          'payment_intent': paymentIntentId,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        // Refund successful
+        return true;
+      } else {
+        // Refund failed
+        return false;
+      }
+    } catch (err) {
+      print(err.toString());
+      return false;
+    }
   }
 }

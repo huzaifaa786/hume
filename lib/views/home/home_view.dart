@@ -72,7 +72,8 @@ class HomeScreen extends StatelessWidget {
                       Gap(20),
                       GestureDetector(
                         onTap: () {
-                          paymentService.makePayment(200);
+                          // paymentService.makePayment(200);
+                          Get.toNamed(AppRoutes.notifications);
                         },
                         child: SvgPicture.asset(
                           'assets/images/notification.svg',
