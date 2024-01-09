@@ -20,6 +20,8 @@ class AppRoutes {
   static const notifications = '/notifications';
   static const forget_password = '/forget-password';
   static const change_password = '/change-password';
+  static const order_products = '/order_products';
+
 
   static const search = '/search';
   static const orders = '/orders';

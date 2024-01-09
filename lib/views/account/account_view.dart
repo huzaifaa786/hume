@@ -100,7 +100,11 @@ class AccountScreen extends StatelessWidget {
                             buttonHeight: 45.0,
                             color: litePurple,
                             fontSize: 14.0,
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.toNamed(AppRoutes.orders, parameters: {
+                                'userId': controller.user.value!.id
+                              });
+                            },
                             hasIcon: true,
                             iconSvgPath: 'assets/images/orders-icon.svg',
                           )
@@ -125,40 +129,48 @@ class AccountScreen extends StatelessWidget {
                   ),
                   Gap(10),
                   InputField(
-                    controller: controller.email,
+                    controller: controller.phone,
                     hint: 'Enter phone number',
                     readOnly: true,
                     hasTitle: true,
                     title: 'Phone number',
                   ),
-                  Gap(10),
-                  InputField(
-                    controller: controller.phone,
-                    readOnly: true,
-                    hint: 'Enter email',
-                    hasTitle: true,
-                    title: 'Email',
-                  ),
-                  Gap(10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed(AppRoutes.change_password);
-                        },
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.only(right: 20.0, bottom: 15),
-                          child: Text('Change password',
-                              style: TextStyle(
-                                  color: mainColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700)),
+                  controller.providerNames!.contains('phone') == true
+                      ? Container()
+                      : Column(
+                          children: [
+                            Gap(10),
+                            InputField(
+                              controller: controller.email,
+                              readOnly: true,
+                              hint: 'Enter email',
+                              hasTitle: true,
+                              title: 'Email',
+                            ),
+                          ],
                         ),
-                      )
-                    ],
-                  ),
+                  Gap(10),
+                  controller.providerNames!.contains('password') == true
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed(AppRoutes.change_password);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 20.0, bottom: 15),
+                                child: Text('Change password',
+                                    style: TextStyle(
+                                        color: mainColor,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700)),
+                              ),
+                            )
+                          ],
+                        )
+                      : Container(),
                   HumeButton(
                     title: 'Update',
                     buttonWidth: 1.0,

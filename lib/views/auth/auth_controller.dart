@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print, prefer_const_constructors, prefer_interpolation_to_compose_strings
+
 import 'dart:ffi';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +14,14 @@ import 'package:hume/models/app_user.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/services/user_service.dart';
 import 'package:hume/utils/ui_utils.dart';
+import 'package:hume/views/auth/otp_verify.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
   int tabIndex = 0;
   bool passObscure = true;
@@ -36,6 +44,7 @@ class AuthController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
+  TextEditingController SignUpPhone = TextEditingController();
 
 //-----------login credentials----------------
   TextEditingController loginEmail = TextEditingController();
@@ -82,6 +91,7 @@ class AuthController extends GetxController {
 //----------------check sign up fields----------------
   void checkFields() {
     if (name.text.isNotEmpty &&
+        SignUpPhone.text.isNotEmpty &&
         email.text.isNotEmpty &&
         password.text.isNotEmpty &&
         confirmPassword.text.isNotEmpty) {
@@ -132,6 +142,9 @@ class AuthController extends GetxController {
   void onInit() {
     super.onInit();
     name.addListener(() {
+      checkFields();
+    });
+    SignUpPhone.addListener(() {
       checkFields();
     });
     email.addListener(() {
@@ -282,5 +295,123 @@ class AuthController extends GetxController {
       }
     }
     LoadingHelper.dismiss();
+  }
+
+//----------------otp sign-up/ sign-in--------
+  RxString? last2;
+  String? completePhone;
+  int? resendtoken;
+  String verificationid = "";
+  void sendTokenforSignUP() async {
+    LoadingHelper.show();
+    try {
+      FirebaseAuth auth = FirebaseAuth.instance;
+      await auth.verifyPhoneNumber(
+        timeout: const Duration(minutes: 2),
+        phoneNumber: completePhone,
+        verificationCompleted: (PhoneAuthCredential credential) async {},
+        verificationFailed: (FirebaseAuthException e) {
+          LoadingHelper.dismiss();
+          print(e.message);
+          Get.snackbar('Verification failed', e.message!,
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.red,
+              colorText: Colors.white);
+        },
+        forceResendingToken: resendtoken,
+        codeSent: (String verificationId, int? resendToken) {
+          print(verificationId);
+          last2 = completePhone!.substring(completePhone!.length - 3).obs;
+          verificationid = verificationId;
+          resendtoken = resendToken;
+          LoadingHelper.dismiss();
+          Get.snackbar('OTP has been successfully send', '',
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.green,
+              colorText: Colors.white);
+          Get.to(() => LoginOtpVerifyScreen());
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          // verificationid = verificationId;
+          // Get.snackbar('TIMEOUT', '',
+          //     snackPosition: SnackPosition.BOTTOM,
+          //     backgroundColor: Colors.green,
+          //     colorText: white);
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+      LoadingHelper.dismiss();
+      Get.snackbar('Error', e.message.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green,
+          colorText: Colors.white);
+    }
+  }
+
+  String usersCollection = "users";
+  void verifyPhone(String phone1) async {
+    print(phone1.length.toString() +
+        '000000000000001233456**********************************');
+
+    try {
+      if (phone1.length == 6) {
+        LoadingHelper.show();
+        final token = await FirebaseMessaging.instance.getToken();
+        var val = await FirebaseFirestore.instance
+            .collection('users')
+            .where('phone', isEqualTo: completePhone)
+            .limit(1)
+            .get();
+        final List<DocumentSnapshot> number = val.docs;
+        await auth
+            .signInWithCredential(PhoneAuthProvider.credential(
+          verificationId: verificationid,
+          smsCode: phone1,
+        ))
+            .then((value) async {
+          String userID = value.user!.uid;
+          if (number.isEmpty) {
+            await firebaseFirestore
+                .collection(usersCollection)
+                .doc(userID)
+                .set({
+              "id": userID,
+              'token': token,
+              "email": '',
+              "name": phone,
+              "phone": completePhone,
+            });
+            print('object********************************');
+          } else {
+            await firebaseFirestore
+                .collection(usersCollection)
+                .doc(userID)
+                .update({
+              'token': token,
+            });
+          }
+          Get.toNamed(AppRoutes.main);
+        }).onError((error, stackTrace) {
+          Get.snackbar('Error!', error.toString(),
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.red,
+              colorText: Colors.white);
+          LoadingHelper.dismiss();
+        });
+        LoadingHelper.dismiss();
+      } else {
+        Get.snackbar('Error!', 'Plese Enter Complete Code',
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.red,
+            colorText: Colors.white);
+        LoadingHelper.dismiss();
+      }
+    } on FirebaseAuthException catch (e) {
+      LoadingHelper.dismiss();
+      Get.snackbar('Error!', e.message!,
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
   }
 }

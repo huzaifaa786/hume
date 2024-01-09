@@ -17,9 +17,16 @@ class AccountController extends GetxController {
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController phone = TextEditingController();
+  List<String>? providerNames = [];
   @override
   void onInit() {
+    providerNames =
+        FirebaseAuth.instance.currentUser!.providerData.map((provider) {
+      return provider.providerId;
+    }).toList();
+    update();
     fetchUser(FirebaseAuth.instance.currentUser!.uid);
+
     super.onInit();
   }
 

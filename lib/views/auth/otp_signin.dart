@@ -11,6 +11,8 @@ import 'package:hume/components/input_field.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/utils/ui_utils.dart';
 import 'package:hume/views/auth/auth_controller.dart';
+import 'package:intl_phone_field/countries.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
 class OtpSignin extends StatelessWidget {
   const OtpSignin({super.key});
@@ -49,22 +51,50 @@ class OtpSignin extends StatelessWidget {
                           ],
                         ),
                         Gap(46),
-                        InputField(
-                          hint: 'phone number',
-                          controller: controller.forgetPasswordMail,
-                          color: mainColor,
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: 90,
+                          child: IntlPhoneField(
+                            decoration: InputDecoration(
+                              fillColor: containerBg,
+                              filled: true,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            languageCode: "en",
+                            onChanged: (phone) {
+                              if (countries
+                                      .firstWhere((element) =>
+                                          element.code == phone.countryISOCode)
+                                      .maxLength ==
+                                  phone.number.length) {
+                                controller.phone = phone.number;
+                                controller.completePhone = phone.completeNumber;
+                              } else {
+                                controller.completePhone = '';
+                              }
+                            },
+                          ),
                         ),
                         Gap(38),
                         HumeButton(
                           title: 'Send code',
-                          onPressed: controller.areForgetFieldsFilled.value
+                          onPressed: controller.completePhone == ''
                               ? () {
-                                  controller.forgotPassword();
-                                }
-                              : () {
                                   UiUtilites.errorSnackbar(
                                       'Fill out all fields',
                                       'Please fill all above fields');
+                                }
+                              : () {
+                                  controller.sendTokenforSignUP();
                                 },
                           buttonWidth: 0.85,
                         ),

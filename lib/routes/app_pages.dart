@@ -24,6 +24,8 @@ import 'package:hume/views/main_screen/main_screen_binding.dart';
 import 'package:hume/views/notifications/notification_binding.dart';
 import 'package:hume/views/notifications/notification_view.dart';
 import 'package:hume/views/orders/order_binding.dart';
+import 'package:hume/views/orders/order_products/order_products_binding.dart';
+import 'package:hume/views/orders/order_products/order_products_view.dart';
 import 'package:hume/views/orders/orders_view.dart';
 import 'package:hume/views/product_deatil/product_deatil_binding.dart';
 import 'package:hume/views/product_deatil/product_detail_view.dart';
@@ -70,8 +72,8 @@ class AppPages {
       binding: AuthBinding(),
     ),
 
-     GetPage(
-      name: AppRoutes.change_password ,
+    GetPage(
+      name: AppRoutes.change_password,
       page: () => const ChangePassword(),
       binding: AuthBinding(),
     ),
@@ -162,6 +164,12 @@ class AppPages {
         name: AppRoutes.orders,
         page: () => const OrdersView(),
         binding: OrdersBinding()),
+
+    /// order products
+    GetPage(
+        name: AppRoutes.order_products,
+        page: () => const OrderProductsView(),
+        binding: OrderProductsBinding()),
 
     /// Serach Product
     GetPage(

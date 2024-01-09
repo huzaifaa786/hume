@@ -26,8 +26,9 @@ const dividercolor = Color(0x33FFFFFF);
 
 const whitewithopacity1 = Color.fromRGBO(255, 255, 255, 1);
 const appbarText = Color(4282719837);
-const acceptedColor =Color(0xfff2b509);
-const hintColor  =Color(0xff4c3d55);
+const acceptedColor = Color(0xfff2b509);
+const hintColor = Color(0xff4c3d55);
 const deliverColor = Color(0xff00d02d);
 const rejectedColor = Color(0xffe33629);
 
+const colortext = Color(4286920119);
