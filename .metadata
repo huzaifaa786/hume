@@ -5,7 +5,7 @@
 
 version:
   revision: "db7ef5bf9f59442b0e200a90587e8fa5e0c6336a"
-  channel: "stable"
+  channel: "[user-branch]"
 
 project_type: app
 
@@ -16,6 +16,21 @@ migration:
       create_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
       base_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
     - platform: android
+      create_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+      base_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+    - platform: ios
+      create_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+      base_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+    - platform: linux
+      create_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+      base_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+    - platform: macos
+      create_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+      base_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+    - platform: web
+      create_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+      base_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
+    - platform: windows
       create_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
       base_revision: db7ef5bf9f59442b0e200a90587e8fa5e0c6336a
 

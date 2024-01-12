@@ -179,6 +179,7 @@ class AuthController extends GetxController {
 //--------------sign up with email and password
   Future signUpUser() async {
     try {
+      LoadingHelper.show();
       final User user = await _authApi.signUpWithEmail(
         email: email.text,
         password: password.text,
@@ -196,9 +197,11 @@ class AuthController extends GetxController {
         );
         UiUtilites.successSnackbar(
             'Register User', 'User registered successfully');
+        LoadingHelper.dismiss();
         Get.offNamed(AppRoutes.main);
       }
     } on AuthApiException catch (e) {
+      LoadingHelper.dismiss();
       UiUtilites.errorSnackbar('Signup Failed', e.toString());
     }
   }
@@ -206,6 +209,7 @@ class AuthController extends GetxController {
 //---------Login with email and password---------------
   Future signInUser() async {
     try {
+      LoadingHelper.show();
       final User user = await _authApi.loginWithEmail(
         email: loginEmail.text,
         password: loginPassword.text,
@@ -229,8 +233,11 @@ class AuthController extends GetxController {
           UiUtilites.errorSnackbar(
               'Invalid Credentials', 'Please Provide Correct Credentials');
         }
+        LoadingHelper.dismiss();
       }
     } on AuthApiException catch (e) {
+      LoadingHelper.dismiss();
+
       UiUtilites.errorSnackbar('Signin Failed', e.toString());
     }
   }
@@ -238,6 +245,7 @@ class AuthController extends GetxController {
 //------------------sign in with google account----------
   Future signInGoogle() async {
     try {
+      LoadingHelper.show();
       final User user = await _authApi.signInWithGoogle();
 
       if (user.uid.isNotEmpty) {
@@ -250,10 +258,11 @@ class AuthController extends GetxController {
               name: user.displayName,
               token: token),
         );
-
+        LoadingHelper.dismiss();
         Get.offNamed(AppRoutes.main);
       }
     } on AuthApiException catch (e) {
+      LoadingHelper.dismiss();
       UiUtilites.errorSnackbar('Signin Failed', e.toString());
     }
   }
@@ -261,6 +270,7 @@ class AuthController extends GetxController {
 //---------------forget password-------------
   Future forgotPassword() async {
     try {
+      LoadingHelper.show();
       final bool isSent = await _authApi.forgotPassword(
         email: forgetPasswordMail.text,
       );
@@ -269,7 +279,9 @@ class AuthController extends GetxController {
             'Forget Password', 'Reset password link has been sent to email');
         Get.offNamed(AppRoutes.auth);
       }
+      LoadingHelper.dismiss();
     } on AuthApiException catch (e) {
+      LoadingHelper.dismiss();
       UiUtilites.errorSnackbar('Forget password Failed', e.toString());
     }
   }
