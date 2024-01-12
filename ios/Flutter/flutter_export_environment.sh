@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=F:\Flutter2023\sdk3.16.5"
-export "FLUTTER_APPLICATION_PATH=F:\Flutter2023\hume"
+export "FLUTTER_ROOT=E:\flutter\sdl3.16.0"
+export "FLUTTER_APPLICATION_PATH=E:\flutter projects\hume"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"

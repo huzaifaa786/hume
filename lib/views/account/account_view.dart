@@ -28,9 +28,25 @@ class AccountScreen extends StatelessWidget {
         });
       },
       builder: (controller) => LayoutScaffold(
+        hasBottomNav: true,
         appBarTitle: 'My account',
         ontap: () {
-          controller.logout();
+          //
+          showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                    title: Text('Are you sure!'),
+                    content: Text('You want to logout?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Cancel'),
+                        child: Text('No'),
+                      ),
+                      TextButton(
+                          onPressed: () => controller.logout(),
+                          child: Text('Yes'))
+                    ],
+                  ));
         },
         hasLogout: true,
         body: SafeArea(
