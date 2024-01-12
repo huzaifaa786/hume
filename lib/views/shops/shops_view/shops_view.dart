@@ -35,8 +35,8 @@ class ShopsView extends GetView<ShopsController> {
                       name: shop.name,
                       category: shop.category,
                       ontap: () {
-                        Get.toNamed(AppRoutes.shop_profile,parameters: {
-                          'shop_id': shop.id, 
+                        Get.toNamed(AppRoutes.shop_profile, parameters: {
+                          'shop_id': shop.id,
                         });
                       },
                     );
@@ -79,17 +79,24 @@ class ShopsView extends GetView<ShopsController> {
                   ContactButton(
                     img: 'assets/images/email.svg',
                     text: 'Email',
-                    ontap: () {},
+                    ontap: () {
+                      controller.sendMail();
+                    },
                   ),
                   ContactButton(
                     img: 'assets/images/phone.svg',
                     text: 'Phone',
-                    ontap: () {},
+                    ontap: () {
+                      controller.callNumber();
+                    },
                   ),
                   ContactButton(
                     img: 'assets/images/whatsapp.svg',
                     text: 'Whatsapp',
-                    ontap: () {},
+                    ontap: () {
+                      controller.whatsapp(
+                          '+923466363116', 'Hi I need your help');
+                    },
                   )
                 ],
               ),

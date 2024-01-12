@@ -50,7 +50,7 @@ class _SearchProductViewState extends State<SearchProductView> {
                           crossAxisCount: 2,
                           crossAxisSpacing: 12,
                           mainAxisSpacing: 12,
-                          mainAxisExtent: 290,
+                          mainAxisExtent: 293,
                         ),
                         shrinkWrap: true,
                         physics: BouncingScrollPhysics(),

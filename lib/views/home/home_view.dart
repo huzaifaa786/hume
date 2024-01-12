@@ -55,14 +55,19 @@ class HomeScreen extends StatelessWidget {
                         },
                         child: badges.Badge(
                           badgeContent: FutureBuilder(
-                            future: CartHelper().loadCartFromFirestore(),
-                            builder: (context,snapshot) {
-                              if (!snapshot.hasData) {
-                                return Text('',style: TextStyle(color: white),);
-                              }
-                              return Text('${snapshot.data!.length.toString()}',style: TextStyle(color: white),);
-                            }
-                          ),
+                              future: CartHelper().loadCartFromFirestore(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData) {
+                                  return Text(
+                                    '',
+                                    style: TextStyle(color: white),
+                                  );
+                                }
+                                return Text(
+                                  '${snapshot.data!.length.toString()}',
+                                  style: TextStyle(color: white),
+                                );
+                              }),
                           child: SvgPicture.asset(
                             'assets/images/cart.svg',
                             height: 25,
@@ -245,7 +250,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 290,
+                height: 293,
                 child: Obx(
                   () {
                     if (controller.clotheproducts.isEmpty) {
@@ -303,7 +308,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 290,
+                height: 293,
                 child: Obx(
                   () {
                     if (controller.bagsandshoesproducts.isEmpty) {
@@ -362,7 +367,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 290,
+                height: 293,
                 child: Obx(
                   () {
                     if (controller.furnitureproducts.isEmpty) {
@@ -420,7 +425,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 290,
+                height: 293,
                 child: Obx(
                   () {
                     if (controller.makeupproducts.isEmpty) {
@@ -478,7 +483,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 290,
+                height: 293,
                 child: Obx(
                   () {
                     if (controller.homeandkitchenproducts.isEmpty) {

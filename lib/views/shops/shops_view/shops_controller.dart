@@ -1,9 +1,16 @@
+// ignore_for_file: avoid_print
+
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:hume/api/shop_api.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/models/shop.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class ShopsController extends GetxController {
   static ShopsController instance = Get.find();
@@ -45,5 +52,46 @@ class ShopsController extends GetxController {
 
     update();
     LoadingHelper.dismiss();
+  }
+
+  Future<void> whatsapp(String contact, String message) async {
+    Uri url = Uri.parse('whatsapp://send?phone=$contact&text=$message');
+
+    try {
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url);
+      } else {
+        url = Uri.parse('https://wa.me/$contact?text=$message');
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url);
+        } else {
+          EasyLoading.showError(
+              'WhatsApp is not installed or cannot be launched.');
+        }
+      }
+    } catch (e) {
+      EasyLoading.showError('Failed to launch WhatsApp: $e');
+    }
+  }
+
+  callNumber() async {
+    Uri phoneno = Uri.parse('tel:+97798345348734');
+    if (await launchUrl(phoneno)) {
+      //dialer opened
+    } else {
+      EasyLoading.showError('Unable to launch dialer pad');
+    }
+  }
+
+  sendMail() async {
+    String email = Uri.encodeComponent("Admin@gmail.com.com");
+    String subject = Uri.encodeComponent("Hello");
+    print(subject); //output: Hello%20Flutter
+    Uri mail = Uri.parse("mailto:$email?subject=$subject");
+    if (await launchUrl(mail)) {
+      //email app opened
+    } else {
+      EasyLoading.showError('Unable to launch dialer pad');
+    }
   }
 }

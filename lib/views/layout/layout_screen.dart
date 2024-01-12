@@ -59,8 +59,8 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
               ? InkWell(
                   onTap: widget.ontap,
                   child: Icon(
-                    Icons.delete_outline_outlined,
-                    color: Colors.red,
+                    Icons.logout_outlined,
+                    color: mainColor,
                     size: 26,
                   ),
                 )
@@ -71,7 +71,9 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
                 ),
         ]),
       ),
-      bottomNavigationBar: widget.hasBottomNav || widget.bottomNav != null  ? widget.bottomNav : SizedBox(),
+      bottomNavigationBar: widget.hasBottomNav || widget.bottomNav != null
+          ? widget.bottomNav
+          : SizedBox(),
       body: widget.body,
     );
   }

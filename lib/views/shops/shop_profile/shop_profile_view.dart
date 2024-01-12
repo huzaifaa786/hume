@@ -57,9 +57,11 @@ class ShopProfileView extends StatelessWidget {
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: appbarText),
-                            ),Padding(
-                              padding: const EdgeInsets.only(left:3.0),
-                              child: SvgPicture.asset('assets/images/approved.svg'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 3.0),
+                              child: SvgPicture.asset(
+                                  'assets/images/approved.svg'),
                             )
                           ],
                         ),
@@ -73,7 +75,6 @@ class ShopProfileView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    
                   ]),
                 ]),
               ),
@@ -118,10 +119,11 @@ class ShopProfileView extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () {
-                              Get.toNamed(AppRoutes.shop_products,parameters: {
-                                "shop_id":controller.shop!.id,
-                                "shop_name":controller.shop!.name!,
-                              });
+                                Get.toNamed(AppRoutes.shop_products,
+                                    parameters: {
+                                      "shop_id": controller.shop!.id,
+                                      "shop_name": controller.shop!.name!,
+                                    });
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -137,7 +139,7 @@ class ShopProfileView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0, top: 20),
                         child: SizedBox(
-                          height: 290,
+                          height: 293,
                           width: Get.width,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
