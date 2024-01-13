@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/button.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
@@ -73,7 +74,7 @@ class ProductDetailView extends StatelessWidget {
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,
                                 ),
-                              )
+                              ).translate()
                             ],
                           ),
                           Gap(6),
@@ -84,7 +85,7 @@ class ProductDetailView extends StatelessWidget {
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
                             ),
-                          ),
+                          ).translate(),
                           Gap(8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,7 +125,7 @@ class ProductDetailView extends StatelessWidget {
                                       color: appbarText,
                                     ),
                                     textAlign: TextAlign.center,
-                                  ),
+                                  ).translate(),
                                   Text(
                                     "Total price",
                                     style: const TextStyle(
@@ -134,7 +135,7 @@ class ProductDetailView extends StatelessWidget {
                                       color: Colors.grey,
                                     ),
                                     textAlign: TextAlign.center,
-                                  ),
+                                  ).translate(),
                                 ],
                               ),
                               HumeButton(
@@ -158,7 +159,7 @@ class ProductDetailView extends StatelessWidget {
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,
                                       ),
-                                    ),
+                                    ).translate(),
                                     Gap(8),
                                     SizedBox(
                                       height: Get.height * 0.045,
@@ -203,7 +204,7 @@ class ProductDetailView extends StatelessWidget {
                                                         ? Colors.white
                                                         : Colors.black,
                                                   ),
-                                                ),
+                                                ).translate(),
                                               ),
                                             ),
                                           );
@@ -220,7 +221,7 @@ class ProductDetailView extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
-                          ),
+                          ).translate(),
                           Gap(8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -261,7 +262,7 @@ class ProductDetailView extends StatelessWidget {
                                     style: TextStyle(
                                         fontSize: Get.width * 0.038,
                                         fontWeight: FontWeight.w600,
-                                        color: litePurple)),
+                                        color: litePurple)).translate(),
                               ),
                             ],
                           ),

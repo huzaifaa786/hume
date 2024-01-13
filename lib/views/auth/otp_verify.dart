@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/auth/auth_controller.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -45,7 +46,7 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
                             fontSize: 22,
                             fontWeight: FontWeight.w600,
                           ),
-                        ),
+                        ).translate(),
                       ),
                       SizedBox(
                         height: 10,
@@ -59,7 +60,7 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
                               '.',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 17, color: Colors.black38),
-                        ),
+                        ).translate(),
                       ),
                       // Center(
                       //   child: Padding(
@@ -177,7 +178,7 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
                               ),
-                            )),
+                            ).translate()),
                       ),
                     ],
                   ),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/product_card.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/views/layout/layout_screen.dart';
@@ -20,7 +21,7 @@ class ShopProductsScreen extends StatelessWidget {
         body: SafeArea(
           child: controller.products.isEmpty
               ? Center(
-                  child: Text('No products found for this shop.'),
+                  child: Text('No products found for this shop.').translate(),
                 )
               : GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

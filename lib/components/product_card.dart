@@ -2,6 +2,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/utils/colors.dart';
 
 class ProductCard extends StatelessWidget {
@@ -50,7 +51,7 @@ class ProductCard extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w900,
-                          color: mainColor)),
+                          color: mainColor)).translate(),
                 ],
               ),
             ),

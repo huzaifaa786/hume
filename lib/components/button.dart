@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/utils/colors.dart';
 
 class HumeButton extends StatelessWidget {
@@ -57,7 +58,7 @@ class HumeButton extends StatelessWidget {
                   fontSize: fontSize,
                   fontWeight: FontWeight.w500,
                 ),
-              ),
+              ).translate(),
             ],
           ),
         ),

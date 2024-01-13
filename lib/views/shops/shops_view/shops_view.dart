@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/models/shop.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
@@ -57,7 +58,7 @@ class ShopsView extends GetView<ShopsController> {
                   height: 24 / 16,
                 ),
                 textAlign: TextAlign.center,
-              ),
+              ).translate(),
               Container(
                 width: Get.width * 0.75,
                 child: Text(
@@ -70,7 +71,7 @@ class ShopsView extends GetView<ShopsController> {
                     // height: 28 / 12,
                   ),
                   textAlign: TextAlign.center,
-                ),
+                ).translate(),
               ),
               SizedBox(height: 30),
               Row(

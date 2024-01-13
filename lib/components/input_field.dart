@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/utils/colors.dart';
 
 class InputField extends StatelessWidget {
@@ -55,14 +58,14 @@ class InputField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if(hasTitle)
-          Padding(
-            padding: const EdgeInsets.only(left : 15.0, bottom: 5),
-            child: Text(
+          if (hasTitle)
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, bottom: 5),
+              child: Text(
                 title,
                 style: TextStyle(color: Colors.black.withOpacity(0.6)),
-              ),
-          ),
+              ).translate(),
+            ),
           TextFormField(
             readOnly: readOnly,
             enabled: enabled,
@@ -76,7 +79,7 @@ class InputField extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                   Radius.circular(30.0),
                 ),
-                 borderSide: BorderSide(
+                borderSide: BorderSide(
                   width: 0,
                   style: BorderStyle.none,
                 ),
@@ -86,7 +89,6 @@ class InputField extends StatelessWidget {
               filled: true,
               fillColor: Colors.grey.withOpacity(0.1),
             ),
-            
             cursorColor: Colors.black,
             maxLines: maxlines == true ? null : 1,
           ),

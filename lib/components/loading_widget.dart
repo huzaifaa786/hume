@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({super.key, required this.text});
@@ -13,7 +14,7 @@ class LoadingWidget extends StatelessWidget {
       width: Get.width,
       child: Center(child: Padding(
         padding: const EdgeInsets.only(top:38.0),
-        child: Text(text),
+        child: Text(text).translate(),
       )),
     )));
   }
