@@ -59,7 +59,7 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
               ? InkWell(
                   onTap: widget.ontap,
                   child: Icon(
-                    Icons.delete_outline_outlined,
+                    Icons.logout_outlined,
                     color: Colors.red,
                     size: 26,
                   ),

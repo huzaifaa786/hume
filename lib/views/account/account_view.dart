@@ -144,13 +144,15 @@ class AccountScreen extends StatelessWidget {
                     title: 'username',
                   ),
                   Gap(10),
-                  InputField(
-                    controller: controller.phone,
-                    hint: 'Enter phone number',
-                    readOnly: true,
-                    hasTitle: true,
-                    title: 'Phone number',
-                  ),
+                  controller.providerNames!.contains('google.com') == true
+                      ? Container()
+                      : InputField(
+                          controller: controller.phone,
+                          hint: 'Enter phone number',
+                          readOnly: true,
+                          hasTitle: true,
+                          title: 'Phone number',
+                        ),
                   controller.providerNames!.contains('phone') == true
                       ? Container()
                       : Column(
