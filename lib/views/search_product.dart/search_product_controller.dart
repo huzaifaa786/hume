@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/models/product.dart';
+import 'package:hume/utils/translation.dart';
 
 class SearchProductController extends GetxController {
   static SearchProductController instance = Get.find();
@@ -9,10 +10,17 @@ class SearchProductController extends GetxController {
   final searchQuery = ''.obs;
   List<Product>? filteredProducts = [];
 
+  String? hintstring;
+  hintTranslate() async {
+    hintstring = await translateText('search');
+    update();
+  }
+
   // @override
   // void onInit() {
   //   super.onInit();
-  //   fetchProducts();
+  //   hintTranslate();
+  //   update();
   // }
 
   void fetchProducts() async {

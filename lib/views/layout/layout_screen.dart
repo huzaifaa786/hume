@@ -60,7 +60,7 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
                   onTap: widget.ontap,
                   child: Icon(
                     Icons.logout_outlined,
-                    color: Colors.red,
+                    color: mainColor,
                     size: 26,
                   ),
                 )

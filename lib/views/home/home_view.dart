@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/category_circle.dart';
 import 'package:hume/components/product_card.dart';
 import 'package:hume/components/search_input.dart';
@@ -66,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                                 return Text(
                                   '${snapshot.data!.length.toString()}',
                                   style: TextStyle(color: white),
-                                );
+                                ).translate();
                               }),
                           child: SvgPicture.asset(
                             'assets/images/cart.svg',
@@ -95,7 +96,7 @@ class HomeScreen extends StatelessWidget {
             child: Column(children: [
               Gap(30),
               SearchInputField(
-                hint: 'search',
+                hint: controller.hintstring ?? '...',
                 readOnly: true,
                 onpressed: () {
                   Get.toNamed(AppRoutes.search,
@@ -159,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                       'Categories',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-                    ),
+                    ).translate(),
                     InkWell(
                       onTap: () {
                         Get.toNamed(AppRoutes.categories);
@@ -167,7 +168,7 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         'See all',
                         style: TextStyle(fontWeight: FontWeight.w600),
-                      ),
+                      ).translate(),
                     ),
                   ],
                 ),
@@ -237,7 +238,7 @@ class HomeScreen extends StatelessWidget {
                             'Clothes',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
-                          ),
+                          ).translate(),
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
@@ -246,7 +247,7 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               'See all',
                               style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
+                            ).translate(),
                           ),
                         ],
                       ),
@@ -260,7 +261,8 @@ class HomeScreen extends StatelessWidget {
                           if (controller.clotheproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.'),
+                                  Text('No products found for this category.')
+                                      .translate(),
                             );
                           } else {
                             return Container(
@@ -301,7 +303,7 @@ class HomeScreen extends StatelessWidget {
                             'Bags & shoes',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
-                          ),
+                          ).translate(),
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
@@ -310,7 +312,7 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               'See all',
                               style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
+                            ).translate(),
                           ),
                         ],
                       ),
@@ -324,7 +326,8 @@ class HomeScreen extends StatelessWidget {
                           if (controller.bagsandshoesproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.'),
+                                  Text('No products found for this category.')
+                                      .translate(),
                             );
                           } else {
                             return Container(
@@ -366,7 +369,7 @@ class HomeScreen extends StatelessWidget {
                             'Furniture',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
-                          ),
+                          )..translate(),
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
@@ -375,7 +378,7 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               'See all',
                               style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
+                            ).translate(),
                           ),
                         ],
                       ),
@@ -389,7 +392,8 @@ class HomeScreen extends StatelessWidget {
                           if (controller.furnitureproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.'),
+                                  Text('No products found for this category.')
+                                      .translate(),
                             );
                           } else {
                             return Container(
@@ -430,7 +434,7 @@ class HomeScreen extends StatelessWidget {
                             'Makeup',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
-                          ),
+                          ).translate(),
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
@@ -439,7 +443,7 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               'See all',
                               style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
+                            ).translate(),
                           ),
                         ],
                       ),
@@ -453,7 +457,8 @@ class HomeScreen extends StatelessWidget {
                           if (controller.makeupproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.'),
+                                  Text('No products found for this category.')
+                                      .translate(),
                             );
                           } else {
                             return Container(
@@ -494,7 +499,7 @@ class HomeScreen extends StatelessWidget {
                             'Home & kitchen',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
-                          ),
+                          ).translate(),
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
@@ -503,7 +508,7 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               'See all',
                               style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
+                            ).translate(),
                           ),
                         ],
                       ),
@@ -517,7 +522,8 @@ class HomeScreen extends StatelessWidget {
                           if (controller.homeandkitchenproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.'),
+                                  Text('No products found for this category.')
+                                      .translate(),
                             );
                           } else {
                             return Container(

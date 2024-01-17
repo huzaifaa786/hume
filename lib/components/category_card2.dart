@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/utils/colors.dart';
 
 class CategoryCard2 extends StatelessWidget {
@@ -36,7 +37,7 @@ class CategoryCard2 extends StatelessWidget {
                 // height: 38 / 20,
               ),
               textAlign: TextAlign.left,
-            ),
+            ).translate(),
             Align(
                 alignment: Alignment.bottomRight,
                 child: Image(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/loading_widget.dart';
 import 'package:hume/components/product_card.dart';
 import 'package:hume/routes/app_routes.dart';
@@ -57,9 +58,11 @@ class ShopProfileView extends StatelessWidget {
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: appbarText),
-                            ),Padding(
-                              padding: const EdgeInsets.only(left:3.0),
-                              child: SvgPicture.asset('assets/images/approved.svg'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 3.0),
+                              child: SvgPicture.asset(
+                                  'assets/images/approved.svg'),
                             )
                           ],
                         ),
@@ -70,10 +73,9 @@ class ShopProfileView extends StatelessWidget {
                               fontSize: 10,
                               fontWeight: FontWeight.w600,
                               color: Colors.grey),
-                        ),
+                        ).translate(),
                       ],
                     ),
-                    
                   ]),
                 ]),
               ),
@@ -98,12 +100,12 @@ class ShopProfileView extends StatelessWidget {
                           'Shop details',
                           style: TextStyle(
                               fontWeight: FontWeight.w700, fontSize: 17),
-                        ),
+                        ).translate(),
                       ),
                       Gap(7),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Text(controller.shop!.description!),
+                        child: Text(controller.shop!.description!).translate(),
                       ),
                       Gap(20),
                       Padding(
@@ -115,20 +117,21 @@ class ShopProfileView extends StatelessWidget {
                               'Our products',
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w800),
-                            ),
+                            ).translate(),
                             InkWell(
                               onTap: () {
-                              Get.toNamed(AppRoutes.shop_products,parameters: {
-                                "shop_id":controller.shop!.id,
-                                "shop_name":controller.shop!.name!,
-                              });
+                                Get.toNamed(AppRoutes.shop_products,
+                                    parameters: {
+                                      "shop_id": controller.shop!.id,
+                                      "shop_name": controller.shop!.name!,
+                                    });
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   'See all',
                                   style: TextStyle(fontWeight: FontWeight.w600),
-                                ),
+                                ).translate(),
                               ),
                             ),
                           ],
@@ -137,7 +140,7 @@ class ShopProfileView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0, top: 20),
                         child: SizedBox(
-                          height: 290,
+                          height: 293,
                           width: Get.width,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,

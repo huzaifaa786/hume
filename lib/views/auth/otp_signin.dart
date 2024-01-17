@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/button.dart';
 import 'package:hume/components/guest_topbar.dart';
 import 'package:hume/components/input_field.dart';
@@ -47,7 +48,7 @@ class OtpSignin extends StatelessWidget {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                   color: mainColor),
-                            ),
+                            ).translate(),
                           ],
                         ),
                         Gap(46),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/models/shop.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
@@ -35,8 +36,8 @@ class ShopsView extends GetView<ShopsController> {
                       name: shop.name,
                       category: shop.category,
                       ontap: () {
-                        Get.toNamed(AppRoutes.shop_profile,parameters: {
-                          'shop_id': shop.id, 
+                        Get.toNamed(AppRoutes.shop_profile, parameters: {
+                          'shop_id': shop.id,
                         });
                       },
                     );
@@ -57,7 +58,7 @@ class ShopsView extends GetView<ShopsController> {
                   height: 24 / 16,
                 ),
                 textAlign: TextAlign.center,
-              ),
+              ).translate(),
               Container(
                 width: Get.width * 0.75,
                 child: Text(
@@ -70,7 +71,7 @@ class ShopsView extends GetView<ShopsController> {
                     // height: 28 / 12,
                   ),
                   textAlign: TextAlign.center,
-                ),
+                ).translate(),
               ),
               SizedBox(height: 30),
               Row(
@@ -79,17 +80,24 @@ class ShopsView extends GetView<ShopsController> {
                   ContactButton(
                     img: 'assets/images/email.svg',
                     text: 'Email',
-                    ontap: () {},
+                    ontap: () {
+                      controller.sendMail();
+                    },
                   ),
                   ContactButton(
                     img: 'assets/images/phone.svg',
                     text: 'Phone',
-                    ontap: () {},
+                    ontap: () {
+                      controller.callNumber();
+                    },
                   ),
                   ContactButton(
                     img: 'assets/images/whatsapp.svg',
                     text: 'Whatsapp',
-                    ontap: () {},
+                    ontap: () {
+                      controller.whatsapp(
+                          '+923466363116', 'Hi I need your help');
+                    },
                   )
                 ],
               ),

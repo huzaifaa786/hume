@@ -27,13 +27,12 @@ class OrdersView extends GetView<OrdersController> {
               children: [
                 Center(
                   child: ToggleSwitch(
-                    
                     initialLabelIndex: controller.tabIndex,
                     labels: [
-                      'All',
-                      'Accepted',
-                      'Delivered',
-                      'Rejected',
+                      controller.all ?? '...',
+                      controller.accepted ?? '...',
+                      controller.completed ?? '...',
+                      controller.rejected ?? '...',
                     ],
                     totalSwitches: 4,
                     onToggle: (index) {

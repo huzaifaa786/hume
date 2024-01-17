@@ -1,5 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
+export "FLUTTER_ROOT=C:\flutter\sdk"
+export "FLUTTER_APPLICATION_PATH=C:\flutter\hume"
 export "FLUTTER_ROOT=E:\flutter\sdl3.16.0"
 export "FLUTTER_APPLICATION_PATH=E:\flutter projects\hume"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"

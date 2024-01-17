@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/button.dart';
 import 'package:hume/components/input_field.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/account/account_controller.dart';
+import 'package:hume/views/app_translate/translate.dart';
 import 'package:hume/views/layout/layout_screen.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -35,16 +37,16 @@ class AccountScreen extends StatelessWidget {
           showDialog<String>(
               context: context,
               builder: (BuildContext context) => AlertDialog(
-                    title: Text('Are you sure!'),
-                    content: Text('You want to logout?'),
+                    title: Text('Are you sure!').translate(),
+                    content: Text('You want to logout?').translate(),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () => Navigator.pop(context, 'Cancel'),
-                        child: Text('No'),
+                        child: Text('No').translate(),
                       ),
                       TextButton(
                           onPressed: () => controller.logout(),
-                          child: Text('Yes'))
+                          child: Text('Yes').translate())
                     ],
                   ));
         },
@@ -83,7 +85,7 @@ class AccountScreen extends StatelessWidget {
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w800),
-                                            ),
+                                            ).translate(),
                                           )
                                         : SizedBox(
                                             width: Get.width * 0.25,
@@ -93,7 +95,7 @@ class AccountScreen extends StatelessWidget {
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w800),
-                                            ),
+                                            ).translate(),
                                           ),
                                     // Container(
                                     //   width: Get.width * 0.25,
@@ -183,7 +185,7 @@ class AccountScreen extends StatelessWidget {
                                     style: TextStyle(
                                         color: mainColor,
                                         fontSize: 14,
-                                        fontWeight: FontWeight.w700)),
+                                        fontWeight: FontWeight.w700)).translate(),
                               ),
                             )
                           ],
@@ -197,6 +199,17 @@ class AccountScreen extends StatelessWidget {
                     fontSize: 14.0,
                     onPressed: () {
                       controller.updateUsername();
+                    },
+                  ),
+                  Gap(15),
+                  HumeButton(
+                    title: 'Language',
+                    buttonWidth: 1.0,
+                    buttonHeight: 45.0,
+                    color: litePurple,
+                    fontSize: 14.0,
+                    onPressed: () {
+                      Get.to(() => TranslateScreen());
                     },
                   ),
                   // InputField(

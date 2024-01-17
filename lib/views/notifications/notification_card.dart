@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/utils/colors.dart';
 
 class NotificationCard extends StatelessWidget {
@@ -23,11 +24,7 @@ class NotificationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        left: 15,
-        right: 15,
-        top: 10
-      ),
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
       child: Container(
         padding: EdgeInsets.only(left: 12, right: 12, top: 15, bottom: 24),
         decoration: BoxDecoration(
@@ -59,7 +56,7 @@ class NotificationCard extends StatelessWidget {
                                 : content == 'Deliverd order'
                                     ? deliverColor
                                     : rejectedColor),
-                      ),
+                      ).translate(),
                     ),
                     content == 'Accepted order'
                         ? SvgPicture.asset('assets/images/checked_yellow.svg')
@@ -74,7 +71,7 @@ class NotificationCard extends StatelessWidget {
                       fontSize: 10,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF451E5D)),
-                )
+                ).translate()
               ],
             ),
             Gap(27),
@@ -82,7 +79,8 @@ class NotificationCard extends StatelessWidget {
               onTap: ontap,
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
                 child: Padding(
                   padding: const EdgeInsets.all(12),
                   child: Row(
@@ -132,10 +130,11 @@ class NotificationCard extends StatelessWidget {
                       Row(
                         children: [
                           Text('See order details',
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w600,
-                                  color: litePurple)),
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      color: litePurple))
+                              .translate(),
                           Gap(10),
                           SvgPicture.asset('assets/images/ion_chevron-back.svg')
                         ],

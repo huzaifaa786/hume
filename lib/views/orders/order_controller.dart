@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hume/api/order_api.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/models/order.dart';
+import 'package:hume/utils/translation.dart';
 import 'package:intl/intl.dart';
 
 class OrdersController extends GetxController {
@@ -18,8 +19,21 @@ class OrdersController extends GetxController {
   List<Map<String, dynamic>> rejectedOrders = [];
   List<Map<String, dynamic>> inprogressOrders = [];
   int tabIndex = 0;
+  String? all;
+  String? accepted;
+  String? rejected;
+  String? completed;
+
   void setIndex(index) {
     tabIndex = index;
+    update();
+  }
+
+  labeltrnas() async {
+    all = await translateText('All');
+    accepted = await translateText('Accepted');
+    rejected = await translateText('Rejected');
+    completed = await translateText('Delivered');
     update();
   }
 
@@ -27,6 +41,7 @@ class OrdersController extends GetxController {
   void onInit() {
     super.onInit();
     fetchAllOrders();
+    labeltrnas();
     update();
   }
 

@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/api/product_api.dart';
 import 'package:hume/components/button.dart';
 import 'package:hume/helper/cart_helper.dart';
@@ -120,7 +121,7 @@ class CartView extends StatelessWidget {
                                                         .cartItems[index].size!,
                                                 style: TextStyle(
                                                   color: Colors.grey,
-                                                )),
+                                                )).translate(),
                                           )
                                         : Text(''),
                                     Padding(
@@ -182,7 +183,7 @@ class CartView extends StatelessWidget {
                                                 style: TextStyle(
                                                     fontSize: Get.width * 0.038,
                                                     fontWeight: FontWeight.w600,
-                                                    color: litePurple)),
+                                                    color: litePurple)).translate(),
                                           ),
                                         ],
                                       ),

@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/account/account_view.dart';
 import 'package:hume/views/category_products/cactegory_product_view.dart';
@@ -86,7 +87,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                                       ? mainColor
                                       : Colors.grey,
                                 ),
-                              ),
+                              ).translate(),
                             ],
                           ),
                         ),
@@ -125,7 +126,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                                     ? mainColor
                                     : Colors.grey,
                               ),
-                            ),
+                            ).translate(),
                           ],
                         ),
                       ),
@@ -169,7 +170,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                                       ? mainColor
                                       : Colors.grey,
                                 ),
-                              ),
+                              ).translate(),
                             ],
                           ),
                         ),
@@ -214,7 +215,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                                       ? mainColor
                                       : Colors.grey,
                                 ),
-                              ),
+                              ).translate(),
                             ],
                           ),
                         ),

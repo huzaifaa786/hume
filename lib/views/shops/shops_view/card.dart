@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/utils/colors.dart';
 
 class SalesListCard extends StatelessWidget {
@@ -68,7 +69,7 @@ class SalesListCard extends StatelessWidget {
                           fontFamily: "Poppins",
                           fontWeight: FontWeight.w600,
                           color: Colors.grey),
-                    )
+                    ).translate()
                   ],
                 ),
               )
@@ -96,7 +97,7 @@ class SalesListCard extends StatelessWidget {
                         fontSize: Get.width * 0.03,
                         fontWeight: FontWeight.w700,
                       ),
-                    ),
+                    ).translate(),
                     Padding(
                       padding: const EdgeInsets.only(left: 8),
                       child: Icon(Icons.arrow_forward_ios_rounded,

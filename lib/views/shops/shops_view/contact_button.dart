@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/utils/colors.dart';
 
 class ContactButton extends StatelessWidget {
@@ -44,7 +45,7 @@ class ContactButton extends StatelessWidget {
               height: 15 / 13,
             ),
             textAlign: TextAlign.center,
-          )
+          ).translate()
         ],
       ),
     );

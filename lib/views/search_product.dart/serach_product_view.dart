@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/product_card.dart';
 import 'package:hume/components/search_input.dart';
 import 'package:hume/routes/app_routes.dart';
@@ -19,6 +20,7 @@ class SearchProductView extends StatefulWidget {
 class _SearchProductViewState extends State<SearchProductView> {
   @override
   void initState() {
+    searchProductController.hintTranslate();
     searchProductController.products!.isEmpty
         ? searchProductController.fetchProducts()
         : searchProductController.filteredProducts =
@@ -38,19 +40,19 @@ class _SearchProductViewState extends State<SearchProductView> {
             child: Column(
               children: [
                 SearchInputField(
-                  hint: 'Search',
+                  hint: searchProductController.hintstring ?? '...',
                   onChange: (value) => searchProductController.search(value),
                 ),
                 searchProductController.filteredProducts!.isEmpty
                     ? Center(
-                        child: Text('No products!'),
+                        child: Text('No products!').translate(),
                       )
                     : GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 12,
                           mainAxisSpacing: 12,
-                          mainAxisExtent: 290,
+                          mainAxisExtent: 293,
                         ),
                         shrinkWrap: true,
                         physics: BouncingScrollPhysics(),
