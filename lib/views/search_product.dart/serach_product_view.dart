@@ -40,7 +40,7 @@ class _SearchProductViewState extends State<SearchProductView> {
             child: Column(
               children: [
                 SearchInputField(
-                  hint: searchProductController.hintstring ?? '...',
+                  hint: searchProductController.hintstring ?? '',
                   onChange: (value) => searchProductController.search(value),
                 ),
                 searchProductController.filteredProducts!.isEmpty

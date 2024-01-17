@@ -96,7 +96,7 @@ class HomeScreen extends StatelessWidget {
             child: Column(children: [
               Gap(30),
               SearchInputField(
-                hint: controller.hintstring ?? '...',
+                hint: controller.hintstring ?? '',
                 readOnly: true,
                 onpressed: () {
                   Get.toNamed(AppRoutes.search,
