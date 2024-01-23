@@ -1,18 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/button.dart';
 import 'package:hume/utils/colors.dart';
-import 'package:hume/views/cart/cart_controller.dart';
 import 'package:hume/views/checkout/checkout_controller.dart';
 import 'package:hume/views/layout/layout_screen.dart';
 import 'package:hume/components/input_field.dart';
-import 'package:input_quantity/input_quantity.dart';
 
 class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key});
@@ -75,7 +70,7 @@ class CheckoutView extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: Get.width * 0.048,
                                   fontWeight: FontWeight.w700,
-                                )).translate(),
+                                )) ,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
@@ -84,7 +79,7 @@ class CheckoutView extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: Get.width * 0.058,
                                     fontWeight: FontWeight.w600,
-                                    color: litePurple)).translate(),
+                                    color: litePurple)) ,
                           ),
                         ],
                       ),

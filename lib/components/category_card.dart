@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/utils/colors.dart';
+ import 'package:hume/utils/colors.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard(
@@ -50,7 +49,7 @@ class CategoryCard extends StatelessWidget {
                   // height: 38 / 20,
                 ),
                 textAlign: TextAlign.left,
-              ).translate())
+              ) )
         ],
       ),
     );

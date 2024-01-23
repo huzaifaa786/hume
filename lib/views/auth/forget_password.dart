@@ -5,8 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/components/button.dart';
+ import 'package:hume/components/button.dart';
 import 'package:hume/components/guest_topbar.dart';
 import 'package:hume/components/input_field.dart';
 import 'package:hume/utils/colors.dart';
@@ -46,7 +45,7 @@ class ForgetPassword extends StatelessWidget {
                                   fontSize: 20,
                                   fontWeight: FontWeight.w700,
                                   color: mainColor),
-                            ).translate(),
+                            ) ,
                           ],
                         ),
                         Gap(59),

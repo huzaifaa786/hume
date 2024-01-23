@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/components/loading_widget.dart';
+ import 'package:hume/components/loading_widget.dart';
 import 'package:hume/components/product_card.dart';
 import 'package:hume/routes/app_routes.dart';
 
@@ -73,7 +72,7 @@ class ShopProfileView extends StatelessWidget {
                               fontSize: 10,
                               fontWeight: FontWeight.w600,
                               color: Colors.grey),
-                        ).translate(),
+                        ) ,
                       ],
                     ),
                   ]),
@@ -100,12 +99,12 @@ class ShopProfileView extends StatelessWidget {
                           'Shop details',
                           style: TextStyle(
                               fontWeight: FontWeight.w700, fontSize: 17),
-                        ).translate(),
+                        ) ,
                       ),
                       Gap(7),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Text(controller.shop!.description!).translate(),
+                        child: Text(controller.shop!.description!) ,
                       ),
                       Gap(20),
                       Padding(
@@ -117,7 +116,7 @@ class ShopProfileView extends StatelessWidget {
                               'Our products',
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w800),
-                            ).translate(),
+                            ) ,
                             InkWell(
                               onTap: () {
                                 Get.toNamed(AppRoutes.shop_products,
@@ -131,7 +130,7 @@ class ShopProfileView extends StatelessWidget {
                                 child: Text(
                                   'See all',
                                   style: TextStyle(fontWeight: FontWeight.w600),
-                                ).translate(),
+                                ) ,
                               ),
                             ),
                           ],

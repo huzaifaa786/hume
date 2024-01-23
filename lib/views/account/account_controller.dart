@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:google_translator/google_translator.dart';
 import 'package:hume/api/account_api.dart';
 import 'package:hume/api/auth_api.dart';
 import 'package:hume/exceptions/auth_api_exception.dart';
@@ -34,11 +33,15 @@ class AccountController extends GetxController {
 
   Future logout() async {
     try {
+      // GetStorage box = GetStorage();
+      // await box.write('Locale', 'en');
+      // GoogleTranslatorController.init(
+      //     'AIzaSyBOr3bXgN2bj9eECzSudyj_rgIFjyXkdn8', Locale('ur'),
+      //     cacheDuration: Duration(), translateTo: Locale('en'));
+      Get.updateLocale(const Locale('en', 'US'));
       GetStorage box = GetStorage();
-      await box.write('Locale', 'en');
-      GoogleTranslatorController.init(
-          'AIzaSyBOr3bXgN2bj9eECzSudyj_rgIFjyXkdn8', Locale('ur'),
-          cacheDuration: Duration(), translateTo: Locale('en'));
+      await box.write('locale', 'en');
+      box.read('locale');
       await _authApi.logout();
 
       Get.offAllNamed(AppRoutes.auth_options);

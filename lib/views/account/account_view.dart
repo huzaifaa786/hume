@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/components/button.dart';
+ import 'package:hume/components/button.dart';
 import 'package:hume/components/input_field.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
@@ -37,16 +36,16 @@ class AccountScreen extends StatelessWidget {
           showDialog<String>(
               context: context,
               builder: (BuildContext context) => AlertDialog(
-                    title: Text('Are you sure!').translate(),
-                    content: Text('You want to logout?').translate(),
+                    title: Text('Are you sure!') ,
+                    content: Text('You want to logout?') ,
                     actions: <Widget>[
                       TextButton(
                         onPressed: () => Navigator.pop(context, 'Cancel'),
-                        child: Text('No').translate(),
+                        child: Text('No') ,
                       ),
                       TextButton(
                           onPressed: () => controller.logout(),
-                          child: Text('Yes').translate())
+                          child: Text('Yes') )
                     ],
                   ));
         },
@@ -85,7 +84,7 @@ class AccountScreen extends StatelessWidget {
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w800),
-                                            ).translate(),
+                                            ) ,
                                           )
                                         : SizedBox(
                                             width: Get.width * 0.25,
@@ -95,7 +94,7 @@ class AccountScreen extends StatelessWidget {
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w800),
-                                            ).translate(),
+                                            ) ,
                                           ),
                                     // Container(
                                     //   width: Get.width * 0.25,
@@ -185,7 +184,7 @@ class AccountScreen extends StatelessWidget {
                                     style: TextStyle(
                                         color: mainColor,
                                         fontSize: 14,
-                                        fontWeight: FontWeight.w700)).translate(),
+                                        fontWeight: FontWeight.w700)) ,
                               ),
                             )
                           ],

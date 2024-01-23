@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -10,7 +8,6 @@ import 'package:hume/api/shop_api.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/models/shop.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class ShopsController extends GetxController {
   static ShopsController instance = Get.find();

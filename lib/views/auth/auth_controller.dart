@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_print, prefer_const_constructors, prefer_interpolation_to_compose_strings
 
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -15,7 +13,6 @@ import 'package:hume/routes/app_routes.dart';
 import 'package:hume/services/user_service.dart';
 import 'package:hume/utils/ui_utils.dart';
 import 'package:hume/views/auth/otp_verify.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();

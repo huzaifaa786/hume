@@ -1,23 +1,18 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/button.dart';
 import 'package:hume/components/guest_topbar.dart';
 import 'package:hume/components/input_field.dart';
 import 'package:hume/components/input_field_pass.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
-import 'package:hume/utils/controller_initlization.dart';
 import 'package:hume/utils/ui_utils.dart';
 import 'package:hume/views/auth/auth_controller.dart';
-import 'package:intl_phone_field/countries.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -157,7 +152,7 @@ class AuthScreen extends StatelessWidget {
                                           style: TextStyle(
                                               color: mainColor,
                                               fontSize: 16,
-                                              fontWeight: FontWeight.w700)).translate(),
+                                              fontWeight: FontWeight.w700)) ,
                                     ),
                                   )
                                 ],
