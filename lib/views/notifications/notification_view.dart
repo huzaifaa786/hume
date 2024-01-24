@@ -14,32 +14,35 @@ class NotificationsView extends GetView<NotificationController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<NotificationController>(
-      builder: (controller) => LayoutScaffold(
-        appBarTitle: 'Notifications',
-        body: controller.extendedNotifications.isEmpty
-            ? SizedBox(
-                height: Get.height * 0.8,
-                child: Center(
-                  child: Text('No notifications found!'),
-                ))
-            : ListView.builder(
-                shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
-                itemCount: controller.extendedNotifications.length,
-                itemBuilder: (context, index) {
-                  final notification = controller.extendedNotifications[index];
-                  var date = convertTimestampToDate(notification.order.id);
-                  return NotificationCard(
-                    ontap: () {
-                      Get.toNamed(AppRoutes.order_products,
-                          parameters: {'orderId': notification.order.id});
-                    },
-                    orderId: 'order No ${notification.order.id}',
-                    date: date,
-                    shopName: notification.shop.name,
-                    content: notification.notification.content,
-                  );
-                }),
+      builder: (controller) => Directionality(
+        textDirection: TextDirection.ltr,
+        child: LayoutScaffold(
+          appBarTitle: 'Notification'.tr,
+          body: controller.extendedNotifications.isEmpty
+              ? SizedBox(
+                  height: Get.height * 0.8,
+                  child: Center(
+                    child: Text('No notifications found!'.tr),
+                  ))
+              : ListView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  itemCount: controller.extendedNotifications.length,
+                  itemBuilder: (context, index) {
+                    final notification = controller.extendedNotifications[index];
+                    var date = convertTimestampToDate(notification.order.id);
+                    return NotificationCard(
+                      ontap: () {
+                        Get.toNamed(AppRoutes.order_products,
+                            parameters: {'orderId': notification.order.id});
+                      },
+                      orderId: 'order No'.tr +' ${notification.order.id}',
+                      date: date,
+                      shopName: notification.shop.name,
+                      content: notification.notification.content,
+                    );
+                  }),
+        ),
       ),
     );
   }

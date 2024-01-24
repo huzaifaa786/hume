@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_typing_uninitialized_variables, unnecessary_new
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
  import 'package:hume/utils/colors.dart';
 
 class OrderProductsCard extends StatelessWidget {
@@ -42,7 +43,7 @@ class OrderProductsCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Size : ',
+                        'Size : '.tr,
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
@@ -63,7 +64,7 @@ class OrderProductsCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Quantity : ',
+                        'Quantity : '.tr,
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
@@ -91,7 +92,7 @@ class OrderProductsCard extends StatelessWidget {
                             color: colortext),
                       ),
                       Text(
-                        '  AED',
+                        '  AED'.tr,
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,

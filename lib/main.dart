@@ -5,9 +5,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
- import 'package:hume/helper/loading.dart';
+import 'package:hume/helper/loading.dart';
 import 'package:hume/routes/app_pages.dart';
 import 'package:hume/services/notification_service.dart';
+import 'package:hume/translation.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/cart/cart_controller.dart';
 import 'package:hume/views/search_product.dart/search_product_controller.dart';
@@ -21,13 +22,13 @@ import 'package:get_storage/get_storage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LoadingHelper.init();
-  Get.put(SearchProductController());
-  Get.put(PaymentService());
-  Get.put(NotificationService());
+  await GetStorage.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  Get.put(SearchProductController());
+  Get.put(PaymentService());
+  Get.put(NotificationService());
   Stripe.publishableKey =
       "pk_test_51JvIZ1Ey3DjpASZjPAzcOwqhblOq2hbchp6i56BsjapvhWcooQXqh33XwCrKiULfAe7NKFwKUhn2nqURE7VZcXXf00wMDzp4YN";
 
@@ -45,7 +46,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // GetStorage box = GetStorage();
+    GetStorage box = GetStorage();
+    print('${box.read('locale')} *****************************************');
     // box.read('Locale') == null ? box.write('Locale', 'en') : null;
     // String locale = box.read('Locale') == null ? 'en' : box.read('Locale');
     // return  GoogleTranslatorInit('AIzaSyBOr3bXgN2bj9eECzSudyj_rgIFjyXkdn8',
@@ -53,11 +55,11 @@ class MyApp extends StatelessWidget {
     //     translateTo: Locale(locale),
     //     automaticDetection: false, builder: () {
     return GetMaterialApp(
-      // translations: LocaleString(),
-      // locale:
-      //     box.read('locale') != 'ar' ? Locale('en', 'US') : Locale('ar', 'AE'),
-      // fallbackLocale:
-      //     box.read('locale') != 'ar' ? Locale('en', 'US') : Locale('ar', 'AE'),
+      translations: LocaleString(),
+      locale:
+          box.read('locale') != 'ar' ? Locale('en', 'US') : Locale('ar', 'AE'),
+      fallbackLocale:
+          box.read('locale') != 'ar' ? Locale('en', 'US') : Locale('ar', 'AE'),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         textSelectionTheme: const TextSelectionThemeData(

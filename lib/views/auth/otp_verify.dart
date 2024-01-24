@@ -40,7 +40,7 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
                       Container(
                         // padding: EdgeInsets.only(),
                         child: Text(
-                          'Verify OTP',
+                          'Verify OTP'.tr,
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w600,
@@ -54,7 +54,7 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
                         margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
                         padding: EdgeInsets.all(4),
                         child: Text(
-                          'Enter the 6 digit code received on your registered phone number ending with *********' +
+                          'Enter the 6 digit code received on your registered phone number ending with *********'.tr +
                               controller.last2.toString() +
                               '.',
                           textAlign: TextAlign.center,
@@ -171,7 +171,7 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
                               controller.verifyPhone(phone.toString());
                             },
                             child: Text(
-                              'Verify',
+                              'Verify'.tr,
                               style: const TextStyle(
                                 color: Color.fromARGB(255, 255, 255, 255),
                                 fontSize: 18,

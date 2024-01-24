@@ -19,161 +19,164 @@ class ShopProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ShopProfileController>(
       builder: (controller) => controller.shop != null
-          ? Scaffold(
-              appBar: AppBar(
-                forceMaterialTransparency: true,
-                automaticallyImplyLeading: false,
-                title:
-                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                  GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      color: mainColor,
-                      size: 26,
-                    ),
-                  ),
-                  Row(children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: CircleAvatar(
-                        radius: 25.0,
-                        backgroundImage: CachedNetworkImageProvider(
-                            controller.shop!.logoImageUrl!),
-                        backgroundColor: Colors.transparent,
+          ? Directionality(
+            textDirection: TextDirection.ltr,
+            child: Scaffold(
+                appBar: AppBar(
+                  forceMaterialTransparency: true,
+                  automaticallyImplyLeading: false,
+                  title:
+                      Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: mainColor,
+                        size: 26,
                       ),
                     ),
-                    Column(
+                    Row(children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: CircleAvatar(
+                          radius: 25.0,
+                          backgroundImage: CachedNetworkImageProvider(
+                              controller.shop!.logoImageUrl!),
+                          backgroundColor: Colors.transparent,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                controller.shop!.name!,
+                                style: const TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                    color: appbarText),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 3.0),
+                                child: SvgPicture.asset(
+                                    'assets/images/approved.svg'),
+                              )
+                            ],
+                          ),
+                          Text(
+                            controller.shop!.category!,
+                            style: const TextStyle(
+                                fontFamily: "Poppins",
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.grey),
+                          ) ,
+                        ],
+                      ),
+                    ]),
+                  ]),
+                ),
+                body: SafeArea(
+                  child: SingleChildScrollView(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              controller.shop!.name!,
-                              style: const TextStyle(
-                                  fontFamily: "Poppins",
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                  color: appbarText),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 3.0),
-                              child: SvgPicture.asset(
-                                  'assets/images/approved.svg'),
-                            )
-                          ],
+                        Gap(20),
+                        Container(
+                          width: Get.width,
+                          height: Get.height * 0.25,
+                          child: CachedNetworkImage(
+                            imageUrl: controller.shop!.bannerImageUrl!,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        Text(
-                          controller.shop!.category!,
-                          style: const TextStyle(
-                              fontFamily: "Poppins",
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.grey),
-                        ) ,
+                        Gap(15),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Text(
+                            'Shop details'.tr,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700, fontSize: 17),
+                          ) ,
+                        ),
+                        Gap(7),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Text(controller.shop!.description!) ,
+                        ),
+                        Gap(20),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Our products'.tr,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w800),
+                              ) ,
+                              InkWell(
+                                onTap: () {
+                                  Get.toNamed(AppRoutes.shop_products,
+                                      parameters: {
+                                        "shop_id": controller.shop!.id,
+                                        "shop_name": controller.shop!.name!,
+                                      });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'See all'.tr,
+                                    style: TextStyle(fontWeight: FontWeight.w600),
+                                  ) ,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0, top: 20),
+                          child: SizedBox(
+                            height: 293,
+                            width: Get.width,
+                            child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: controller.products.length,
+                                itemBuilder: (context, index) {
+                                  return ProductCard(
+                                      name: controller.products[index].name,
+                                      price: controller.products[index].price,
+                                      img: controller.products[index].images![0],
+                                      ontap: () {
+                                        Get.toNamed(AppRoutes.productDeatil,
+                                            parameters: {
+                                              'id': controller.products[index].id
+                                            });
+                                      });
+                                }),
+                          ),
+                        ),
+                        Gap(10),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                          child: Divider(),
+                        ),
+                        Gap(10),
+                        Center(
+                          child: SvgPicture.asset('assets/images/logo.svg',
+                              height: 30, width: 30),
+                        ),
+                        Gap(50),
                       ],
                     ),
-                  ]),
-                ]),
-              ),
-              body: SafeArea(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Gap(20),
-                      Container(
-                        width: Get.width,
-                        height: Get.height * 0.25,
-                        child: CachedNetworkImage(
-                          imageUrl: controller.shop!.bannerImageUrl!,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Gap(15),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Text(
-                          'Shop details',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700, fontSize: 17),
-                        ) ,
-                      ),
-                      Gap(7),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Text(controller.shop!.description!) ,
-                      ),
-                      Gap(20),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Our products',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w800),
-                            ) ,
-                            InkWell(
-                              onTap: () {
-                                Get.toNamed(AppRoutes.shop_products,
-                                    parameters: {
-                                      "shop_id": controller.shop!.id,
-                                      "shop_name": controller.shop!.name!,
-                                    });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'See all',
-                                  style: TextStyle(fontWeight: FontWeight.w600),
-                                ) ,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 20),
-                        child: SizedBox(
-                          height: 293,
-                          width: Get.width,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: controller.products.length,
-                              itemBuilder: (context, index) {
-                                return ProductCard(
-                                    name: controller.products[index].name,
-                                    price: controller.products[index].price,
-                                    img: controller.products[index].images![0],
-                                    ontap: () {
-                                      Get.toNamed(AppRoutes.productDeatil,
-                                          parameters: {
-                                            'id': controller.products[index].id
-                                          });
-                                    });
-                              }),
-                        ),
-                      ),
-                      Gap(10),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                        child: Divider(),
-                      ),
-                      Gap(10),
-                      Center(
-                        child: SvgPicture.asset('assets/images/logo.svg',
-                            height: 30, width: 30),
-                      ),
-                      Gap(50),
-                    ],
                   ),
-                ),
-              ))
-          : LoadingWidget(text: 'Loading...'),
+                )),
+          )
+          : LoadingWidget(text: 'Loading...'.tr),
     );
   }
 }

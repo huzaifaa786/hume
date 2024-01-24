@@ -15,38 +15,40 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CategoryProductController>(
       autoRemove: false,
-      builder: (controller) => LayoutScaffold(
-        appBarTitle: Get.parameters['category'] ?? 'New Arrivals',
-        hasBottomNav: false,
-        body: SafeArea(
-          child: controller.products.isEmpty
-              ? Center(
-                  child: Text('No products found for this category.') ,
-                )
-              : GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                    mainAxisExtent: 290,
+      builder: (controller) => Directionality(textDirection: TextDirection.ltr,
+        child: LayoutScaffold(
+          appBarTitle: Get.parameters['category'] ?? 'New Arrivals',
+          hasBottomNav: false,
+          body: SafeArea(
+            child: controller.products.isEmpty
+                ? Center(
+                    child: Text('No products found for this category.'.tr) ,
+                  )
+                : GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      mainAxisExtent: 290,
+                    ),
+                    controller: controller.scrollController,
+                    shrinkWrap: true,
+                    physics: BouncingScrollPhysics(),
+                    itemCount: controller.products.length,
+                    itemBuilder: (context, index) {
+                      final product = controller.products[index];
+                      return ProductCard(
+                        name: product.name,
+                        price: product.price,
+                        img: product.images![0],
+                        ontap: () {
+                          Get.toNamed(AppRoutes.productDeatil,
+                              parameters: {'id': product.id});
+                        },
+                      );
+                    },
                   ),
-                  controller: controller.scrollController,
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  itemCount: controller.products.length,
-                  itemBuilder: (context, index) {
-                    final product = controller.products[index];
-                    return ProductCard(
-                      name: product.name,
-                      price: product.price,
-                      img: product.images![0],
-                      ontap: () {
-                        Get.toNamed(AppRoutes.productDeatil,
-                            parameters: {'id': product.id});
-                      },
-                    );
-                  },
-                ),
+          ),
         ),
       ),
     );

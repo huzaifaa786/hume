@@ -40,7 +40,7 @@ class ForgetPassword extends StatelessWidget {
                           children: [
                             Gap(20),
                             Text(
-                              'Forget password',
+                              'Forget password'.tr,
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w700,
@@ -50,21 +50,21 @@ class ForgetPassword extends StatelessWidget {
                         ),
                         Gap(59),
                         InputField(
-                          hint: 'Enter your email',
+                          hint: 'Enter your email'.tr,
                           controller: controller.forgetPasswordMail,
                           color: mainColor,
                         ),
                         Gap(165),
                         HumeButton(
-                          title: 'Send code',
+                          title: 'Send code'.tr,
                           onPressed: controller.areForgetFieldsFilled.value
                               ? () {
                                   controller.forgotPassword();
                                 }
                               : () {
                                   UiUtilites.errorSnackbar(
-                                      'Fill out all fields',
-                                      'Please fill all above fields');
+                                      'Fill out all fields'.tr,
+                                      'Please fill all above fields'.tr);
                                 },
                           buttonWidth: 0.85,
                         ),

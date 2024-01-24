@@ -193,13 +193,13 @@ class AuthController extends GetxController {
               token: token),
         );
         UiUtilites.successSnackbar(
-            'Register User', 'User registered successfully');
+            'Register User'.tr, 'User registered successfully'.tr);
         LoadingHelper.dismiss();
         Get.offNamed(AppRoutes.main);
       }
     } on AuthApiException catch (e) {
       LoadingHelper.dismiss();
-      UiUtilites.errorSnackbar('Signup Failed', e.toString());
+      UiUtilites.errorSnackbar('Signup Failed'.tr, e.toString());
     }
   }
 
@@ -228,14 +228,14 @@ class AuthController extends GetxController {
           Get.offNamed(AppRoutes.main);
         } else {
           UiUtilites.errorSnackbar(
-              'Invalid Credentials', 'Please Provide Correct Credentials');
+              'Invalid Credentials'.tr, 'Please Provide Correct Credentials'.tr);
         }
         LoadingHelper.dismiss();
       }
     } on AuthApiException catch (e) {
       LoadingHelper.dismiss();
 
-      UiUtilites.errorSnackbar('Signin Failed', e.toString());
+      UiUtilites.errorSnackbar('Signin Failed'.tr, e.toString());
     }
   }
 
@@ -260,7 +260,7 @@ class AuthController extends GetxController {
       }
     } on AuthApiException catch (e) {
       LoadingHelper.dismiss();
-      UiUtilites.errorSnackbar('Signin Failed', e.toString());
+      UiUtilites.errorSnackbar('Signin Failed'.tr, e.toString());
     }
   }
 
@@ -273,13 +273,13 @@ class AuthController extends GetxController {
       );
       if (isSent) {
         await UiUtilites.successSnackbar(
-            'Forget Password', 'Reset password link has been sent to email');
+            'Forget Password'.tr, 'Reset password link has been sent to email'.tr);
         Get.offNamed(AppRoutes.auth);
       }
       LoadingHelper.dismiss();
     } on AuthApiException catch (e) {
       LoadingHelper.dismiss();
-      UiUtilites.errorSnackbar('Forget password Failed', e.toString());
+      UiUtilites.errorSnackbar('Forget password Failed'.tr, e.toString());
     }
   }
 
@@ -287,20 +287,20 @@ class AuthController extends GetxController {
   Future changePassword() async {
     LoadingHelper.show();
     if (newPassword.text != confirmCPassword.text) {
-      UiUtilites.successSnackbar('Passwords are not similar', 'Password');
+      UiUtilites.successSnackbar('Passwords are not similar'.tr, 'Password'.tr);
     } else {
       final response =
           await _authApi.verifyOldPassword(oldPassword.text, newPassword.text);
       // print(response);
       if (response == 0) {
       } else if (response == 2) {
-        UiUtilites.errorSnackbar('Provide correct old password', 'Password');
+        UiUtilites.errorSnackbar('Provide correct old password'.tr, 'Password'.tr);
       } else if (response == 3) {
         oldPassword.clear();
         newPassword.clear();
         confirmCPassword.clear();
 
-        UiUtilites.successSnackbar('Password has been updated', 'Password');
+        UiUtilites.successSnackbar('Password has been updated'.tr, 'Password'.tr);
       }
     }
     LoadingHelper.dismiss();
@@ -322,7 +322,7 @@ class AuthController extends GetxController {
         verificationFailed: (FirebaseAuthException e) {
           LoadingHelper.dismiss();
           print(e.message);
-          Get.snackbar('Verification failed', e.message!,
+          Get.snackbar('Verification failed'.tr, e.message!,
               snackPosition: SnackPosition.BOTTOM,
               backgroundColor: Colors.red,
               colorText: Colors.white);
@@ -334,7 +334,7 @@ class AuthController extends GetxController {
           verificationid = verificationId;
           resendtoken = resendToken;
           LoadingHelper.dismiss();
-          Get.snackbar('OTP has been successfully send', '',
+          Get.snackbar('OTP has been successfully send'.tr, '',
               snackPosition: SnackPosition.BOTTOM,
               backgroundColor: Colors.green,
               colorText: Colors.white);
@@ -350,7 +350,7 @@ class AuthController extends GetxController {
       );
     } on FirebaseAuthException catch (e) {
       LoadingHelper.dismiss();
-      Get.snackbar('Error', e.message.toString(),
+      Get.snackbar('Error'.tr, e.message.toString(),
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.green,
           colorText: Colors.white);
@@ -401,7 +401,7 @@ class AuthController extends GetxController {
           }
           Get.toNamed(AppRoutes.main);
         }).onError((error, stackTrace) {
-          Get.snackbar('Error!', error.toString(),
+          Get.snackbar('Error!'.tr, error.toString(),
               snackPosition: SnackPosition.BOTTOM,
               backgroundColor: Colors.red,
               colorText: Colors.white);
@@ -409,7 +409,7 @@ class AuthController extends GetxController {
         });
         LoadingHelper.dismiss();
       } else {
-        Get.snackbar('Error!', 'Plese Enter Complete Code',
+        Get.snackbar('Error!'.tr, 'Plese Enter Complete Code'.tr,
             snackPosition: SnackPosition.BOTTOM,
             backgroundColor: Colors.red,
             colorText: Colors.white);
@@ -417,7 +417,7 @@ class AuthController extends GetxController {
       }
     } on FirebaseAuthException catch (e) {
       LoadingHelper.dismiss();
-      Get.snackbar('Error!', e.message!,
+      Get.snackbar('Error!'.tr, e.message!,
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red,
           colorText: Colors.white);

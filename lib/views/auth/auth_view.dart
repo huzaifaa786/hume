@@ -74,25 +74,25 @@ class AuthScreen extends StatelessWidget {
                         ? Column(
                             children: [
                               InputField(
-                                hint: 'Name',
+                                hint: 'Name'.tr,
                                 controller: controller.name,
                                 color: mainColor,
                               ),
                               Gap(15),
                               InputField(
-                                hint: 'Phone number',
+                                hint: 'Phone number'.tr,
                                 controller: controller.SignUpPhone,
                                 color: mainColor,
                               ),
                               Gap(15),
                               InputField(
-                                hint: 'Email',
+                                hint: 'Email'.tr,
                                 controller: controller.email,
                                 color: mainColor,
                               ),
                               Gap(15),
                               PasswordInputField(
-                                hint: 'Password',
+                                hint: 'Password'.tr,
                                 controller: controller.password,
                                 color: mainColor,
                                 obscure: controller.passObscure,
@@ -100,7 +100,7 @@ class AuthScreen extends StatelessWidget {
                               ),
                               Gap(15),
                               PasswordInputField(
-                                hint: 'Confirm password',
+                                hint: 'Confirm password'.tr,
                                 controller: controller.confirmPassword,
                                 color: mainColor,
                                 obscure: controller.confirmPassObscure,
@@ -108,15 +108,15 @@ class AuthScreen extends StatelessWidget {
                               ),
                               Gap(20),
                               HumeButton(
-                                title: 'Done',
+                                title: 'Done'.tr,
                                 onPressed: controller.areFieldsFilled.value
                                     ? () {
                                         controller.signUpUser();
                                       }
                                     : () {
                                         UiUtilites.errorSnackbar(
-                                            'Fill out all fields',
-                                            'Please fill all above fields');
+                                            'Fill out all fields'.tr,
+                                            'Please fill all above fields'.tr);
                                       },
                                 buttonWidth: 0.85,
                               ),
@@ -125,13 +125,13 @@ class AuthScreen extends StatelessWidget {
                         : Column(
                             children: [
                               InputField(
-                                hint: 'Email',
+                                hint: 'Email'.tr,
                                 controller: controller.loginEmail,
                                 color: mainColor,
                               ),
                               Gap(15),
                               PasswordInputField(
-                                hint: 'Password',
+                                hint: 'Password'.tr,
                                 controller: controller.loginPassword,
                                 color: mainColor,
                                 obscure: controller.passObscure,
@@ -148,7 +148,7 @@ class AuthScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.only(
                                           right: 30.0, bottom: 20),
-                                      child: Text('Forget password?',
+                                      child: Text('Forget password?'.tr,
                                           style: TextStyle(
                                               color: mainColor,
                                               fontSize: 16,
@@ -158,15 +158,15 @@ class AuthScreen extends StatelessWidget {
                                 ],
                               ),
                               HumeButton(
-                                title: 'Done',
+                                title: 'Done'.tr,
                                 onPressed: controller.areLoginFieldsFilled.value
                                     ? () {
                                         controller.signInUser();
                                       }
                                     : () {
                                         UiUtilites.errorSnackbar(
-                                            'Fill out all fields',
-                                            'Please fill all above fields');
+                                            'Fill out all fields'.tr,
+                                            'Please fill all above fields'.tr);
                                       },
                                 buttonWidth: 0.85,
                               ),

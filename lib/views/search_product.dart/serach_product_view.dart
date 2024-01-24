@@ -32,7 +32,7 @@ class _SearchProductViewState extends State<SearchProductView> {
   Widget build(BuildContext context) {
     return GetBuilder<SearchProductController>(
       builder: (controller) => LayoutScaffold(
-        appBarTitle: 'Search',
+        appBarTitle: 'Search'.tr,
         hasBottomNav: true,
         body: SingleChildScrollView(
           child: SafeArea(
@@ -46,7 +46,7 @@ class _SearchProductViewState extends State<SearchProductView> {
                     ? SizedBox(
                         height: Get.height * 0.8,
                         child: Center(
-                          child: Text('No products found!'),
+                          child: Text('No products found!'.tr),
                         ))
                     : GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -46,7 +46,7 @@ class AccountController extends GetxController {
 
       Get.offAllNamed(AppRoutes.auth_options);
     } on AuthApiException catch (e) {
-      UiUtilites.errorSnackbar('Logout Failed', e.toString());
+      UiUtilites.errorSnackbar('Logout Failed'.tr, e.toString());
     }
   }
 
@@ -66,6 +66,6 @@ class AccountController extends GetxController {
     await _accountApi.updateUsername(name.text);
     LoadingHelper.dismiss();
     fetchUser(FirebaseAuth.instance.currentUser!.uid);
-    UiUtilites.successSnackbar('', 'username updated successfully');
+    UiUtilites.successSnackbar('', 'username updated successfully'.tr);
   }
 }

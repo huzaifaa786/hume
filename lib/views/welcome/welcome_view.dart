@@ -24,7 +24,7 @@ class WelcomeView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Welcome',
+                    'Welcome'.tr,
                     style: TextStyle(
                         color: mainColor,
                         fontWeight: FontWeight.bold,
@@ -34,13 +34,13 @@ class WelcomeView extends StatelessWidget {
                       height: 30, width: 50),
                   Gap(30),
                   Text(
-                    'all what you need in one place with fast and safe online shopping  experience',
+                    'all what you need in one place with fast and safe online shopping  experience'.tr,
                     textAlign: TextAlign.center,
                     style: TextStyle(color: greyText),
                   ) ,
                   Gap(40),
                   HumeButton(
-                    title: 'Sign up',
+                    title: 'Sign up'.tr,
                     onPressed: () {
                       Get.toNamed(AppRoutes.auth_options);
                     },
@@ -49,7 +49,7 @@ class WelcomeView extends StatelessWidget {
                   Gap(20),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     Text(
-                      'Already have an account?  ',
+                      'Already have an account?  '.tr,
                       style: TextStyle(color: greyText),
                     ) ,
                     GestureDetector(
@@ -59,7 +59,7 @@ class WelcomeView extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Sign in',
+                            'Sign in'.tr,
                             style: TextStyle(
                                 color: mainColor,
                                 fontSize: 18,

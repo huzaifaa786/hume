@@ -90,17 +90,17 @@ class CheckoutController extends GetxController {
             forAdmin: true,
             seen: false));
         _notificationservice.postNotification(
-            title: 'Order Placed',
-            body: 'New order has been placed.',
+            title: 'Order Placed'.tr,
+            body: 'New order has been placed.'.tr,
             receiverToken: token);
         Get.offAllNamed(AppRoutes.main);
         UiUtilites.successSnackbar(
-            'Your order has been placed successfully', 'Order Placed');
+            'Your order has been placed successfully'.tr, 'Order Placed'.tr);
       }
       LoadingHelper.dismiss();
     } else {
       UiUtilites.errorSnackbar(
-          'Fill out All the Fields', 'Please fill in all the fields');
+          'Fill out All the Fields'.tr, 'Please fill in all the fields'.tr);
     }
   }
 

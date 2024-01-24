@@ -29,7 +29,7 @@ class AuthOptions extends StatelessWidget {
                         height: 30, width: 50),
                     Gap(30),
                     OutlineButton(
-                      title: 'continue with email',
+                      title: 'continue with email'.tr,
                       onPressed: () {
                         Get.toNamed(AppRoutes.auth);
                       },
@@ -37,7 +37,7 @@ class AuthOptions extends StatelessWidget {
                     ),
                     Gap(15),
                     OutlineButton(
-                      title: 'continue with apple',
+                      title: 'continue with apple'.tr,
                       onPressed: () {
                         Get.toNamed(AppRoutes.auth);
                       },
@@ -45,7 +45,7 @@ class AuthOptions extends StatelessWidget {
                     ),
                     Gap(15),
                     OutlineButton(
-                      title: 'continue with google',
+                      title: 'continue with google'.tr,
                       onPressed: () {
                         controller.signInGoogle();
                       },
@@ -53,7 +53,7 @@ class AuthOptions extends StatelessWidget {
                     ),
                     Gap(15),
                     OutlineButton(
-                      title: 'continue with OTP',
+                      title: 'continue with OTP'.tr,
                       onPressed: () {
                         Get.toNamed(AppRoutes.otp_signin);
                       },

@@ -49,8 +49,8 @@ class ProductDetailController extends GetxController {
         int.parse(combinedProductData!.product.price!));
     if (isAdded) 
     UiUtilites.successSnackbar(
-        combinedProductData!.product.name! + " added to cart successfully",
-        'Added to cart');
+        combinedProductData!.product.name! + " added to cart successfully".tr,
+        'Added to cart'.tr);
   }
 
   

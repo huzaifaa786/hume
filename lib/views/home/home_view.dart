@@ -154,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Categories',
+                      'Categories'.tr,
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                     ) ,
@@ -163,7 +163,7 @@ class HomeScreen extends StatelessWidget {
                         Get.toNamed(AppRoutes.categories);
                       },
                       child: Text(
-                        'See all',
+                        'See all'.tr,
                         style: TextStyle(fontWeight: FontWeight.w600),
                       ) ,
                     ),
@@ -182,41 +182,41 @@ class HomeScreen extends StatelessWidget {
                         CategoryCircle(
                           ontap: () {
                             Get.toNamed(AppRoutes.products,
-                                parameters: {'category': 'Furniture'});
+                                parameters: {'category': 'Furniture'.tr});
                           },
                           imagePath: 'assets/images/1furniture.svg',
-                          title: 'Furniture',
+                          title: 'Furniture'.tr,
                         ),
                         CategoryCircle(
                           imagePath: 'assets/images/cloths.svg',
-                          title: 'Clothes',
+                          title: 'Clothes'.tr,
                           ontap: () {
                             Get.toNamed(AppRoutes.products,
-                                parameters: {'category': 'Clothes'});
+                                parameters: {'category': 'Clothes'.tr});
                           },
                         ),
                         CategoryCircle(
                           imagePath: 'assets/images/perfumes.svg',
-                          title: 'Perfumes',
+                          title: 'Perfumes'.tr,
                           ontap: () {
                             Get.toNamed(AppRoutes.products,
-                                parameters: {'category': 'Perfumes'});
+                                parameters: {'category': 'Perfumes'.tr});
                           },
                         ),
                         CategoryCircle(
                           imagePath: 'assets/images/makeup.svg',
-                          title: 'Makeup',
+                          title: 'Makeup'.tr,
                           ontap: () {
                             Get.toNamed(AppRoutes.products,
-                                parameters: {'category': 'Makeup'});
+                                parameters: {'category': 'Makeup'.tr});
                           },
                         ),
                         CategoryCircle(
                           imagePath: 'assets/images/devices.svg',
-                          title: 'Devices',
+                          title: 'Devices'.tr,
                           ontap: () {
                             Get.toNamed(AppRoutes.products,
-                                parameters: {'category': 'Devices'});
+                                parameters: {'category': 'Devices'.tr});
                           },
                         ),
                       ],
@@ -232,17 +232,17 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Clothes',
+                            'Clothes'.tr,
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
                           ) ,
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
-                                  parameters: {'category': 'Clothes'});
+                                  parameters: {'category': 'Clothes'.tr});
                             },
                             child: Text(
-                              'See all',
+                              'See all'.tr,
                               style: TextStyle(fontWeight: FontWeight.w600),
                             ) ,
                           ),
@@ -258,7 +258,7 @@ class HomeScreen extends StatelessWidget {
                           if (controller.clotheproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.')
+                                  Text('No products found for this category.'.tr)
                                        ,
                             );
                           } else {
@@ -297,17 +297,17 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Bags & shoes',
+                            'Bags and\nshoes'.tr,
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
                           ) ,
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
-                                  parameters: {'category': 'Bags and shoes'});
+                                  parameters: {'category': 'Bags and\nshoes'.tr});
                             },
                             child: Text(
-                              'See all',
+                              'See all'.tr,
                               style: TextStyle(fontWeight: FontWeight.w600),
                             ) ,
                           ),
@@ -323,7 +323,7 @@ class HomeScreen extends StatelessWidget {
                           if (controller.bagsandshoesproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.')
+                                  Text('No products found for this category.'.tr)
                                        ,
                             );
                           } else {
@@ -363,17 +363,17 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Furniture',
+                            'Furniture'.tr,
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
                           ) ,
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
-                                  parameters: {'category': 'Furniture'});
+                                  parameters: {'category': 'Furniture'.tr});
                             },
                             child: Text(
-                              'See all',
+                              'See all'.tr,
                               style: TextStyle(fontWeight: FontWeight.w600),
                             ) ,
                           ),
@@ -389,7 +389,7 @@ class HomeScreen extends StatelessWidget {
                           if (controller.furnitureproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.')
+                                  Text('No products found for this category.'.tr)
                                        ,
                             );
                           } else {
@@ -428,17 +428,17 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Makeup',
+                            'Makeup'.tr,
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
                           ) ,
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
-                                  parameters: {'category': 'Makeup'});
+                                  parameters: {'category': 'Makeup'.tr});
                             },
                             child: Text(
-                              'See all',
+                              'See all'.tr,
                               style: TextStyle(fontWeight: FontWeight.w600),
                             ) ,
                           ),
@@ -454,7 +454,7 @@ class HomeScreen extends StatelessWidget {
                           if (controller.makeupproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.')
+                                  Text('No products found for this category.'.tr)
                                        ,
                             );
                           } else {
@@ -493,17 +493,17 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Home & kitchen',
+                            'Home & kitchen'.tr,
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
                           ) ,
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
-                                  parameters: {'category': 'Home & kitchen'});
+                                  parameters: {'category': 'Home & kitchen'.tr});
                             },
                             child: Text(
-                              'See all',
+                              'See all'.tr,
                               style: TextStyle(fontWeight: FontWeight.w600),
                             ) ,
                           ),
@@ -519,7 +519,7 @@ class HomeScreen extends StatelessWidget {
                           if (controller.homeandkitchenproducts.isEmpty) {
                             return Center(
                               child:
-                                  Text('No products found for this category.')
+                                  Text('No products found for this category.'.tr)
                                        ,
                             );
                           } else {

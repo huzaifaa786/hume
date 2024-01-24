@@ -42,10 +42,10 @@ class NotificationCard extends StatelessWidget {
                       constraints: BoxConstraints(maxWidth: Get.width * 0.6),
                       child: Text(
                         content == 'Accepted order'
-                            ? 'Accepted order!'
+                            ? 'Accepted order!'.tr
                             : content == 'Deliverd order'
-                                ? 'Your order is delivred !'
-                                : 'Rejected order! ',
+                                ? 'Your order is delivred !'.tr
+                                : 'Rejected order!'.tr,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                             fontSize: 12,
@@ -128,7 +128,7 @@ class NotificationCard extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text('See order details',
+                          Text('See order details'.tr,
                                   style: TextStyle(
                                       fontSize: 10,
                                       fontWeight: FontWeight.w600,

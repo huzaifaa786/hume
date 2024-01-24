@@ -40,7 +40,7 @@ class OtpSignin extends StatelessWidget {
                           children: [
                             Gap(20),
                             Text(
-                              'Enter your phone number \n to get an OTP code',
+                              'Enter your phone number \n to get an OTP code'.tr,
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -84,12 +84,12 @@ class OtpSignin extends StatelessWidget {
                         ),
                         Gap(38),
                         HumeButton(
-                          title: 'Send code',
+                          title: 'Send code'.tr,
                           onPressed: controller.completePhone == ''
                               ? () {
                                   UiUtilites.errorSnackbar(
-                                      'Fill out all fields',
-                                      'Please fill all above fields');
+                                      'Fill out all fields'.tr,
+                                      'Please fill all above fields'.tr);
                                 }
                               : () {
                                   controller.sendTokenforSignUP();

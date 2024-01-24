@@ -63,11 +63,11 @@ class ShopsController extends GetxController {
           await launchUrl(url);
         } else {
           EasyLoading.showError(
-              'WhatsApp is not installed or cannot be launched.');
+              'WhatsApp is not installed or cannot be launched.'.tr);
         }
       }
     } catch (e) {
-      EasyLoading.showError('Failed to launch WhatsApp: $e');
+      EasyLoading.showError('Failed to launch WhatsApp:'.tr +' $e');
     }
   }
 
@@ -76,7 +76,7 @@ class ShopsController extends GetxController {
     if (await launchUrl(phoneno)) {
       //dialer opened
     } else {
-      EasyLoading.showError('Unable to launch dialer pad');
+      EasyLoading.showError('Unable to launch dialer pad'.tr);
     }
   }
 
@@ -88,7 +88,7 @@ class ShopsController extends GetxController {
     if (await launchUrl(mail)) {
       //email app opened
     } else {
-      EasyLoading.showError('Unable to launch dialer pad');
+      EasyLoading.showError('Unable to launch dialer pad'.tr);
     }
   }
 }

@@ -14,7 +14,7 @@ class OrderProductsView extends GetView<OrdersController> {
   Widget build(BuildContext context) {
     return GetBuilder<OrderProductsController>(
         builder: (controller) => LayoutScaffold(
-              appBarTitle: 'Orders',
+              appBarTitle: 'Orders'.tr,
               body: SafeArea(
                   child: Padding(
                 padding: const EdgeInsets.all(12.0),

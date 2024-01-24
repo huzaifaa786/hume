@@ -39,7 +39,7 @@ class ChangePassword extends StatelessWidget {
                           children: [
                             Gap(20),
                             Text(
-                              'Change password',
+                              'Change password'.tr,
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w700,
@@ -49,7 +49,7 @@ class ChangePassword extends StatelessWidget {
                         ),
                         Gap(59),
                         PasswordInputField(
-                          hint: 'Old password',
+                          hint: 'Old password'.tr,
                           obscure: controller.obscureOldPassword,
                           toggle: controller.toggleOldPassword,
                           controller: controller.oldPassword,
@@ -57,7 +57,7 @@ class ChangePassword extends StatelessWidget {
                         ),
                         Gap(20),
                         PasswordInputField(
-                          hint: 'New password',
+                          hint: 'New password'.tr,
                           obscure: controller.obscureNewPassword,
                           toggle: controller.toggleNewPassword,
                           controller: controller.newPassword,
@@ -67,21 +67,21 @@ class ChangePassword extends StatelessWidget {
                         PasswordInputField(
                           obscure: controller.obscureConfirmPassword,
                           toggle: controller.toggleConfirmPassword,
-                          hint: 'Confirm password',
+                          hint: 'Confirm password'.tr,
                           controller: controller.confirmCPassword,
                           color: mainColor,
                         ),
                         Gap(145),
                         HumeButton(
-                          title: 'Update',
+                          title: 'Update'.tr,
                           onPressed: controller.changePasswordFields.value
                               ? () {
                                   controller.changePassword();
                                 }
                               : () {
                                   UiUtilites.errorSnackbar(
-                                      'Fill out all fields',
-                                      'Please fill all above fields');
+                                      'Fill out all fields'.tr,
+                                      'Please fill all above fields'.tr);
                                 },
                           buttonWidth: 0.85,
                         ),

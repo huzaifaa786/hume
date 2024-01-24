@@ -28,8 +28,8 @@ class _TranslateScreenState extends State<TranslateScreen> {
   void initState() {
     // print(Get.locale);
     GetStorage box = GetStorage();
-    box.read('Locale') == 'ar';
-    _site = box.read('Locale') != 'ar'
+    box.read('locale') == 'ar';
+    _site = box.read('locale') != 'ar'
         ? translateMethod.English
         : translateMethod.Arabic;
     super.initState();
@@ -40,7 +40,7 @@ class _TranslateScreenState extends State<TranslateScreen> {
     return Directionality(
       textDirection: ui.TextDirection.ltr,
       child: LayoutScaffold(
-        appBarTitle: 'Languages',
+        appBarTitle: 'Languages'.tr,
         hasBottomNav: false,
         // appBar: AppBar(
         //   automaticallyImplyLeading: false,
@@ -53,7 +53,7 @@ class _TranslateScreenState extends State<TranslateScreen> {
           child: Column(
             children: [
               TranslateMethod(
-                title: 'English',
+                title: 'English'.tr,
                 groupvalue: _site,
                 value: translateMethod.English,
                 onchaged: () async {
@@ -66,7 +66,7 @@ class _TranslateScreenState extends State<TranslateScreen> {
                 },
               ),
               TranslateMethod(
-                title: 'Arabic',
+                title: 'Arabic'.tr,
                 groupvalue: _site,
                 value: translateMethod.Arabic,
                 onchaged: () async {

@@ -18,7 +18,7 @@ class OrdersView extends GetView<OrdersController> {
   Widget build(BuildContext context) {
     return GetBuilder<OrdersController>(
       builder: (controller) => LayoutScaffold(
-        appBarTitle: 'My Orders',
+        appBarTitle: 'My orders'.tr,
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(left: 15, right: 15),

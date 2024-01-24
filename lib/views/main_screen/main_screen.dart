@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/account/account_view.dart';
 import 'dart:ui' as ui;
@@ -76,7 +77,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                               ),
                               const Gap(4),
                               Text(
-                                'Home',
+                                'Home'.tr,
                                 style: TextStyle(
                                   fontSize: 11.0,
                                   fontWeight: FontWeight.w700,
@@ -115,7 +116,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                             ),
                             const Gap(4),
                             Text(
-                              'Search',
+                              'Search'.tr,
                               style: TextStyle(
                                 fontSize: 11.0,
                                 fontWeight: FontWeight.w700,
@@ -159,7 +160,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                               ),
                               const Gap(4),
                               Text(
-                                'Shops',
+                                'Shops'.tr,
                                 style: TextStyle(
                                   fontSize: 11.0,
                                   fontWeight: FontWeight.w700,
@@ -204,7 +205,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                               ),
                               const Gap(4),
                               Text(
-                                'Account',
+                                'Account'.tr,
                                 style: TextStyle(
                                   fontSize: 11.0,
                                   fontWeight: FontWeight.w700,

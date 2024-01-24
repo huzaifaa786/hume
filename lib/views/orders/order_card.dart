@@ -15,121 +15,123 @@ class OrderCard extends StatelessWidget {
   final status;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width,
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.only(left: 8, right: 8, top: 12),
-      decoration: BoxDecoration(
-        color: white,
-        borderRadius: BorderRadius.circular(7),
-        boxShadow: [
-          BoxShadow(color: Colors.grey[300]!, blurRadius: 14, spreadRadius: 4),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: Get.width * 0.5,
-                child: Text(
-                  status == '0'
-                      ? 'In progress'
-                      : status == '1'
-                          ? 'Accepted order'
-                          : status == '2'
-                              ? 'Rejected order'
-                              : 'Delivered order',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: status == '0'
-                        ? Colors.amber
-                        : status == '1'
-                            ? acceptedColor
-                            : status == '2'
-                                ? rejectedColor
-                                : deliverColor,
-                  ),
-                ) ,
-              ),
-              InkWell(
-                onTap: ontap,
-                child: Container(
-                  padding:
-                      EdgeInsets.only(left: 12, right: 12, top: 8, bottom: 8),
-                  decoration: BoxDecoration(
-                      color: containerBg,
-                      borderRadius: BorderRadius.circular(5)),
+    return Directionality(textDirection: TextDirection.ltr,
+      child: Container(
+        width: Get.width,
+        padding: EdgeInsets.all(12),
+        margin: EdgeInsets.only(left: 8, right: 8, top: 12),
+        decoration: BoxDecoration(
+          color: white,
+          borderRadius: BorderRadius.circular(7),
+          boxShadow: [
+            BoxShadow(color: Colors.grey[300]!, blurRadius: 14, spreadRadius: 4),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: Get.width * 0.5,
                   child: Text(
-                    "View products",
-                    style: const TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600,
-                      color: litePurple,
+                    status == '0'
+                        ? 'In progress'.tr
+                        : status == '1'
+                            ? 'Accepted order'.tr
+                            : status == '2'
+                                ? 'Rejected order'.tr
+                                : 'Delivered order'.tr,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: status == '0'
+                          ? Colors.amber
+                          : status == '1'
+                              ? acceptedColor
+                              : status == '2'
+                                  ? rejectedColor
+                                  : deliverColor,
                     ),
                   ) ,
                 ),
-              ),
-            ],
-          ),
-          Gap(6),
-          Text(
-            "Order No. $id",
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
+                InkWell(
+                  onTap: ontap,
+                  child: Container(
+                    padding:
+                        EdgeInsets.only(left: 12, right: 12, top: 8, bottom: 8),
+                    decoration: BoxDecoration(
+                        color: containerBg,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Text(
+                      "View products".tr,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                        color: litePurple,
+                      ),
+                    ) ,
+                  ),
+                ),
+              ],
             ),
-          ) ,
-          Gap(8),
-          Row(
-            children: [
-              Text(
-                "Requested   ",
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                  color: hintColor,
-                ),
-              ) ,
-              Text(
-                "$date",
-                style: const TextStyle(
-                  fontFamily: "Poppins",
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xff7b6c84),
-                ),
-              ) 
-            ],
-          ),
-          Gap(20),
-          Row(
-            children: [
-              Text(
-                "Total price   ",
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                  color: hintColor,
-                ),
-              ) ,
-              Text(
-                "$price AED",
-                style: const TextStyle(
-                  fontFamily: "Poppins",
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: litePurple,
-                ),
-              ) 
-            ],
-          ),
-          Gap(10)
-        ],
+            Gap(6),
+            Text(
+              "order No"+" $id",
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+              ),
+            ) ,
+            Gap(8),
+            Row(
+              children: [
+                Text(
+                  "requested".tr,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: hintColor,
+                  ),
+                ) ,
+                Text(
+                  "$date",
+                  style: const TextStyle(
+                    fontFamily: "Poppins",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff7b6c84),
+                  ),
+                ) 
+              ],
+            ),
+            Gap(20),
+            Row(
+              children: [
+                Text(
+                  "Total price".tr,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: hintColor,
+                  ),
+                ) ,
+                Text(
+                  "$price"+"AED",
+                  style: const TextStyle(
+                    fontFamily: "Poppins",
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: litePurple,
+                  ),
+                ) 
+              ],
+            ),
+            Gap(10)
+          ],
+        ),
       ),
     );
   }
