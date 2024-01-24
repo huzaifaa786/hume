@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/utils/colors.dart';
+ import 'package:hume/utils/colors.dart';
 
 class OrderCard extends StatelessWidget {
   const OrderCard(
@@ -55,7 +54,7 @@ class OrderCard extends StatelessWidget {
                                 ? rejectedColor
                                 : deliverColor,
                   ),
-                ).translate(),
+                ) ,
               ),
               InkWell(
                 onTap: ontap,
@@ -66,13 +65,13 @@ class OrderCard extends StatelessWidget {
                       color: containerBg,
                       borderRadius: BorderRadius.circular(5)),
                   child: Text(
-                    "See products",
+                    "View products",
                     style: const TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.w600,
                       color: litePurple,
                     ),
-                  ).translate(),
+                  ) ,
                 ),
               ),
             ],
@@ -84,7 +83,7 @@ class OrderCard extends StatelessWidget {
               fontSize: 14,
               fontWeight: FontWeight.w700,
             ),
-          ).translate(),
+          ) ,
           Gap(8),
           Row(
             children: [
@@ -95,7 +94,7 @@ class OrderCard extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   color: hintColor,
                 ),
-              ).translate(),
+              ) ,
               Text(
                 "$date",
                 style: const TextStyle(
@@ -104,7 +103,7 @@ class OrderCard extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   color: Color(0xff7b6c84),
                 ),
-              ).translate()
+              ) 
             ],
           ),
           Gap(20),
@@ -117,7 +116,7 @@ class OrderCard extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   color: hintColor,
                 ),
-              ).translate(),
+              ) ,
               Text(
                 "$price AED",
                 style: const TextStyle(
@@ -126,7 +125,7 @@ class OrderCard extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   color: litePurple,
                 ),
-              ).translate()
+              ) 
             ],
           ),
           Gap(10)

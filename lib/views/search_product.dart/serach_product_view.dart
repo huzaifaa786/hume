@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
 import 'package:hume/components/product_card.dart';
 import 'package:hume/components/search_input.dart';
 import 'package:hume/routes/app_routes.dart';
@@ -44,9 +43,11 @@ class _SearchProductViewState extends State<SearchProductView> {
                   onChange: (value) => searchProductController.search(value),
                 ),
                 searchProductController.filteredProducts!.isEmpty
-                    ? Center(
-                        child: Text('No products!').translate(),
-                      )
+                    ? SizedBox(
+                        height: Get.height * 0.8,
+                        child: Center(
+                          child: Text('No products found!'),
+                        ))
                     : GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,

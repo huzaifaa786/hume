@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/components/product_card.dart';
+ import 'package:hume/components/product_card.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/views/category_products/cactegory_product_controller.dart';
 import 'package:hume/views/layout/layout_screen.dart';
@@ -22,7 +21,7 @@ class ProductScreen extends StatelessWidget {
         body: SafeArea(
           child: controller.products.isEmpty
               ? Center(
-                  child: Text('No products found for this category.').translate(),
+                  child: Text('No products found for this category.') ,
                 )
               : GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

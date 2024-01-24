@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/components/button.dart';
+ import 'package:hume/components/button.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 
@@ -30,7 +29,7 @@ class WelcomeView extends StatelessWidget {
                         color: mainColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 55),
-                  ).translate(),
+                  ) ,
                   SvgPicture.asset('assets/images/logo.svg',
                       height: 30, width: 50),
                   Gap(30),
@@ -38,7 +37,7 @@ class WelcomeView extends StatelessWidget {
                     'all what you need in one place with fast and safe online shopping  experience',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: greyText),
-                  ).translate(),
+                  ) ,
                   Gap(40),
                   HumeButton(
                     title: 'Sign up',
@@ -52,7 +51,7 @@ class WelcomeView extends StatelessWidget {
                     Text(
                       'Already have an account?  ',
                       style: TextStyle(color: greyText),
-                    ).translate(),
+                    ) ,
                     GestureDetector(
                       onTap: () {
                         Get.toNamed(AppRoutes.auth_options);
@@ -65,7 +64,7 @@ class WelcomeView extends StatelessWidget {
                                 color: mainColor,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700),
-                          ).translate(),
+                          ) ,
                           Icon(Icons.arrow_forward)
                         ],
                       ),

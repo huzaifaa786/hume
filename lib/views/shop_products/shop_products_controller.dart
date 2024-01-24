@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hume/api/product_api.dart';
 import 'package:hume/api/shop_api.dart';
 import 'package:hume/helper/loading.dart';
 import 'package:hume/models/product.dart';

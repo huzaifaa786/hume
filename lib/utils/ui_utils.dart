@@ -5,8 +5,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/utils/colors.dart';
+ import 'package:hume/utils/colors.dart';
 
 class UiUtilites {
   static errorSnackbar(String title, String message) {
@@ -90,7 +89,7 @@ class UiUtilites {
                       // height: 52 / 12,
                     ),
                     textAlign: TextAlign.center,
-                  ).translate(),
+                  ) ,
                   Gap(40),
                 ],
               ),
@@ -135,7 +134,7 @@ class UiUtilites {
                         // height: 52 / 12,
                       ),
                       textAlign: TextAlign.center,
-                    ).translate(),
+                    ) ,
                     Gap(10),
                     Divider(
                       height: 1,
@@ -154,7 +153,7 @@ class UiUtilites {
                               fontWeight: FontWeight.w700,
                               
                             ),
-                          ).translate(),
+                          ) ,
                         ),
                         InkWell(
                           onTap: onPressOK,
@@ -166,7 +165,7 @@ class UiUtilites {
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                             ),
-                          ).translate(),
+                          ) ,
                         ),
                       ],
                     ),

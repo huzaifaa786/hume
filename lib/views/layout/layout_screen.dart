@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable, unused_field
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +14,7 @@ class LayoutScaffold extends StatefulWidget {
   bool hasBottomNav;
   bool hasLogout;
   LayoutScaffold(
-      {required this.body,
+      {super.key, required this.body,
       required this.appBarTitle,
       this.hasBottomNav = false,
       this.bottomNav,

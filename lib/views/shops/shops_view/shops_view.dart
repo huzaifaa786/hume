@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/models/shop.dart';
+ import 'package:hume/models/shop.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/layout/layout_screen.dart';
@@ -19,6 +18,7 @@ class ShopsView extends GetView<ShopsController> {
   Widget build(BuildContext context) {
     return LayoutScaffold(
         appBarTitle: 'Hume Shops',
+        hasBottomNav: true,
         body: SingleChildScrollView(
           controller: controller.scrollController,
           child: Column(
@@ -38,6 +38,12 @@ class ShopsView extends GetView<ShopsController> {
                       ontap: () {
                         Get.toNamed(AppRoutes.shop_profile, parameters: {
                           'shop_id': shop.id,
+                        })!
+                            .then((value) {
+                          controller.shops = <Shop>[].obs;
+                          controller.lastDocument = null;
+                          controller.update();
+                          controller.fetchShops();
                         });
                       },
                     );
@@ -58,7 +64,7 @@ class ShopsView extends GetView<ShopsController> {
                   height: 24 / 16,
                 ),
                 textAlign: TextAlign.center,
-              ).translate(),
+              ) ,
               Container(
                 width: Get.width * 0.75,
                 child: Text(
@@ -71,7 +77,7 @@ class ShopsView extends GetView<ShopsController> {
                     // height: 28 / 12,
                   ),
                   textAlign: TextAlign.center,
-                ).translate(),
+                ) ,
               ),
               SizedBox(height: 30),
               Row(

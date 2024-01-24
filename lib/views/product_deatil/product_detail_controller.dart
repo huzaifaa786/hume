@@ -32,6 +32,13 @@ class ProductDetailController extends GetxController {
     LoadingHelper.dismiss();
     update();
   }
+  int currentIndex = 0;
+
+
+    void setCurrentIndex(index) {
+    currentIndex = index;
+    update();
+  }
 
   void addToCart() async {
    bool isAdded = await cartHelper.addProduct(

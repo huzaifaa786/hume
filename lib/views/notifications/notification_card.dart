@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/utils/colors.dart';
+ import 'package:hume/utils/colors.dart';
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard(
@@ -56,7 +55,7 @@ class NotificationCard extends StatelessWidget {
                                 : content == 'Deliverd order'
                                     ? deliverColor
                                     : rejectedColor),
-                      ).translate(),
+                      ) ,
                     ),
                     content == 'Accepted order'
                         ? SvgPicture.asset('assets/images/checked_yellow.svg')
@@ -71,7 +70,7 @@ class NotificationCard extends StatelessWidget {
                       fontSize: 10,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF451E5D)),
-                ).translate()
+                ) 
               ],
             ),
             Gap(27),
@@ -134,7 +133,7 @@ class NotificationCard extends StatelessWidget {
                                       fontSize: 10,
                                       fontWeight: FontWeight.w600,
                                       color: litePurple))
-                              .translate(),
+                               ,
                           Gap(10),
                           SvgPicture.asset('assets/images/ion_chevron-back.svg')
                         ],

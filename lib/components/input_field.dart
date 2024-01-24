@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/utils/colors.dart';
+ import 'package:hume/utils/colors.dart';
 
 class InputField extends StatelessWidget {
   const InputField(
@@ -64,7 +63,7 @@ class InputField extends StatelessWidget {
               child: Text(
                 title,
                 style: TextStyle(color: Colors.black.withOpacity(0.6)),
-              ).translate(),
+              ) ,
             ),
           TextFormField(
             readOnly: readOnly,

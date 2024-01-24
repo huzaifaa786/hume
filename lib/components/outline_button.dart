@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/utils/colors.dart';
+ import 'package:hume/utils/colors.dart';
 
 class OutlineButton extends StatelessWidget {
   const OutlineButton({
@@ -51,7 +50,7 @@ class OutlineButton extends StatelessWidget {
                     color: mainColor,
                     fontWeight: FontWeight.w500,
                     fontSize: 16),
-              ).translate()
+              ) 
             ]),
           )),
     );

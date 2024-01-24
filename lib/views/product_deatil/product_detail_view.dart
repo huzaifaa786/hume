@@ -1,12 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_indicator/carousel_indicator.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/components/button.dart';
+ import 'package:hume/components/button.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/layout/layout_screen.dart';
@@ -38,12 +39,62 @@ class ProductDetailView extends StatelessWidget {
                       category: controller.combinedProductData!.shop.category,
                     ),
                     Gap(12),
-                    CachedNetworkImage(
-                      imageUrl:
-                          controller.combinedProductData!.product.images![0],
+                    // CachedNetworkImage(
+                    //   imageUrl:
+                    //       controller.combinedProductData!.product.images![0],
+                    //   height: Get.height * 0.5,
+                    //   width: Get.width,
+                    //   fit: BoxFit.cover,
+                    // ),
+                    SizedBox(
                       height: Get.height * 0.5,
-                      width: Get.width,
-                      fit: BoxFit.cover,
+                      width: MediaQuery.of(context).size.width,
+                      child: CarouselSlider(
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          viewportFraction: 1,
+                          aspectRatio: 16 / 16,
+                          enlargeCenterPage: true,
+                          onPageChanged: (index, reason) {
+                            controller.setCurrentIndex(index);
+                          },
+                        ),
+                        items: controller.combinedProductData!.product.images!
+                            .map((i) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return Container(
+                                width: Get.width * 0.9,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                ),
+                                child: CachedNetworkImage(
+                                  imageUrl: i,
+                                  fit: BoxFit.cover,
+                                  progressIndicatorBuilder: (context, url,
+                                          downloadProgress) =>
+                                      Center(
+                                          child: CircularProgressIndicator(
+                                              value:
+                                                  downloadProgress.progress)),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                ),
+                              );
+                            },
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    Gap(8),
+                    CarouselIndicator(
+                      count: controller
+                          .combinedProductData!.product.images!.length,
+                      index: controller.currentIndex,
+                      activeColor: mainColor,
+                      color: Colors.grey,
+                      width: 6,
                     ),
                     Container(
                       width: Get.width,
@@ -74,18 +125,19 @@ class ProductDetailView extends StatelessWidget {
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,
                                 ),
-                              ).translate()
+                              ) 
                             ],
                           ),
                           Gap(6),
                           Text(
-                            'Plaid Flap Pocket Drop Shoulder Coat Plaid Flap Pocket Drop Shoulder Coat Plaid Flap Pocket Drop Shoulder Coat',
+                            controller.combinedProductData!.product.description
+                                .toString(),
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
                             ),
-                          ).translate(),
+                          ) ,
                           Gap(8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -125,7 +177,7 @@ class ProductDetailView extends StatelessWidget {
                                       color: appbarText,
                                     ),
                                     textAlign: TextAlign.center,
-                                  ).translate(),
+                                  ) ,
                                   Text(
                                     "Total price",
                                     style: const TextStyle(
@@ -135,7 +187,7 @@ class ProductDetailView extends StatelessWidget {
                                       color: Colors.grey,
                                     ),
                                     textAlign: TextAlign.center,
-                                  ).translate(),
+                                  ) ,
                                 ],
                               ),
                               HumeButton(
@@ -152,6 +204,7 @@ class ProductDetailView extends StatelessWidget {
                           Gap(8),
                           controller.selectedSize != ''
                               ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       "Size",
@@ -159,7 +212,7 @@ class ProductDetailView extends StatelessWidget {
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,
                                       ),
-                                    ).translate(),
+                                    ) ,
                                     Gap(8),
                                     SizedBox(
                                       height: Get.height * 0.045,
@@ -204,7 +257,7 @@ class ProductDetailView extends StatelessWidget {
                                                         ? Colors.white
                                                         : Colors.black,
                                                   ),
-                                                ).translate(),
+                                                ) ,
                                               ),
                                             ),
                                           );
@@ -221,7 +274,7 @@ class ProductDetailView extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
-                          ).translate(),
+                          ) ,
                           Gap(8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -258,11 +311,12 @@ class ProductDetailView extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
                                 child: Text(
-                                    controller.total.toString() + " AED",
-                                    style: TextStyle(
-                                        fontSize: Get.width * 0.038,
-                                        fontWeight: FontWeight.w600,
-                                        color: litePurple)).translate(),
+                                        controller.total.toString() + " AED",
+                                        style: TextStyle(
+                                            fontSize: Get.width * 0.038,
+                                            fontWeight: FontWeight.w600,
+                                            color: litePurple))
+                                     ,
                               ),
                             ],
                           ),

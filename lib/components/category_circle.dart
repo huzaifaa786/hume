@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:google_translator/google_translator.dart';
-import 'package:hume/utils/colors.dart';
+ import 'package:hume/utils/colors.dart';
 
 class CategoryCircle extends StatelessWidget {
   const CategoryCircle(
@@ -48,7 +47,7 @@ class CategoryCircle extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: mainColor, fontSize: 12, fontWeight: FontWeight.w600),
-            ).translate(),
+            ) ,
           )
         ],
       ),
