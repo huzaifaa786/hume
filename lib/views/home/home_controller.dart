@@ -18,15 +18,9 @@ class HomeController extends GetxController {
   final makeupproducts = <Product>[].obs;
   final homeandkitchenproducts = <Product>[].obs;
 
-  String? hintstring;
-  hintTranslate() async {
-    hintstring = await translateText('search');
-  }
-
   @override
   void onInit() {
     super.onInit();
-    hintTranslate();
     update();
   }
 

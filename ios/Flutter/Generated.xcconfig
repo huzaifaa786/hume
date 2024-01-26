@@ -1,8 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=C:\flutter\sdk
-FLUTTER_APPLICATION_PATH=C:\flutter\hume
-FLUTTER_ROOT=E:\flutter\sdl3.16.0
-FLUTTER_APPLICATION_PATH=E:\flutter projects\hume
+FLUTTER_ROOT=D:\FLUTTER\Sdk\flutter
+FLUTTER_APPLICATION_PATH=D:\FLUTTER\FlutterProjects\2024\HUME
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib\main.dart
 FLUTTER_BUILD_DIR=build

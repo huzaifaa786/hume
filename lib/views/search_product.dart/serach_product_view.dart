@@ -19,7 +19,6 @@ class SearchProductView extends StatefulWidget {
 class _SearchProductViewState extends State<SearchProductView> {
   @override
   void initState() {
-    searchProductController.hintTranslate();
     searchProductController.products!.isEmpty
         ? searchProductController.fetchProducts()
         : searchProductController.filteredProducts =
@@ -39,7 +38,7 @@ class _SearchProductViewState extends State<SearchProductView> {
             child: Column(
               children: [
                 SearchInputField(
-                  hint: searchProductController.hintstring ?? '',
+                  hint: 'search'.tr,
                   onChange: (value) => searchProductController.search(value),
                 ),
                 searchProductController.filteredProducts!.isEmpty

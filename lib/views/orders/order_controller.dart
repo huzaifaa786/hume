@@ -29,19 +29,10 @@ class OrdersController extends GetxController {
     update();
   }
 
-  labeltrnas() async {
-    all = await translateText('All');
-    accepted = await translateText('Accepted');
-    rejected = await translateText('Rejected');
-    completed = await translateText('Delivered');
-    update();
-  }
-
   @override
   void onInit() {
     super.onInit();
     fetchAllOrders();
-    labeltrnas();
     update();
   }
 

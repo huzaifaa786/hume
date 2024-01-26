@@ -10,12 +10,6 @@ class SearchProductController extends GetxController {
   final searchQuery = ''.obs;
   List<Product>? filteredProducts = [];
 
-  String? hintstring;
-  hintTranslate() async {
-    hintstring = await translateText('search');
-    update();
-  }
-
   // @override
   // void onInit() {
   //   super.onInit();
