@@ -4,7 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
- import 'package:hume/utils/colors.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:hume/utils/colors.dart';
 
 class SalesListCard extends StatelessWidget {
   const SalesListCard(
@@ -19,7 +20,10 @@ class SalesListCard extends StatelessWidget {
   final ontap;
   @override
   Widget build(BuildContext context) {
-    return Directionality(textDirection: TextDirection.ltr,
+    GetStorage box = GetStorage();
+    return Directionality(
+      textDirection:
+          box.read('locale') == 'ar' ? TextDirection.rtl : TextDirection.ltr,
       child: Container(
         width: Get.width,
         decoration: BoxDecoration(
@@ -63,13 +67,13 @@ class SalesListCard extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        category,
+                        '$category'.tr,
                         style: TextStyle(
                             fontSize: Get.width * 0.03,
                             fontFamily: "Poppins",
                             fontWeight: FontWeight.w600,
                             color: Colors.grey),
-                      ) 
+                      )
                     ],
                   ),
                 )
@@ -97,7 +101,7 @@ class SalesListCard extends StatelessWidget {
                           fontSize: Get.width * 0.03,
                           fontWeight: FontWeight.w700,
                         ),
-                      ) ,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: Icon(Icons.arrow_forward_ios_rounded,

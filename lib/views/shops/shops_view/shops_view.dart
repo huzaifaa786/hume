@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
  import 'package:hume/models/shop.dart';
 import 'package:hume/routes/app_routes.dart';
 import 'package:hume/utils/colors.dart';
@@ -16,6 +17,7 @@ class ShopsView extends GetView<ShopsController> {
 
   @override
   Widget build(BuildContext context) {
+    GetStorage box = GetStorage();
     return Directionality(
       textDirection: TextDirection.ltr,
       child: LayoutScaffold(

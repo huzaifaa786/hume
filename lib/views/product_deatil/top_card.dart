@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
  import 'package:hume/utils/colors.dart';
 
 class ProductProfileCardCard extends StatelessWidget {
@@ -14,8 +15,9 @@ class ProductProfileCardCard extends StatelessWidget {
   final ontap;
   @override
   Widget build(BuildContext context) {
+    GetStorage box = GetStorage();
     return Directionality(
-      textDirection: TextDirection.ltr,
+      textDirection: box.read('locale') == 'ar' ? TextDirection.rtl:  TextDirection.ltr,
       child: Container(
         width: Get.width,
         // decoration: BoxDecoration(
@@ -61,7 +63,7 @@ class ProductProfileCardCard extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        category,
+                        '$category'.tr,
                         style: TextStyle(
                             fontSize: Get.width * 0.03,
                             fontFamily: "Poppins",

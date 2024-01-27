@@ -43,7 +43,7 @@ class OrderProductsCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Size : '.tr,
+                        'Size : '.tr + ' : ',
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
@@ -64,7 +64,7 @@ class OrderProductsCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Quantity : '.tr,
+                        'Quantity : '.tr + ' : ',
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,

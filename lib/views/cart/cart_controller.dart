@@ -6,7 +6,7 @@ class CartController extends GetxController {
   static CartController instance = Get.find();
   final cartHelper = CartHelper();
   List<CartItem> cartItems = [];
-   int get totalAmount {
+  int get totalAmount {
     return cartItems.fold(0, (sum, item) => sum + item.total);
   }
 
@@ -18,6 +18,7 @@ class CartController extends GetxController {
 
   Future<void> loadCartFromFirestore() async {
     cartItems = await cartHelper.loadCartFromFirestore();
+    print(cartItems);
     update();
   }
 

@@ -32,26 +32,23 @@ class ProductDetailController extends GetxController {
     LoadingHelper.dismiss();
     update();
   }
+
   int currentIndex = 0;
 
-
-    void setCurrentIndex(index) {
+  void setCurrentIndex(index) {
     currentIndex = index;
     update();
   }
 
   void addToCart() async {
-   bool isAdded = await cartHelper.addProduct(
+    bool isAdded = await cartHelper.addProduct(
         combinedProductData!.product.id,
         combinedProductData!.shop.id,
         selectedSize != null ? selectedSize : null,
         qty,
         int.parse(combinedProductData!.product.price!));
-    if (isAdded) 
-    UiUtilites.successSnackbar(
-        combinedProductData!.product.name! + " added to cart successfully".tr,
-        'Added to cart'.tr);
+    if (isAdded)
+      UiUtilites.successSnackbar(
+          " added to cart successfully".tr, 'Added to cart'.tr);
   }
-
-  
 }

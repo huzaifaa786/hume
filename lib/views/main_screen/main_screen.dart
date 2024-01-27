@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hume/utils/colors.dart';
 import 'package:hume/views/account/account_view.dart';
 import 'dart:ui' as ui;
@@ -20,6 +21,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> with RouteAware {
+  GetStorage box = GetStorage();
   int _navigationMenuIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,9 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
       AccountScreen(),
     ];
     return Directionality(
-      textDirection: ui.TextDirection.ltr,
+      textDirection: box.read('locale') != 'ar'
+          ? ui.TextDirection.ltr
+          : ui.TextDirection.rtl,
       child: WillPopScope(
         onWillPop: () => Future.value(false),
         child: Scaffold(
@@ -65,6 +69,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SvgPicture.asset(
                                 'assets/images/Home.svg',
@@ -78,6 +83,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                               const Gap(4),
                               Text(
                                 'Home'.tr,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 11.0,
                                   fontWeight: FontWeight.w700,
@@ -85,7 +91,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                                       ? mainColor
                                       : Colors.grey,
                                 ),
-                              ) ,
+                              ),
                             ],
                           ),
                         ),
@@ -104,6 +110,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SvgPicture.asset(
                               'assets/images/search.svg',
@@ -117,6 +124,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                             const Gap(4),
                             Text(
                               'Search'.tr,
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 11.0,
                                 fontWeight: FontWeight.w700,
@@ -124,7 +132,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                                     ? mainColor
                                     : Colors.grey,
                               ),
-                            ) ,
+                            ),
                           ],
                         ),
                       ),
@@ -148,6 +156,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SvgPicture.asset(
                                 'assets/images/shops.svg',
@@ -161,6 +170,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                               const Gap(4),
                               Text(
                                 'Shops'.tr,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 11.0,
                                   fontWeight: FontWeight.w700,
@@ -168,7 +178,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                                       ? mainColor
                                       : Colors.grey,
                                 ),
-                              ) ,
+                              ),
                             ],
                           ),
                         ),
@@ -193,6 +203,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SvgPicture.asset(
                                 'assets/images/acc.svg',
@@ -205,6 +216,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                               ),
                               const Gap(4),
                               Text(
+                                textAlign: TextAlign.center,
                                 'Account'.tr,
                                 style: TextStyle(
                                   fontSize: 11.0,
@@ -213,7 +225,7 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
                                       ? mainColor
                                       : Colors.grey,
                                 ),
-                              ) ,
+                              ),
                             ],
                           ),
                         ),
