@@ -66,6 +66,26 @@ class CartHelper {
     return cartItems;
   }
 
+  Stream<List<CartItem>> loadCartStreamFromFirestore() {
+  String userId = auth.currentUser!.uid;
+  return firestore.collection('carts').doc(userId).snapshots().map((snapshot) {
+    if (snapshot.exists) {
+      var cartData = List.from(snapshot.data()!['cartItems']);
+      List<CartItem> cartItems = cartData.map((item) => CartItem(
+        productId: item['productId'],
+        size: item['size'] ?? '',
+        quantity: item['quantity'],
+        price: item['price'],
+        shopId: item['shopId'],
+      )).toList();
+
+      return cartItems;
+    } else {
+      return [];
+    }
+  });
+}
+
   Future<List<CartItem>> updateQuantity(
       String productId, String? size, int quantity) async {
     await loadCartFromFirestore();

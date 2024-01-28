@@ -56,25 +56,34 @@ class ProductDetailView extends StatelessWidget {
                     onTap: () {
                       Get.toNamed(AppRoutes.cart);
                     },
-                    child: badges.Badge(
-                      badgeContent: FutureBuilder(
-                          future: CartHelper().loadCartFromFirestore(),
-                          builder: (context, snapshot) {
-                            if (!snapshot.hasData) {
-                              return Text(
-                                '',
-                                style: TextStyle(color: white),
-                              );
-                            }
-                            return Text(
-                              '${snapshot.data!.length.toString()}',
-                              style: TextStyle(color: white),
-                            );
-                          }),
-                      child: SvgPicture.asset(
-                        'assets/images/cart.svg',
-                        height: 25,
-                      ),
+                    child: FutureBuilder(
+                      future: CartHelper().loadCartFromFirestore(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return SvgPicture.asset(
+                            'assets/images/cart.svg',
+                            height: 25,
+                          );
+                        }
+
+                        if (snapshot.data!.length == 0) {
+                          return SvgPicture.asset(
+                            'assets/images/cart.svg',
+                            height: 25,
+                          );
+                        }
+
+                        return badges.Badge(
+                          badgeContent: Text(
+                            '${snapshot.data!.length.toString()}',
+                            style: TextStyle(color: white),
+                          ),
+                          child: SvgPicture.asset(
+                            'assets/images/cart.svg',
+                            height: 25,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ]),
@@ -270,7 +279,7 @@ class ProductDetailView extends StatelessWidget {
                                 ],
                               ),
                               Gap(8),
-                              controller.selectedSize != ''
+                              controller.selectedSize != null
                                   ? Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,

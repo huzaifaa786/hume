@@ -115,7 +115,9 @@ class CheckoutController extends GetxController {
     final fetchedUser = await _accountApi.getUserById(userId);
     user.value = fetchedUser;
     name.text = user.value!.name.toString();
-    phone.text = user.value!.phone.toString();
+    if (user.value!.phone!.isNotEmpty) {
+      phone.text = user.value!.phone.toString();
+    }
     final DocumentSnapshot snapshot = await FirebaseFirestore.instance
         .collection('users')
         .doc('IMdPreVtj4QBHhTA1UkX5ngOg323')
