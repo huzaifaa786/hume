@@ -32,7 +32,7 @@ class CategoriesScreen extends StatelessWidget {
                         height: 0.2,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Clothes'.tr});
+                              parameters: {'category': 'Clothes'});
                         },
                       ),
                       CategoryCard(
@@ -41,7 +41,7 @@ class CategoriesScreen extends StatelessWidget {
                         height: 0.3,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Furniture'.tr});
+                              parameters: {'category': 'Furniture'});
                         },
                       ),
                     ],
@@ -56,7 +56,7 @@ class CategoriesScreen extends StatelessWidget {
                         height: 0.2,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Bags and\nshoes'.tr});
+                              parameters: {'category': 'Bags and shoes'});
                         },
                       ),
                       CategoryCard(
@@ -65,7 +65,7 @@ class CategoriesScreen extends StatelessWidget {
                         height: 0.2,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Makeup'.tr});
+                              parameters: {'category': 'Makeup'});
                         },
                       ),
                     ],
@@ -77,7 +77,7 @@ class CategoriesScreen extends StatelessWidget {
                     height: 0.5,
                     ontap: () {
                       Get.toNamed(AppRoutes.products,
-                          parameters: {'category': 'Home & kitchen'.tr});
+                          parameters: {'category': 'Home & kitchen'});
                     },
                   ),
                   Gap(12),
@@ -91,7 +91,7 @@ class CategoriesScreen extends StatelessWidget {
                         width: 0.35,
                         ontap: () {
                           Get.toNamed(AppRoutes.products, parameters: {
-                            'category': 'Skin & Hair\nProducts'.tr
+                            'category': 'Skin & Hair Products'
                           });
                         },
                       ),
@@ -103,7 +103,7 @@ class CategoriesScreen extends StatelessWidget {
                         fit: BoxFit.fill,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Perfumes'.tr});
+                              parameters: {'category': 'Perfumes'});
                         },
                       ),
                     ],
@@ -118,7 +118,7 @@ class CategoriesScreen extends StatelessWidget {
                         height: 0.19,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Devices'.tr});
+                              parameters: {'category': 'Devices'});
                         },
                       ),
                       CategoryCard(
@@ -128,7 +128,7 @@ class CategoriesScreen extends StatelessWidget {
                         width: 0.4,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Accessories'.tr});
+                              parameters: {'category': 'Accessories'});
                         },
                       ),
                     ],
@@ -140,7 +140,7 @@ class CategoriesScreen extends StatelessWidget {
                       height: 0.18,
                       ontap: () {
                         Get.toNamed(AppRoutes.products,
-                            parameters: {'category': 'Personal Services'.tr});
+                            parameters: {'category': 'Personal Services'});
                       }),
                   Gap(12),
                 ],

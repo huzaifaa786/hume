@@ -38,6 +38,7 @@ class LocaleString extends Translations {
           "Makeup": "Makeup",
           "Devisess": "Devisess",
           "Bags and\nshoes": "Bags and\nshoes",
+          "Bags and shoes": "Bags and shoes",
           "Home": "Home",
           "Search": "Search",
           "Shops": "Shops",
@@ -48,6 +49,7 @@ class LocaleString extends Translations {
           "Wooden table": "Wooden table",
           "thik sofa": "thik sofa",
           "Skin & Hair\nProducts": "Skin & Hair\nProducts",
+          "Skin & Hair Products": "Skin & Hair Products",
           "Accessories": "Accessories",
           "Personal Services": "Personal Services",
           "Foods": "Foods",
@@ -85,7 +87,7 @@ class LocaleString extends Translations {
           "Done!": "Done!",
           "Your payment method has been confirmed!":
               "Your payment method has been confirmed!",
-          "Notification": "Notification",
+          "Notification": "Notifications",
           "Accepted order!": "Accepted order!",
           "Rejected order!": "Rejected order!",
           "Your order is delivred !": "Your order is delivred !",
@@ -120,7 +122,7 @@ class LocaleString extends Translations {
           "Your ordere has been sent successfully":
               "Your ordere has been sent successfully",
           "No products found for this category.":
-              "No products found for this category.",
+              "No products found for this category",
           "No products found!": "No products found",
           "AED": "AED",
           "Remove ": "Remove ",
@@ -214,7 +216,7 @@ class LocaleString extends Translations {
           "English": "إنجليزي",
           "username": "اسم المستخدم",
           "No products found for this category.":
-              "لم يتم العثور على منتجات لهذه الفئة.",
+              "لم يتم العثور على منتجات لهذه الفئة",
           "No products found!": "لم يتم العثور على منتجات",
           "AED": "درهم",
           "Remove ": "إزالة",
@@ -228,7 +230,7 @@ class LocaleString extends Translations {
           "Loading...": "تحميل...",
           "Hume Shops": "محلات هيوم",
           "No products found for this shop.":
-              "لم يتم العثور على منتجات لهذا المتجر.",
+              "لم يتم العثور على منتجات لهذا المتجر",
           "Are you sure!": "هل أنت متأكد!",
           "You want to logout?": "هل تريد تسجيل الخروج؟",
           "No": "لا",
@@ -267,6 +269,8 @@ class LocaleString extends Translations {
           "Makeup": " المكياج",
           "Devices": "الأجهزة ",
           "Bags and\nshoes": "الحقائب و الأحذية",
+          "Bags and shoes": "الحقائب و الأحذية",
+
           "Home": " الصفحة الرئيسية ",
           "Search": " بحث ",
           "Shops": " المحلات",

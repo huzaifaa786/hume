@@ -25,9 +25,9 @@ class HomeController extends GetxController {
   }
 
   List<String> imgList = [
-    'http://via.placeholder.com/350x150',
-    'http://via.placeholder.com/350x150',
-    'http://via.placeholder.com/350x150',
+    'https://dummyimage.com/400x400/bababa/bababa',
+    'https://dummyimage.com/400x400/bababa/bababa',
+    'https://dummyimage.com/400x400/bababa/bababa',
   ];
 
   void setCurrentIndex(index) {

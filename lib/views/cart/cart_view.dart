@@ -66,7 +66,7 @@ class CartView extends StatelessWidget {
                               ProductShopCombined shopCombined = snapshot.data!;
                               return Container(
                                   margin: EdgeInsets.only(
-                                      left: 20, right: 20, top: 10),
+                                      left: 15, right: 15, top: 10),
                                   decoration: BoxDecoration(),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -75,177 +75,194 @@ class CartView extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          ClipRRect(
-                                            borderRadius: BorderRadius.circular(
-                                                10.0), // Adjust the radius as needed
-                                            child: CachedNetworkImage(
-                                              imageUrl: shopCombined
-                                                  .product.images!.first,
-                                              width: 130,
-                                              height: 220,
+                                          Container(
+                                            padding: EdgeInsets.all(1),
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey[300],
+                                              borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                BorderRadius.circular(10.0),
+                                              child: CachedNetworkImage(
+                                                imageUrl: shopCombined
+                                                    .product.images!.first,
+                                                width: 130,
+                                                height: 160,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Container(
-                                                      padding: EdgeInsets.only(
-                                                          left: 15, top: 10),
-                                                      width: Get.width * 0.4,
-                                                      child: Text(
-                                                        shopCombined
-                                                            .product.name!,
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                      )),
-                                                  InkWell(
-                                                    onTap: () {
-                                                      UiUtilites.confirmAlert(
-                                                          context,
-                                                          'Remove '.tr +
-                                                              shopCombined
-                                                                  .product
-                                                                  .name! +
-                                                              " from cart".tr,
-                                                          () {
-                                                        controller.removeProduct(
-                                                            controller
-                                                                .cartItems[
-                                                                    index]
-                                                                .productId,
-                                                            controller
-                                                                        .cartItems[
-                                                                            index]
-                                                                        .size !=
-                                                                    ''
-                                                                ? controller
-                                                                    .cartItems[
-                                                                        index]
-                                                                    .size
-                                                                : null);
-                                                      }, () {
-                                                        Get.back();
-                                                      }, "Remove ".tr,
-                                                          "Cancel".tr);
-                                                    },
-                                                    child: Icon(
-                                                      Icons.close,
-                                                      color: Colors.grey,
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              controller.cartItems[index]
-                                                          .size !=
-                                                      ''
-                                                  ? Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 20.0,
-                                                              top: 25),
-                                                      child: Text(
-                                                          'Size: '.tr +
+                                          Container(
+                                            height: 160,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                        padding: EdgeInsets.only(
+                                                            left: 15,
+                                                            right: 15,
+                                                            top: 10),
+                                                        width: Get.width * 0.4,
+                                                        child: Text(
+                                                          shopCombined
+                                                              .product.name!,
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                        )),
+                                                    InkWell(
+                                                      onTap: () {
+                                                        UiUtilites.confirmAlert(
+                                                            context,
+                                                            'Remove '.tr +
+                                                                shopCombined
+                                                                    .product
+                                                                    .name! +
+                                                                " from cart".tr,
+                                                            () {
+                                                          controller.removeProduct(
                                                               controller
                                                                   .cartItems[
                                                                       index]
-                                                                  .size!,
-                                                          style: TextStyle(
-                                                            color: Colors.grey,
-                                                          )),
+                                                                  .productId,
+                                                              controller
+                                                                          .cartItems[
+                                                                              index]
+                                                                          .size !=
+                                                                      ''
+                                                                  ? controller
+                                                                      .cartItems[
+                                                                          index]
+                                                                      .size
+                                                                  : null);
+                                                        }, () {
+                                                          Get.back();
+                                                        }, "Remove ".tr,
+                                                            "Cancel".tr);
+                                                      },
+                                                      child: Icon(
+                                                        Icons.close,
+                                                        color: Colors.grey,
+                                                      ),
                                                     )
-                                                  : Text(''),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 10.0, top: 65),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Container(
-                                                      padding:
-                                                          EdgeInsets.all(8),
-                                                      decoration: BoxDecoration(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.25),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20)),
-                                                      child: InputQty.int(
-                                                          initVal: controller
-                                                              .cartItems[index]
-                                                              .quantity,
-                                                          minVal: 1,
-                                                          qtyFormProps:
-                                                              QtyFormProps(
-                                                                  enableTyping:
-                                                                      false),
-                                                          onQtyChanged:
-                                                              (value) {
-                                                            controller.updateCart(
+                                                  ],
+                                                ),
+                                                controller.cartItems[index].size!
+                                                        .isNotEmpty
+                                                    ? Padding(
+                                                        padding:
+                                                            const EdgeInsets.only(
+                                                                left: 20.0,
+                                                                right: 20.0,),
+                                                        child: Text(
+                                                            'Size: '.tr +
                                                                 controller
                                                                     .cartItems[
                                                                         index]
-                                                                    .productId,
-                                                                controller
-                                                                            .cartItems[
-                                                                                index]
-                                                                            .size !=
-                                                                        ''
-                                                                    ? controller
-                                                                        .cartItems[
-                                                                            index]
-                                                                        .size
-                                                                    : null,
-                                                                value);
-                                                            controller.update();
-                                                          },
-                                                          decimalPlaces: 0,
-                                                          decoration: QtyDecorationProps(
-                                                              minusBtn: SvgPicture
-                                                                  .asset(
-                                                                      'assets/images/minus.svg'),
-                                                              plusBtn: SvgPicture
-                                                                  .asset(
-                                                                      'assets/images/plus.svg'),
-                                                              isBordered: false,
-                                                              borderShape:
-                                                                  BorderShapeBtn
-                                                                      .circle,
-                                                              width: 12)),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 8.0),
-                                                      child: Text(
-                                                          controller
-                                                                  .cartItems[
-                                                                      index]
-                                                                  .total
-                                                                  .toString() +
-                                                              'AED'.tr,
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  Get.width *
-                                                                      0.038,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              color:
-                                                                  litePurple)),
-                                                    ),
-                                                  ],
+                                                                    .size!,
+                                                            style: TextStyle(
+                                                              color: Colors.grey,
+                                                            )),
+                                                      )
+                                                    : Text(''),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      left: 10.0,
+                                                      right: 10.0,
+                                                      ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Container(
+                                                        padding:
+                                                            EdgeInsets.all(8),
+                                                        decoration: BoxDecoration(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.25),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20)),
+                                                        child: InputQty.int(
+                                                            initVal: controller
+                                                                .cartItems[index]
+                                                                .quantity,
+                                                            minVal: 1,
+                                                            qtyFormProps:
+                                                                QtyFormProps(
+                                                                    enableTyping:
+                                                                        false),
+                                                            onQtyChanged:
+                                                                (value) {
+                                                              controller.updateCart(
+                                                                  controller
+                                                                      .cartItems[
+                                                                          index]
+                                                                      .productId,
+                                                                  controller
+                                                                              .cartItems[
+                                                                                  index]
+                                                                              .size !=
+                                                                          ''
+                                                                      ? controller
+                                                                          .cartItems[
+                                                                              index]
+                                                                          .size
+                                                                      : null,
+                                                                  value);
+                                                              controller.update();
+                                                            },
+                                                            decimalPlaces: 0,
+                                                            decoration: QtyDecorationProps(
+                                                                minusBtn: SvgPicture
+                                                                    .asset(
+                                                                        'assets/images/minus.svg'),
+                                                                plusBtn: SvgPicture
+                                                                    .asset(
+                                                                        'assets/images/plus.svg'),
+                                                                isBordered: false,
+                                                                borderShape:
+                                                                    BorderShapeBtn
+                                                                        .circle,
+                                                                width: 12)),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets.only(
+                                                                left: 8.0,
+                                                                right: 8.0),
+                                                        child: Text(
+                                                            controller
+                                                                    .cartItems[
+                                                                        index]
+                                                                    .total
+                                                                    .toString() +
+                                                                'AED'.tr,
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    Get.width *
+                                                                        0.038,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color:
+                                                                    litePurple)),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
