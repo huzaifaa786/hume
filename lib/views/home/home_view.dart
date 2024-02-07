@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
           state.controller!.fetchBagsandshoesProducts('Bags and shoes');
           state.controller!.fetchFurnitureProducts('Furniture');
           state.controller!.fetchMakeupProducts('Makeup');
-          state.controller!.fetchHomeandkitchenProducts('Home & kitchen');
+          state.controller!.fetchHomeandkitchenProducts('Home & Kitchen');
         });
       },
       builder: (controller) => Scaffold(
@@ -223,14 +223,14 @@ class HomeScreen extends StatelessWidget {
                                 parameters: {'category': 'Makeup'});
                           },
                         ),
-                        CategoryCircle(
-                          imagePath: 'assets/images/devices.svg',
-                          title: 'Devices'.tr,
-                          ontap: () {
-                            Get.toNamed(AppRoutes.products,
-                                parameters: {'category': 'Devices'});
-                          },
-                        ),
+                        // CategoryCircle(
+                        //   imagePath: 'assets/images/devices.svg',
+                        //   title: 'Devices'.tr,
+                        //   ontap: () {
+                        //     Get.toNamed(AppRoutes.products,
+                        //         parameters: {'category': 'Devices'});
+                        //   },
+                        // ),
                       ],
                     ),
                   ),
@@ -509,7 +509,7 @@ class HomeScreen extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products, parameters: {
-                                'category': 'Home & kitchen'
+                                'category': 'Home & Kitchen'
                               });
                             },
                             child: Text(

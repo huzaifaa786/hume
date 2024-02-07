@@ -90,9 +90,8 @@ class CategoriesScreen extends StatelessWidget {
                         height: 0.19,
                         width: 0.35,
                         ontap: () {
-                          Get.toNamed(AppRoutes.products, parameters: {
-                            'category': 'Skin & Hair Products'
-                          });
+                          Get.toNamed(AppRoutes.products,
+                              parameters: {'category': 'Skin & Hair Products'});
                         },
                       ),
                       CategoryCard(
@@ -109,18 +108,27 @@ class CategoriesScreen extends StatelessWidget {
                     ],
                   ),
                   Gap(12),
+                  CategoryCard2(
+                      img: 'assets/images/personalServices.png',
+                      name: 'Personal Services'.tr,
+                      height: 0.18,
+                      ontap: () {
+                        Get.toNamed(AppRoutes.products,
+                            parameters: {'category': 'Personal Services'});
+                      }),
+                  Gap(12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CategoryCard(
-                        img: 'assets/images/device.png',
-                        name: 'Devices'.tr,
-                        height: 0.19,
-                        ontap: () {
-                          Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Devices'});
-                        },
-                      ),
+                      // CategoryCard(
+                      //   img: 'assets/images/device.png',
+                      //   name: 'Devices'.tr,
+                      //   height: 0.19,
+                      //   ontap: () {
+                      //     Get.toNamed(AppRoutes.products,
+                      //         parameters: {'category': 'Devices'});
+                      //   },
+                      // ),
                       CategoryCard(
                         img: 'assets/images/accessories.png',
                         name: 'Accessories'.tr,
@@ -133,15 +141,6 @@ class CategoriesScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Gap(12),
-                  CategoryCard2(
-                      img: 'assets/images/personalServices.png',
-                      name: 'Personal Services'.tr,
-                      height: 0.18,
-                      ontap: () {
-                        Get.toNamed(AppRoutes.products,
-                            parameters: {'category': 'Personal Services'});
-                      }),
                   Gap(12),
                 ],
               ),
