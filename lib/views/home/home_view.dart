@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                                 );
                               }
 
-                              if (snapshot.data!.length == 0) {
+                              if (snapshot.data!.isEmpty) {
                                 return SvgPicture.asset(
                                   'assets/images/cart.svg',
                                   height: 25,
