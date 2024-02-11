@@ -27,6 +27,10 @@ class HomeScreen extends StatelessWidget {
         Future.delayed(Duration(milliseconds: 100), () {
           state.controller!.fetchBannerImages();
           state.controller!.fetchClothesProducts('Clothes');
+          state.controller!.fetchperfumeProducts('Perfumes');
+          state.controller!.fetchPersonalSerProducts('Personal Services');
+          state.controller!.fetchAcceProducts('Accessories');
+          state.controller!.fetchSkinProducts('Skin & Hair Products');
           state.controller!.fetchBagsandshoesProducts('Bags and shoes');
           state.controller!.fetchFurnitureProducts('Furniture');
           state.controller!.fetchMakeupProducts('Makeup');
@@ -299,7 +303,7 @@ class HomeScreen extends StatelessWidget {
                         },
                       ),
                     ),
-              Gap(20),
+              // Gap(20),
               controller.bagsandshoesproducts.isEmpty
                   ? Container()
                   : Padding(
@@ -314,9 +318,8 @@ class HomeScreen extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Get.toNamed(AppRoutes.products, parameters: {
-                                'category': 'Bags and shoes'
-                              });
+                              Get.toNamed(AppRoutes.products,
+                                  parameters: {'category': 'Bags and shoes'});
                             },
                             child: Text(
                               'See all'.tr,
@@ -365,7 +368,7 @@ class HomeScreen extends StatelessWidget {
                         },
                       ),
                     ),
-              Gap(20),
+              // Gap(20),
               controller.furnitureproducts.isEmpty
                   ? Container()
                   : Padding(
@@ -429,7 +432,7 @@ class HomeScreen extends StatelessWidget {
                         },
                       ),
                     ),
-              Gap(20),
+              // Gap(20),
               controller.makeupproducts.isEmpty
                   ? Container()
                   : Padding(
@@ -493,7 +496,7 @@ class HomeScreen extends StatelessWidget {
                         },
                       ),
                     ),
-              Gap(20),
+              // Gap(20),
               controller.homeandkitchenproducts.isEmpty
                   ? Container()
                   : Padding(
@@ -508,9 +511,8 @@ class HomeScreen extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Get.toNamed(AppRoutes.products, parameters: {
-                                'category': 'Home & Kitchen'
-                              });
+                              Get.toNamed(AppRoutes.products,
+                                  parameters: {'category': 'Home & Kitchen'});
                             },
                             child: Text(
                               'See all'.tr,
@@ -559,6 +561,262 @@ class HomeScreen extends StatelessWidget {
                         },
                       ),
                     ),
+              // Gap(20),
+              controller.skinAndHair.isEmpty
+                  ? Container()
+                  : Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Skin & Hair Products'.tr,
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w800),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoutes.products, parameters: {
+                                'category': 'Skin & Hair Products'
+                              });
+                            },
+                            child: Text(
+                              'See all'.tr,
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+              controller.skinAndHair.isEmpty
+                  ? Container()
+                  : SizedBox(
+                      height: 290,
+                      child: Obx(
+                        () {
+                          if (controller.skinAndHair.isEmpty) {
+                            return Center(
+                              child: Text(
+                                  'No products found for this category.'.tr),
+                            );
+                          } else {
+                            return Container(
+                              alignment: Alignment.centerLeft,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                physics: BouncingScrollPhysics(),
+                                itemCount: controller.skinAndHair.length,
+                                itemBuilder: (context, index) {
+                                  final product = controller.skinAndHair[index];
+                                  return ProductCard(
+                                    name: product.name,
+                                    price: product.price,
+                                    img: product.images![0],
+                                    ontap: () {
+                                      Get.toNamed(AppRoutes.productDeatil,
+                                          parameters: {'id': product.id});
+                                    },
+                                  );
+                                },
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ),
+              // Gap(20),
+              controller.accessories.isEmpty
+                  ? Container()
+                  : Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Accessories'.tr,
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w800),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoutes.products,
+                                  parameters: {'category': 'Accessories'});
+                            },
+                            child: Text(
+                              'See all'.tr,
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+              controller.accessories.isEmpty
+                  ? Container()
+                  : SizedBox(
+                      height: 290,
+                      child: Obx(
+                        () {
+                          if (controller.accessories.isEmpty) {
+                            return Center(
+                              child: Text(
+                                  'No products found for this category.'.tr),
+                            );
+                          } else {
+                            return Container(
+                              alignment: Alignment.centerLeft,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                physics: BouncingScrollPhysics(),
+                                itemCount: controller.accessories.length,
+                                itemBuilder: (context, index) {
+                                  final product = controller.accessories[index];
+                                  return ProductCard(
+                                    name: product.name,
+                                    price: product.price,
+                                    img: product.images![0],
+                                    ontap: () {
+                                      Get.toNamed(AppRoutes.productDeatil,
+                                          parameters: {'id': product.id});
+                                    },
+                                  );
+                                },
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ),
+              // Gap(20),
+              controller.personalService.isEmpty
+                  ? Container()
+                  : Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Personal Services'.tr,
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w800),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoutes.products, parameters: {
+                                'category': 'Personal Services'
+                              });
+                            },
+                            child: Text(
+                              'See all'.tr,
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+              controller.personalService.isEmpty
+                  ? Container()
+                  : SizedBox(
+                      height: 290,
+                      child: Obx(
+                        () {
+                          if (controller.personalService.isEmpty) {
+                            return Center(
+                              child: Text(
+                                  'No products found for this category.'.tr),
+                            );
+                          } else {
+                            return Container(
+                              alignment: Alignment.centerLeft,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                physics: BouncingScrollPhysics(),
+                                itemCount: controller.personalService.length,
+                                itemBuilder: (context, index) {
+                                  final product =
+                                      controller.personalService[index];
+                                  return ProductCard(
+                                    name: product.name,
+                                    price: product.price,
+                                    img: product.images![0],
+                                    ontap: () {
+                                      Get.toNamed(AppRoutes.productDeatil,
+                                          parameters: {'id': product.id});
+                                    },
+                                  );
+                                },
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ),
+              // Gap(20),
+              controller.perfumes.isEmpty
+                  ? Container()
+                  : Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Perfumes'.tr,
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w800),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoutes.products,
+                                  parameters: {'category': 'Perfumes'});
+                            },
+                            child: Text(
+                              'See all'.tr,
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+              controller.perfumes.isEmpty
+                  ? Container()
+                  : SizedBox(
+                      height: 290,
+                      child: Obx(
+                        () {
+                          if (controller.perfumes.isEmpty) {
+                            return Center(
+                              child: Text(
+                                  'No products found for this category.'.tr),
+                            );
+                          } else {
+                            return Container(
+                              alignment: Alignment.centerLeft,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                physics: BouncingScrollPhysics(),
+                                itemCount: controller.perfumes.length,
+                                itemBuilder: (context, index) {
+                                  final product = controller.perfumes[index];
+                                  return ProductCard(
+                                    name: product.name,
+                                    price: product.price,
+                                    img: product.images![0],
+                                    ontap: () {
+                                      Get.toNamed(AppRoutes.productDeatil,
+                                          parameters: {'id': product.id});
+                                    },
+                                  );
+                                },
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ),
+              Gap(20),
             ]),
           ),
         ),

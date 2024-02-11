@@ -271,7 +271,6 @@ class LocaleString extends Translations {
           "Devices": "الأجهزة ",
           "Bags and\nshoes": "الحقائب و الأحذية",
           "Bags and shoes": "الحقائب و الأحذية",
-
           "Home": " الصفحة الرئيسية ",
           "Search": " بحث ",
           "Shops": " المحلات",
@@ -283,6 +282,7 @@ class LocaleString extends Translations {
           "Wooden table": " طاولة خشبية",
           "Thick sofa": "كنبة سميكة ",
           "Skin & Hair\nProducts": " منتجات الشعر و الجلد ",
+          "Skin & Hair Products": " منتجات الشعر و الجلد ",
           "Accessories": "الإكسسوارات ",
           "Personal Services": " الخدمات الخاصة",
           "Foods": " الأطعمة",

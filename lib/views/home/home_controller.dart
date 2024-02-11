@@ -13,6 +13,10 @@ class HomeController extends GetxController {
   final ProductApi _productApi = ProductApi();
   int currentIndex = 0;
   final clotheproducts = <Product>[].obs;
+  final accessories = <Product>[].obs;
+  final personalService = <Product>[].obs;
+  final perfumes = <Product>[].obs;
+  final skinAndHair = <Product>[].obs;
   final furnitureproducts = <Product>[].obs;
   final bagsandshoesproducts = <Product>[].obs;
   final makeupproducts = <Product>[].obs;
@@ -69,6 +73,45 @@ class HomeController extends GetxController {
         .fetchProductsByCategorywithLimit6(categoryName)
         .then((fetchedProducts) {
       clotheproducts.value = fetchedProducts;
+      LoadingHelper.dismiss();
+    });
+  }
+
+  void fetchSkinProducts(String categoryName) {
+    LoadingHelper.show();
+    _productApi
+        .fetchProductsByCategorywithLimit6(categoryName)
+        .then((fetchedProducts) {
+      skinAndHair.value = fetchedProducts;
+      LoadingHelper.dismiss();
+    });
+  }
+  void fetchperfumeProducts(String categoryName) {
+    LoadingHelper.show();
+    _productApi
+        .fetchProductsByCategorywithLimit6(categoryName)
+        .then((fetchedProducts) {
+      perfumes.value = fetchedProducts;
+      LoadingHelper.dismiss();
+    });
+  }
+
+    void fetchAcceProducts(String categoryName) {
+    LoadingHelper.show();
+    _productApi
+        .fetchProductsByCategorywithLimit6(categoryName)
+        .then((fetchedProducts) {
+      accessories.value = fetchedProducts;
+      LoadingHelper.dismiss();
+    });
+  }
+
+    void fetchPersonalSerProducts(String categoryName) {
+    LoadingHelper.show();
+    _productApi
+        .fetchProductsByCategorywithLimit6(categoryName)
+        .then((fetchedProducts) {
+      personalService.value = fetchedProducts;
       LoadingHelper.dismiss();
     });
   }

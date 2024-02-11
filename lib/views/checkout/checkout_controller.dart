@@ -114,8 +114,8 @@ class CheckoutController extends GetxController {
     LoadingHelper.show();
     final fetchedUser = await _accountApi.getUserById(userId);
     user.value = fetchedUser;
-    name.text = user.value!.name.toString();
-    if (user.value!.phone!.isNotEmpty) {
+    name.text = fetchedUser!.name.toString();
+    if (fetchedUser.phone != null) {
       phone.text = user.value!.phone.toString();
     }
     final DocumentSnapshot snapshot = await FirebaseFirestore.instance
@@ -127,6 +127,8 @@ class CheckoutController extends GetxController {
       token = data['token'] as String;
       print('Token: $token');
     }
+    print('object))))))))))))))))))))))2');
+
     update();
     LoadingHelper.dismiss();
   }
