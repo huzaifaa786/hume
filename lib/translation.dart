@@ -215,7 +215,7 @@ class LocaleString extends Translations {
           "View products": "عرض المنتجات",
           "Languages": "اللغات",
           "English": "إنجليزي",
-          "username": "اسم المستخدم",
+          "Username": "اسم المستخدم",
           "No products found for this category.":
               "لم يتم العثور على منتجات لهذه الفئة",
           "No products found!": "لم يتم العثور على منتجات",
@@ -290,7 +290,6 @@ class LocaleString extends Translations {
           "My account": " حسابي ",
           "My orders": " طلباتي ",
           "My address": " عنواني ",
-          "Username": " إسم المستخدم ",
           "Phone number": " رقم الهاتف ",
           "Change password": 'تغيير كلمة السر',
           "Old password": " كلمة السر القديمة ",

@@ -167,7 +167,7 @@ class _AccountScreenState extends State<AccountScreen> {
                         hint: 'Enter username'.tr,
                         controller: controller.name,
                         hasTitle: true,
-                        title: 'username'.tr,
+                        title: 'Username'.tr,
                       ),
                       Gap(10),
                       controller.providerNames!.contains('google.com') == true
