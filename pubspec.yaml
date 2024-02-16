@@ -86,7 +86,7 @@ dependency_overrides:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/humeAppLogo.png"
+  image_path: "assets/images/humeAppLogo1.png"
   adaptive_icon_background: "#C77DFF"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
