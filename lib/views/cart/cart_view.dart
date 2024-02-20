@@ -121,10 +121,10 @@ class CartView extends StatelessWidget {
                                                       onTap: () {
                                                         UiUtilites.confirmAlert(
                                                             context,
-                                                            'Remove '.tr +
+                                                            'Remove '.tr + ' '+
                                                                 shopCombined
                                                                     .product
-                                                                    .name! +
+                                                                    .name!+ ' ' +
                                                                 " from cart".tr,
                                                             () {
                                                           controller.removeProduct(
