@@ -107,15 +107,7 @@ class CategoriesScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Gap(12),
-                  CategoryCard2(
-                      img: 'assets/images/personalServices.png',
-                      name: 'Personal Services'.tr,
-                      height: 0.18,
-                      ontap: () {
-                        Get.toNamed(AppRoutes.products,
-                            parameters: {'category': 'Personal Services'});
-                      }),
+             
                   Gap(12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
