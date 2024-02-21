@@ -48,12 +48,16 @@ class CheckoutController extends GetxController {
         phone.text.isNotEmpty &&
         address.text.isNotEmpty &&
         totalAmount > 0) {
+      List shopIDs = [];
+      for (var id in cartItems) {
+        shopIDs.add(id.shopId);
+      }
+      print(shopIDs);
       LoadingHelper.show();
       bool isPaymentDone = await paymentService.makePayment(totalAmount);
-
+      print(isPaymentDone);
       if (isPaymentDone) {
         String orderId = DateTime.now().millisecondsSinceEpoch.toString();
-
         final UserOrder order = UserOrder(
             id: orderId,
             name: name.text,
@@ -62,7 +66,7 @@ class CheckoutController extends GetxController {
             total: totalAmount.toString(),
             userId: user.value!.id,
             status: "0",
-            shopId: cartItems.first.shopId,
+            shopId: shopIDs,
             paymentIntent: paymentService.paymentIntent.toString());
 
         await _orderApi.storeOrder(order);
@@ -70,13 +74,19 @@ class CheckoutController extends GetxController {
         for (var item in cartItems) {
           String itemId = DateTime.now().millisecondsSinceEpoch.toString();
           final OrderItem orderItem = OrderItem(
-            id: itemId,
-            orderId: orderId,
-            productId: item.productId,
-            quantity: item.quantity.toString(),
-            size: item.size != null ? item.size : null,
-            total: item.total.toString(),
-          );
+              id: itemId,
+              orderId: orderId,
+              productId: item.productId,
+              quantity: item.quantity.toString(),
+              size: item.size != ''
+                  ? item.shoeSize != ''
+                      ? '${item.shoeSize}' + ' ${item.size} '
+                      : item.size
+                  : item.shoeSize != null
+                      ? '${item.shoeSize}'
+                      : null,
+              total: item.total.toString(),
+              shopId: item.shopId);
           await _orderApi.storeOrderItem(orderItem);
         }
         cartHelper.clearCart();
@@ -125,10 +135,7 @@ class CheckoutController extends GetxController {
     if (snapshot.exists) {
       final Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
       token = data['token'] as String;
-      print('Token: $token');
     }
-    print('object))))))))))))))))))))))2');
-
     update();
     LoadingHelper.dismiss();
   }

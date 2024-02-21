@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
- import 'package:hume/utils/colors.dart';
+import 'package:hume/utils/colors.dart';
 
 class OrderProductsCard extends StatelessWidget {
   const OrderProductsCard(
@@ -15,6 +15,7 @@ class OrderProductsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('object $size');
     return Column(
       children: [
         Container(
@@ -28,6 +29,7 @@ class OrderProductsCard extends StatelessWidget {
                 width: 15,
               ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -40,24 +42,26 @@ class OrderProductsCard extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        'Size : '.tr + ' : ',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.grey),
-                      ) ,
-                      Text(
-                        size,
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.grey),
-                      ),
-                    ],
-                  ),
+                  size != ''
+                      ? Row(
+                          children: [
+                            Text(
+                              'Size : '.tr + ' : ',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey),
+                            ),
+                            Text(
+                              size.toString(),
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey),
+                            ),
+                          ],
+                        )
+                      : SizedBox(height: 20),
                   SizedBox(
                     height: 12,
                   ),
@@ -69,7 +73,7 @@ class OrderProductsCard extends StatelessWidget {
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                             color: Colors.grey),
-                      ) ,
+                      ),
                       Text(
                         quantity,
                         style: TextStyle(
@@ -97,7 +101,7 @@ class OrderProductsCard extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: colortext),
-                      ) ,
+                      ),
                     ],
                   ),
                   SizedBox(

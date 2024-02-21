@@ -23,10 +23,15 @@ class OrderProductsView extends GetView<OrdersController> {
                     itemBuilder: (context, index) {
                       final product = controller.products[index];
                       return OrderProductsCard(
-                        image: Image.network(
-                          product['productImage'],
-                          width: 137,
-                          height: 156,
+                        image: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black12),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Image.network(
+                            product['productImage'],
+                            width: 137,
+                            height: 156,
+                          ),
                         ),
                         price: product['total'],
                         size: product['size'],

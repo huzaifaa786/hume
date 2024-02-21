@@ -80,11 +80,11 @@ class CartView extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               color: Colors.grey[300],
                                               borderRadius:
-                                                BorderRadius.circular(10.0),
+                                                  BorderRadius.circular(10.0),
                                             ),
                                             child: ClipRRect(
                                               borderRadius:
-                                                BorderRadius.circular(10.0),
+                                                  BorderRadius.circular(10.0),
                                               child: CachedNetworkImage(
                                                 imageUrl: shopCombined
                                                     .product.images!.first,
@@ -99,15 +99,18 @@ class CartView extends StatelessWidget {
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 Row(
                                                   children: [
                                                     Container(
-                                                        padding: EdgeInsets.only(
-                                                            left: 15,
-                                                            right: 15,
-                                                            top: 10),
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: 15,
+                                                                right: 15,
+                                                                top: 10),
                                                         width: Get.width * 0.4,
                                                         child: Text(
                                                           shopCombined
@@ -154,29 +157,42 @@ class CartView extends StatelessWidget {
                                                     )
                                                   ],
                                                 ),
-                                                controller.cartItems[index].size!
-                                                        .isNotEmpty
+                                                controller.cartItems[index]
+                                                            .size!.isNotEmpty ||
+                                                        controller
+                                                            .cartItems[index]
+                                                            .shoeSize!
+                                                            .isNotEmpty
                                                     ? Padding(
                                                         padding:
-                                                            const EdgeInsets.only(
-                                                                left: 20.0,
-                                                                right: 20.0,),
+                                                            const EdgeInsets
+                                                                .only(
+                                                          left: 20.0,
+                                                          right: 20.0,
+                                                        ),
                                                         child: Text(
                                                             'Size: '.tr +
                                                                 controller
                                                                     .cartItems[
                                                                         index]
-                                                                    .size!,
+                                                                    .size! +
+                                                                ' ' +
+                                                                controller
+                                                                    .cartItems[
+                                                                        index]
+                                                                    .shoeSize!,
                                                             style: TextStyle(
-                                                              color: Colors.grey,
+                                                              color:
+                                                                  Colors.grey,
                                                             )),
                                                       )
                                                     : Text(''),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 10.0,
-                                                      right: 10.0,
-                                                      ),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 10.0,
+                                                    right: 10.0,
+                                                  ),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -195,7 +211,8 @@ class CartView extends StatelessWidget {
                                                                         20)),
                                                         child: InputQty.int(
                                                             initVal: controller
-                                                                .cartItems[index]
+                                                                .cartItems[
+                                                                    index]
                                                                 .quantity,
                                                             minVal: 1,
                                                             qtyFormProps:
@@ -209,10 +226,7 @@ class CartView extends StatelessWidget {
                                                                       .cartItems[
                                                                           index]
                                                                       .productId,
-                                                                  controller
-                                                                              .cartItems[
-                                                                                  index]
-                                                                              .size !=
+                                                                  controller.cartItems[index].size !=
                                                                           ''
                                                                       ? controller
                                                                           .cartItems[
@@ -220,17 +234,20 @@ class CartView extends StatelessWidget {
                                                                           .size
                                                                       : null,
                                                                   value);
-                                                              controller.update();
+                                                              controller
+                                                                  .update();
                                                             },
                                                             decimalPlaces: 0,
                                                             decoration: QtyDecorationProps(
-                                                                minusBtn: SvgPicture
-                                                                    .asset(
-                                                                        'assets/images/minus.svg'),
+                                                                minusBtn:
+                                                                    SvgPicture
+                                                                        .asset(
+                                                                            'assets/images/minus.svg'),
                                                                 plusBtn: SvgPicture
                                                                     .asset(
                                                                         'assets/images/plus.svg'),
-                                                                isBordered: false,
+                                                                isBordered:
+                                                                    false,
                                                                 borderShape:
                                                                     BorderShapeBtn
                                                                         .circle,
@@ -238,14 +255,12 @@ class CartView extends StatelessWidget {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsets.only(
+                                                            const EdgeInsets
+                                                                .only(
                                                                 left: 8.0,
                                                                 right: 8.0),
                                                         child: Text(
-                                                            controller
-                                                                    .cartItems[
-                                                                        index]
-                                                                    .total
+                                                            controller.cartItems[index].total
                                                                     .toString() +
                                                                 'AED'.tr,
                                                             style: TextStyle(

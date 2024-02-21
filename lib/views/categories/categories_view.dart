@@ -56,7 +56,7 @@ class CategoriesScreen extends StatelessWidget {
                         height: 0.2,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Bags and shoes'});
+                              parameters: {'category': 'Bags and Shoes'});
                         },
                       ),
                       CategoryCard(

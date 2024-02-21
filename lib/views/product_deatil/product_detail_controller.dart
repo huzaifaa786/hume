@@ -11,6 +11,7 @@ class ProductDetailController extends GetxController {
   CartHelper cartHelper = CartHelper();
   ProductShopCombined? combinedProductData;
   String? selectedSize;
+  String? shoesSelectedSize;
   int qty = 1;
   int total = 0;
   @override
@@ -27,7 +28,11 @@ class ProductDetailController extends GetxController {
     selectedSize = combinedProductData!.product.sizes!.isNotEmpty
         ? combinedProductData!.product.sizes!.first
         : null;
-
+    print(combinedProductData!.product.shoseselectedSizes!);
+    shoesSelectedSize =
+        combinedProductData!.product.shoseselectedSizes!.isNotEmpty
+            ? combinedProductData!.product.shoseselectedSizes!.first
+            : null;
     total = int.parse(combinedProductData!.product.price!);
     LoadingHelper.dismiss();
     update();
@@ -46,7 +51,9 @@ class ProductDetailController extends GetxController {
         combinedProductData!.shop.id,
         selectedSize != null ? selectedSize : null,
         qty,
-        int.parse(combinedProductData!.product.price!));
+        int.parse(combinedProductData!.product.price!),
+        shoesSelectedSize ?? null,
+        );
     if (isAdded)
       UiUtilites.successSnackbar(
           " added to cart successfully".tr, 'Added to cart'.tr);

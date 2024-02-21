@@ -8,22 +8,23 @@ class CartHelper {
   final auth = FirebaseAuth.instance;
   final firestore = FirebaseFirestore.instance;
 
-   addProduct(
+  addProduct(
     String productId,
     String shopId,
     String? size,
     int quantity,
     int price,
+    String? shoesize,
   ) async {
     await loadCartFromFirestore();
-    print(shopId);
-    if (cartItems.isNotEmpty &&
-        cartItems.where((item) => item.shopId == shopId).isEmpty) {
-      print('dddddddddddddddddddddddd');
-      UiUtilites.errorSnackbar(
-          'One shop allowed', 'only one shop items can be added to the cart');
-      return false;
-    }
+    // print(shopId);
+    // if (cartItems.isNotEmpty &&
+    //     cartItems.where((item) => item.shopId == shopId).isEmpty) {
+    //   print('dddddddddddddddddddddddd');
+    //   UiUtilites.errorSnackbar(
+    //       'One shop allowed', 'only one shop items can be added to the cart');
+    //   return false;
+    // }
 
     var index;
     if (size != null) {
@@ -32,7 +33,12 @@ class CartHelper {
     } else {
       index = cartItems.indexWhere((item) => item.productId == productId);
     }
-
+    if (shoesize != null) {
+      index = cartItems.indexWhere(
+          (item) => item.productId == productId && item.shoeSize == shoesize);
+    } else {
+      index = cartItems.indexWhere((item) => item.productId == productId);
+    }
     if (index != -1) {
       cartItems[index].quantity += quantity;
     } else {
@@ -41,7 +47,8 @@ class CartHelper {
           size: size,
           quantity: quantity,
           price: price,
-          shopId: shopId));
+          shopId: shopId,
+          shoeSize: shoesize));
     }
     updateCartInFirestore();
     return true;
@@ -54,12 +61,12 @@ class CartHelper {
         var cartData = List.from(doc.data()!['cartItems']);
         cartItems = cartData
             .map((item) => CartItem(
-                  productId: item['productId'],
-                  size: item['size'] ?? '',
-                  quantity: item['quantity'],
-                  price: item['price'],
-                  shopId: item['shopId'],
-                ))
+                productId: item['productId'],
+                size: item['size'] ?? '',
+                quantity: item['quantity'],
+                price: item['price'],
+                shopId: item['shopId'],
+                shoeSize: item['shoeSize'] ?? ''))
             .toList();
       }
     });
@@ -67,24 +74,30 @@ class CartHelper {
   }
 
   Stream<List<CartItem>> loadCartStreamFromFirestore() {
-  String userId = auth.currentUser!.uid;
-  return firestore.collection('carts').doc(userId).snapshots().map((snapshot) {
-    if (snapshot.exists) {
-      var cartData = List.from(snapshot.data()!['cartItems']);
-      List<CartItem> cartItems = cartData.map((item) => CartItem(
-        productId: item['productId'],
-        size: item['size'] ?? '',
-        quantity: item['quantity'],
-        price: item['price'],
-        shopId: item['shopId'],
-      )).toList();
+    String userId = auth.currentUser!.uid;
+    return firestore
+        .collection('carts')
+        .doc(userId)
+        .snapshots()
+        .map((snapshot) {
+      if (snapshot.exists) {
+        var cartData = List.from(snapshot.data()!['cartItems']);
+        List<CartItem> cartItems = cartData
+            .map((item) => CartItem(
+                productId: item['productId'],
+                size: item['size'] ?? '',
+                quantity: item['quantity'],
+                price: item['price'],
+                shopId: item['shopId'],
+                shoeSize: item['shoeSize'] ?? ''))
+            .toList();
 
-      return cartItems;
-    } else {
-      return [];
-    }
-  });
-}
+        return cartItems;
+      } else {
+        return [];
+      }
+    });
+  }
 
   Future<List<CartItem>> updateQuantity(
       String productId, String? size, int quantity) async {
@@ -153,6 +166,7 @@ class CartHelper {
               'quantity': item.quantity,
               'price': item.price,
               'shopId': item.shopId,
+              'shoeSize': item.shoeSize
             })
         .toList();
     firestore.collection('carts').doc(userId).set({'cartItems': cartData});

@@ -6,12 +6,14 @@ class Product {
   String? price;
   List? images;
   List? sizes;
+  List? shoseselectedSizes;
   String? shopId;
   String? description;
   String? category;
 
   Product(
       {required this.id,
+      required this.shoseselectedSizes,
       this.name,
       this.price,
       this.images,
@@ -29,6 +31,7 @@ class Product {
     shopId = json['shopId'];
     description = json['productDescription'];
     category = json['category'];
+    shoseselectedSizes = json['shoseselectedSizes'] ?? [];
   }
 
   Map<String, dynamic> toJson() {
@@ -41,6 +44,7 @@ class Product {
     data['shopId'] = this.shopId;
     data['productDescription'] = this.description;
     data['category'] = this.category;
+    data['shoseselectedSizes'] = this.shoseselectedSizes;
     return data;
   }
 
@@ -51,6 +55,7 @@ class Product {
       price: map['productPrice'],
       images: map['productImageUrls'],
       sizes: map['selectedSizes'] ?? [],
+      shoseselectedSizes: map['shoseselectedSizes'] ?? [],
       shopId: map['shopId'],
       description: map['productDescription'],
       category: map['category'],

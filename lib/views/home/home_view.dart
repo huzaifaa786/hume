@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
           state.controller!.fetchPersonalSerProducts('Personal Services');
           state.controller!.fetchAcceProducts('Accessories');
           state.controller!.fetchSkinProducts('Skin & Hair Products');
-          state.controller!.fetchBagsandshoesProducts('Bags and shoes');
+          state.controller!.fetchBagsandshoesProducts('Bags and Shoes');
           state.controller!.fetchFurnitureProducts('Furniture');
           state.controller!.fetchMakeupProducts('Makeup');
           state.controller!.fetchHomeandkitchenProducts('Home & Kitchen');
@@ -319,7 +319,7 @@ class HomeScreen extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
-                                  parameters: {'category': 'Bags and shoes'});
+                                  parameters: {'category': 'Bags and Shoes'});
                             },
                             child: Text(
                               'See all'.tr,

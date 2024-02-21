@@ -348,6 +348,75 @@ class ProductDetailView extends StatelessWidget {
                                     )
                                   : Text(''),
                               Gap(8),
+                              controller.shoesSelectedSize != null
+                                  ? Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Shoe Size".tr,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        Gap(8),
+                                        SizedBox(
+                                          height: Get.height * 0.045,
+                                          width: Get.width,
+                                          child: ListView.builder(
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: controller
+                                                .combinedProductData!
+                                                .product
+                                                .shoseselectedSizes!
+                                                .length,
+                                            itemBuilder: (context, index) {
+                                              String size = controller
+                                                  .combinedProductData!
+                                                  .product
+                                                  .shoseselectedSizes![index];
+                                              bool isSelected = size ==
+                                                  controller.shoesSelectedSize;
+
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  controller.shoesSelectedSize =
+                                                      size;
+                                                  controller.update();
+                                                },
+                                                child: Container(
+                                                  height: 30,
+                                                  width: 30,
+                                                  margin: EdgeInsets.all(4),
+                                                  decoration: BoxDecoration(
+                                                    color: isSelected
+                                                        ? mainColor
+                                                        : containerBg,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            45),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      size,
+                                                      style: TextStyle(
+                                                        color: isSelected
+                                                            ? Colors.white
+                                                            : Colors.black,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : Text(''),
+                              Gap(8),
                               Text(
                                 "Quantity".tr,
                                 style: const TextStyle(

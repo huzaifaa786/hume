@@ -9,7 +9,7 @@ class UserOrder {
   String? userId;
   String? status;
   String? paymentIntent;
-  String? shopId;
+  List? shopId;
 
   UserOrder({
     required this.id,
@@ -20,7 +20,7 @@ class UserOrder {
     this.userId,
     this.status,
     this.paymentIntent,
-    this.shopId,
+    required this.shopId,
   });
 
   UserOrder.fromJson(Map<String, dynamic> json) {
@@ -46,7 +46,6 @@ class UserOrder {
     data['status'] = this.status;
     data['paymentIntent'] = this.paymentIntent;
     data['shopId'] = this.shopId;
-
     return data;
   }
 
