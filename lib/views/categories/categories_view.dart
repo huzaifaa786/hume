@@ -36,12 +36,12 @@ class CategoriesScreen extends StatelessWidget {
                         },
                       ),
                       CategoryCard(
-                        img: 'assets/images/furniture.png',
-                        name: 'Furniture'.tr,
-                        height: 0.3,
+                        img: 'assets/images/craft_tool.png',
+                        name: 'Craft Tools'.tr,
+                        height: 0.17,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Furniture'});
+                              parameters: {'category': 'Craft Tools'});
                         },
                       ),
                     ],
@@ -65,7 +65,7 @@ class CategoriesScreen extends StatelessWidget {
                         height: 0.2,
                         ontap: () {
                           Get.toNamed(AppRoutes.products,
-                              parameters: {'category': 'Makeup'});
+                              parameters: {'category': 'MakeUp'});
                         },
                       ),
                     ],

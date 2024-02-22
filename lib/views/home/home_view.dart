@@ -32,8 +32,8 @@ class HomeScreen extends StatelessWidget {
           state.controller!.fetchAcceProducts('Accessories');
           state.controller!.fetchSkinProducts('Skin & Hair Products');
           state.controller!.fetchBagsandshoesProducts('Bags and Shoes');
-          state.controller!.fetchFurnitureProducts('Furniture');
-          state.controller!.fetchMakeupProducts('Makeup');
+          state.controller!.fetchFurnitureProducts('Craft Tools');
+          state.controller!.fetchMakeupProducts('MakeUp');
           state.controller!.fetchHomeandkitchenProducts('Home & Kitchen');
         });
       },
@@ -198,10 +198,10 @@ class HomeScreen extends StatelessWidget {
                         CategoryCircle(
                           ontap: () {
                             Get.toNamed(AppRoutes.products,
-                                parameters: {'category': 'Furniture'});
+                                parameters: {'category': 'Craft Tools'});
                           },
-                          imagePath: 'assets/images/1furniture.svg',
-                          title: 'Furniture'.tr,
+                          imagePath: 'assets/images/craft.svg',
+                          title: 'Craft Tools'.tr,
                         ),
                         CategoryCircle(
                           imagePath: 'assets/images/cloths.svg',
@@ -224,7 +224,7 @@ class HomeScreen extends StatelessWidget {
                           title: 'Makeup'.tr,
                           ontap: () {
                             Get.toNamed(AppRoutes.products,
-                                parameters: {'category': 'Makeup'});
+                                parameters: {'category': 'MakeUp'});
                           },
                         ),
                         // CategoryCircle(
@@ -377,14 +377,14 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Furniture'.tr,
+                            'Craft Tools'.tr,
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800),
                           ),
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
-                                  parameters: {'category': 'Furniture'});
+                                  parameters: {'category': 'Craft Tools'});
                             },
                             child: Text(
                               'See all'.tr,
@@ -448,7 +448,7 @@ class HomeScreen extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               Get.toNamed(AppRoutes.products,
-                                  parameters: {'category': 'Makeup'});
+                                  parameters: {'category': 'MakeUp'});
                             },
                             child: Text(
                               'See all'.tr,

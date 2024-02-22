@@ -23,7 +23,7 @@ class ProductScreen extends StatelessWidget {
           body: SafeArea(
             child: controller.products.isEmpty
                 ? Center(
-                    child: Text('No products found for this category.'.tr + '.'),
+                    child: Text('No products found for this category.'.tr),
                   )
                 : GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
