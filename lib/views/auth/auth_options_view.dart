@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -49,7 +50,7 @@ class AuthOptions extends StatelessWidget {
                       onPressed: () {
                         controller.signInGoogle();
                       },
-                      icon: Icons.apple,
+                      icon: MdiIcons.google,
                     ),
                     Gap(15),
                     OutlineButton(
